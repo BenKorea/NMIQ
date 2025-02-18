@@ -1,43 +1,13 @@
 ---
-title: "Template"
-description:  "Template"
-author: "RPythonStudyGroup feat. ChatGPT"
-date: "2024-12-17"
-date-modified: "2024-12-18"
-categories: [Template]
+title: "NMIQ"
+author: "BenKorea"
+date: "2025-02-19"
+date-modified: "2025-02-19"
+categories: [IQ]
 ---
 
-
-::: {.callout-note title="1단계: `Quarto Website` 프로젝트 만들기" collapse="true" appearance="minimal"}
--   RStudio/File 메뉴에서 `New Project...` 메뉴 선택
--   `New Directory`에 생성되도록 선택
--   Project type은 `Quarto Website`를 선택
--   상위폴더가 `C:/Projects`인지 확인 (=Global Options 사전 지정값)
--   Directory name은 `R-4.4.1-Quarto_Website_Example`로 지정
--   [x] Create a git repository: 체크 유지하여 버전관리 적용
--   [x] Use renv with this project: 체크 유지하여 패키지 독립관리 적용
--   [x] Use visual markdown editor: 체크 유지하여 wizwig 에디터 사용
--   [ ] Open in new session: 기존 프로젝트가 이미 열려있고, 같이 사용할려면 체크
-:::
-
-툴팁은 [`특정문자`]{.text-primary data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="1열<br>
-2열"}이 구현되어야 한다.
-
-```{r project_name, eval=FALSE, filename="recommeded project name"}
-R-4.4.1-Hands_on_Shinylive_Example
-```
-
-- 폴더구조 참조
-
-::: {#fig-ProjectDirectory}
-```         
-C:\Projects\
-      └─ R-x.y.z-Project_Name
-```
-
-Recommended nomenclautue for Project directory name
-:::
-
-
-### 목적
-- QUarto Website 프로젝트를 생성하고 Bootstrap tooltip 및 Utterance 기능구현을 위한 설정, Render 기능을 위한 기본적인 R 패키지 설치까지를 template화 함.
+### 프로젝트 만들기
+- 원격저장소를 NMIQ로 파생
+- 로컬에 clone
+- 가상화
+- 프로젝트 다른 이름으로 저장

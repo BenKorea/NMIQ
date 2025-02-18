@@ -3,11 +3,11 @@ project:
   output-dir: docs
 
 website:
-  title: "Template"
+  title: "NMIQ"
   
   navbar:
     left:
-      - text: Template
+      - text: NMIQ
         href: index.qmd
         
     right:

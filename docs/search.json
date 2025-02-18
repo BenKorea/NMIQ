@@ -2,8 +2,8 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Template",
+    "title": "NMIQ",
     "section": "",
-    "text": "1단계: Quarto Website 프로젝트 만들기\n\n\n\n\n\n\nRStudio/File 메뉴에서 New Project... 메뉴 선택\nNew Directory에 생성되도록 선택\nProject type은 Quarto Website를 선택\n상위폴더가 C:/Projects인지 확인 (=Global Options 사전 지정값)\nDirectory name은 R-4.4.1-Quarto_Website_Example로 지정\nCreate a git repository: 체크 유지하여 버전관리 적용\nUse renv with this project: 체크 유지하여 패키지 독립관리 적용\nUse visual markdown editor: 체크 유지하여 wizwig 에디터 사용\nOpen in new session: 기존 프로젝트가 이미 열려있고, 같이 사용할려면 체크\n\n\n\n\n툴팁은 특정문자이 구현되어야 한다.\n\n\n\nrecommeded project name\n\nR-4.4.1-Hands_on_Shinylive_Example\n\n\n\n폴더구조 참조\n\n\n\n\nC:\\Projects\\\n      └─ R-x.y.z-Project_Name\n\n\nFigure 1: Recommended nomenclautue for Project directory name\n\n\n\n\n목적\n\nQUarto Website 프로젝트를 생성하고 Bootstrap tooltip 및 Utterance 기능구현을 위한 설정, Render 기능을 위한 기본적인 R 패키지 설치까지를 template화 함."
+    "text": "프로젝트 만들기\n\n원격저장소를 NMIQ로 파생\n로컬에 clone\n가상화\n프로젝트 다른 이름으로 저장"
   }
 ]
