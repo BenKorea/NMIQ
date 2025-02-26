@@ -9,6 +9,8 @@ website:
     left:
       - text: NMIQ
         href: index.qmd
+      - text: ResearchPACS
+        href: researchPACS.qmd
         
     right:
       - icon: github

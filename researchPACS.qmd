@@ -1,0 +1,23 @@
+---
+title: "Research PACS"
+description: "개발기록"
+author: "BenKorea"
+date: "2025-02-26"
+date-modified: "2025-02-26"
+categories: [PACS]
+---
+
+## Conquest DICOM Server
+
+네델란드 맨체스터 대학, 네델란드 Cancer Institute에서 개발한 open source이다.
+설정이 간단하여 저자가 테스트에 가장 먼저 성공한 프로그램이기도 하다.
+이 서버프로그램으로 저자는 NMDose, NMIQ, NMFullData, NMTEMPSERVER,ZettaPACS를 구축하여 향후의 시스템을 모사하여 개발을 진행하고 있다.
+version 1.5.0d 버전으로 설치하였다. 2024-09-25 release된 1.5.0e 버전은 다운로드에 성공치 못해 다음을 기약하였다.
+
+## Orthanc DICOM Server
+벨기에에서 개발한 오픈소스이다.
+Restful APT를 지원하기 때문에 DICOM query, retrieve, send, move 등을 쉽게 구현할 수 있으리라는기대감으로 설치하여 향후의 시스템을 모사하여 개발을 진행하고 있다.
+
+
+
+

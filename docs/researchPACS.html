@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="BenKorea">
-<meta name="dcterms.date" content="2025-02-25">
+<meta name="dcterms.date" content="2025-02-26">
 <meta name="description" content="개발기록">
 
-<title>한글 디코딩 – NMIQ</title>
+<title>Research PACS – NMIQ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -96,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">NMIQ</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./researchPACS.html"> 
+    <a class="nav-link active" href="./researchPACS.html" aria-current="page"> 
 <span class="menu-text">ResearchPACS</span></a>
   </li>  
 </ul>
@@ -117,17 +117,24 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#conquest-dicom-server" id="toc-conquest-dicom-server" class="nav-link active" data-scroll-target="#conquest-dicom-server">Conquest DICOM Server</a></li>
+  <li><a href="#orthanc-dicom-server" id="toc-orthanc-dicom-server" class="nav-link" data-scroll-target="#orthanc-dicom-server">Orthanc DICOM Server</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">한글 디코딩</h1>
+<h1 class="title">Research PACS</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">decoding</div>
+    <div class="quarto-category">PACS</div>
   </div>
   </div>
 
@@ -150,14 +157,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 25, 2025</p>
+      <p class="date">February 26, 2025</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 25, 2025</p>
+      <p class="date-modified">February 26, 2025</p>
     </div>
   </div>
     
@@ -168,14 +175,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>DICOM에서 사용되는 문자열은 인코딩(Encoding) 시 1~3바이트(또는 그 이상)의 이진 데이터로 저장되며, 이때 인코딩 방식은 SpecificCharacterSet(0008,0005) 태그에 기록된다. 따라서, SpecificCharacterSet의 값에 맞추어 디코딩(Decoding)하면 문자열이 깨지지 않고 올바르게 변환될 수 있다.</p>
-<p>한글이 포함된 문자열은 DICOM에서 최소 두 가지 방식으로 저장될 수 있다. - ISO_IR 149(EUC-KR)는 과거 한글 DICOM 시스템에서 사용되었으며, 완성형 한글만 지원하므로 일부 한글 표현이 제한될 수 있다. - ISO_IR 192(UTF-8)은 유니코드 기반의 인코딩 방식으로 다국어 지원이 가능하며, 최신 DICOM 시스템에서 가장 권장되는 방식이다.</p>
-<p>pydicom.dcmread()를 사용하면 DICOM 파일 내의 문자열 데이터는 SpecificCharacterSet(0008,0005)에 따라 자동으로 디코딩되어 Python의 str 객체로 반환됩니다.</p>
-<p>만약에 실제 encoding과 specificcharacterset 지정이 다르면 pydicom 결과는 깨진 문자열이 보이게 되는데, 이 때, 지정대로 다시 encoding해주고 dicom 저장 시 되었던 encoding으로 decoding 한다면 오류를 해결 할 수 있다.</p>
-<p>a1_dicom_reader에 정의된 함수에서는 조건과 인코딩과 디코딩이 모두 같은 방식으로 잘 못 만들어진 부분이 있다. 수정이 필요함 2025-02-26</p>
-<p>스캐너 종류에 따라 검사명이 깨어져 있으며 이는 deccoding fix가 되지 않는다.</p>
+<section id="conquest-dicom-server" class="level2">
+<h2 class="anchored" data-anchor-id="conquest-dicom-server">Conquest DICOM Server</h2>
+<p>네델란드 맨체스터 대학, 네델란드 Cancer Institute에서 개발한 open source이다. 설정이 간단하여 저자가 테스트에 가장 먼저 성공한 프로그램이기도 하다. 이 서버프로그램으로 저자는 NMDose, NMIQ, NMFullData, NMTEMPSERVER,ZettaPACS를 구축하여 향후의 시스템을 모사하여 개발을 진행하고 있다. version 1.5.0d 버전으로 설치하였다. 2024-09-25 release된 1.5.0e 버전은 다운로드에 성공치 못해 다음을 기약하였다.</p>
+</section>
+<section id="orthanc-dicom-server" class="level2">
+<h2 class="anchored" data-anchor-id="orthanc-dicom-server">Orthanc DICOM Server</h2>
+<p>벨기에에서 개발한 오픈소스이다. Restful APT를 지원하기 때문에 DICOM query, retrieve, send, move 등을 쉽게 구현할 수 있으리라는기대감으로 설치하여 향후의 시스템을 모사하여 개발을 진행하고 있다.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
