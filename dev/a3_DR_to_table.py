@@ -2,10 +2,12 @@ import pandas as pd
 import pydicom
 import psycopg2
 from sqlalchemy import create_engine
-from a2_filter_dicom_files_by_description import dose_report_files, patient_protocol_files
-from a0_extracted_dicom_tag_information import tag_information, subtag_information
-from Making_Dose_Report_Table import convert_data_types
-from connect_n_save_DB import connect_to_database, save_dataframe_to_database
+# from a2_filter_dicom_files_by_description import dose_report_files, patient_protocol_files
+from dev.a2_filter_dicom_files_by_description import dose_report_files, patient_protocol_files
+# from a0_extracted_dicom_tag_information import tag_information, subtag_information
+from dev.a0_extracted_dicom_tag_information import tag_information, subtag_information
+from dev.a01_create_tables_on_postgreSQL import convert_data_types
+from dev.connect_n_save_DB import connect_to_database, save_dataframe_to_database
 
 
 def extract_data(dicom_files, tag_information):
@@ -67,6 +69,7 @@ def extract_subtags_with_ctdivol_average_per_patient(dicom_files, sequence_tag, 
 # Extract tag and subtag information
 combined_files = dose_report_files + patient_protocol_files
 df_tags = extract_data(combined_files, tag_information)
+
 sequence_tag = (0x0040, 0x030E)
 patient_series_data, ctdivol_averages_per_patient = extract_subtags_with_ctdivol_average_per_patient(dose_report_files, sequence_tag, subtag_information)
 
@@ -87,7 +90,7 @@ df_tags['CTDIvol_Average'] = df_tags['SeriesInstanceUID'].map(ctdivol_averages_p
 print(df_tags['CTDIvol_Average'])
 print(df_tags['CTDIvol_Average'])
 
-#Database connection and data saving
+# Database connection and data saving
 conn = connect_to_database()
 if conn:
     save_dataframe_to_database(df_tags, conn, "Dose_Report")

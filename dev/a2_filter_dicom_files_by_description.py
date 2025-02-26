@@ -1,4 +1,5 @@
-from a1_dicom_reader import dicom_files
+from dev.a1_dicom_reader import dicom_files
+# from a1_dicom_reader import dicom_files 
 
 def filter_dicom_files_by_description(dicom_files):
     """DICOM 파일들을 SeriesDescription에 따라 'Dose Report'와 'Patient Protocol'로 필터링합니다."""
