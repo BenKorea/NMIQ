@@ -20,7 +20,5 @@ directory = r"C:\NMDose\data"
 # 지정된 디렉토리에서 DICOM 파일들을 읽어옵니다.
 dicom_files = read_dicom_files(directory)
 
-# 읽어온 DICOM 파일의 개수를 출력합니다.
+# 읽어온 DICOM 파일의 개수를 출력
 print(f"dicom 파일 개수: {len(dicom_files)}")
-
-# %%

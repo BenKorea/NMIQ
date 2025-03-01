@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="BenKorea">
-<meta name="dcterms.date" content="2025-02-19">
-<meta name="description" content="개발기록">
 
-<title>NMIQ</title>
+<title>블로그 – NMIQ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -67,6 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,7 +68,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles/tooltip.css">
 </head>
@@ -127,11 +150,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">NMIQ</span></a>
+<span class="menu-text">블로그</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./researchPACS.html"> 
-<span class="menu-text">ResearchPACS</span></a>
+    <a class="nav-link" href="./posts/development/development.html"> 
+<span class="menu-text">개발기록</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./posts/tools/tools.html"> 
+<span class="menu-text">Tools</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./posts/dicom/dicom.html"> 
+<span class="menu-text">DICOM</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./posts/standardization/standardization.html"> 
+<span class="menu-text">표준화</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./posts/manual.html"> 
+<span class="menu-text">사이트사용법</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -152,62 +191,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#conquest-dicom-server" id="toc-conquest-dicom-server" class="nav-link active" data-scroll-target="#conquest-dicom-server">Conquest DICOM Server</a></li>
-  <li><a href="#프로젝트-만들기" id="toc-프로젝트-만들기" class="nav-link" data-scroll-target="#프로젝트-만들기">프로젝트 만들기</a></li>
-  <li><a href="#quarto에서-주의할-사항" id="toc-quarto에서-주의할-사항" class="nav-link" data-scroll-target="#quarto에서-주의할-사항">Quarto에서 주의할 사항</a></li>
-  <li><a href="#postgresql-db-만들기" id="toc-postgresql-db-만들기" class="nav-link" data-scroll-target="#postgresql-db-만들기">PostgreSQL DB 만들기</a></li>
-  <li><a href="#dicom-information" id="toc-dicom-information" class="nav-link" data-scroll-target="#dicom-information">DICOM information</a></li>
-  <li><a href="#python에서-package의-개념" id="toc-python에서-package의-개념" class="nav-link" data-scroll-target="#python에서-package의-개념">### Python에서 package의 개념</a>
-  <ul>
-  <li><a href="#dicom-읽어오기" id="toc-dicom-읽어오기" class="nav-link" data-scroll-target="#dicom-읽어오기">DICOM 읽어오기</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(21)</span></div><div class="category" data-category="RElDT00=">DICOM <span class="quarto-category-count">(5)</span></div><div class="category" data-category="RGljb29nbGU=">Dicoogle <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RG9zZVV0aWxpdHk=">DoseUtility <span class="quarto-category-count">(1)</span></div><div class="category" data-category="S05NSVA=">KNMIP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Tk1Eb3Nl">NMDose <span class="quarto-category-count">(2)</span></div><div class="category" data-category="T3BlblJFTQ==">OpenREM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3BlY2lmaWNDaGFyYWN0b3JTZXQ=">SpecificCharactorSet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVjb2Rpbmc=">decoding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGV2ZW9scG1lbnQ=">deveolpment <span class="quarto-category-count">(8)</span></div><div class="category" data-category="ZGljb20=">dicom <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ZGljb20lMjBzZXJ2ZXI=">dicom server <span class="quarto-category-count">(5)</span></div><div class="category" data-category="ZG9zZSUyMGV4dHJhdG9y">dose extrator <span class="quarto-category-count">(3)</span></div><div class="category" data-category="bm90ZQ==">note <span class="quarto-category-count">(5)</span></div><div class="category" data-category="b3BlbiUyMHNvdXJjZQ==">open source <span class="quarto-category-count">(6)</span></div><div class="category" data-category="cHJvY2VkdXJl">procedure <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhbmRhcmRpemF0aW9u">standardization <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c3RydWN0dXJl">structure <span class="quarto-category-count">(1)</span></div><div class="category" data-category="JUVDJTgyJUFDJUVDJTlBJUE5JUVCJUIyJTk1">사용법 <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">NMIQ</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">IQ</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    개발기록
-  </div>
+<h1 class="title">블로그</h1>
 </div>
+
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>BenKorea </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 19, 2025</p>
-    </div>
-  </div>
   
-    <div>
-    <div class="quarto-title-meta-heading">Modified</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 19, 2025</p>
-    </div>
-  </div>
     
   </div>
   
@@ -216,207 +215,816 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="conquest-dicom-server" class="level3">
-<h3 class="anchored" data-anchor-id="conquest-dicom-server">Conquest DICOM Server</h3>
-<ul>
-<li>Dose Report들을 가지고 있는 DICOM Server</li>
-<li>“C:”에 데이터가 있음</li>
-</ul>
-</section>
-<section id="프로젝트-만들기" class="level3">
-<h3 class="anchored" data-anchor-id="프로젝트-만들기">프로젝트 만들기</h3>
-<ul>
-<li>파이썬을 선택한 이유: 다른 언어에 비해 DICOM 개체를 딕셔너리처럼 태그 및 속성으로 접근할 수 있어 코딩이 쉬움</li>
-<li>원격저장소 template를 NMIQ로 파생</li>
-<li>로컬로 clone</li>
-<li>가상화</li>
-<li>프로젝트 다른 이름으로 저장</li>
-</ul>
-</section>
-<section id="quarto에서-주의할-사항" class="level3">
-<h3 class="anchored" data-anchor-id="quarto에서-주의할-사항">Quarto에서 주의할 사항</h3>
-<ul>
-<li>코드청크의 순서가 파일을 읽어오는 순서가 되므로 순서에 주의를 요함</li>
-</ul>
-</section>
-<section id="postgresql-db-만들기" class="level3">
-<h3 class="anchored" data-anchor-id="postgresql-db-만들기">PostgreSQL DB 만들기</h3>
-<ul>
-<li>DICOM header의 메타데이터를 저장하기 위함</li>
-</ul>
-</section>
-<section id="dicom-information" class="level3">
-<h3 class="anchored" data-anchor-id="dicom-information">DICOM information</h3>
-<ul>
-<li>“C:” DICOM으로부터 읽어들일 DICOM tag들을 튜플의 리스트 형식으로 a0_extracted_dicom_tag_information.py에 기록하였다.</li>
-<li></li>
-</ul>
-</section>
-<section id="python에서-package의-개념" class="level2">
-<h2 class="anchored" data-anchor-id="python에서-package의-개념">### Python에서 package의 개념</h2>
-<section id="dicom-읽어오기" class="level3">
-<h3 class="anchored" data-anchor-id="dicom-읽어오기">DICOM 읽어오기</h3>
-<ul>
-<li>dicom_files는 리스트이므로 []로 초기화</li>
-<li><code>os.walk</code>는 (root, dirs, files) 형태의 튜플을 반환하며 Python의 for loop에서는 리스트나 튜플의 요소를 동시에 할당하는 “언패킹” 기능이 지원되므로 이를 사용</li>
-<li>튜플은 변형할 수 없는 리스트라 할 수 있으며, 리스트에 비해 속도가 빠르고 메모리 사용량이 적으며, 함수 반환 값, 여러 변수 할당(Unpacking), for 루프에서 다중 변수 할당 등에 자주 사용된다.</li>
-<li>endswith()는 str 클래스의 내장 메서드로써 string 문자에 dot 연산자로 붙이면 T/F를 반환함</li>
-<li>file_path를 만들 때, dirs를 제외함에 주의할 것</li>
-<li>pydicom.read는 DICOM을 다루기 위한 목적으로 만들어진 Dataset 클래쓰의 객체를 반환해주며, get method를 이용하면 속성명으로 안전하게 (= 값이 없는 경우에는 default를 지정하여) 조회하여 할 수 있다.</li>
-<li>스캐너 또는 제조사별로 DICOM 문자코딩이 달라 SpecificCharacterSet을 파악하고, 이를 위한 인코딩디코딩 함수를 만들었다. 하지만 인코딩디코딩 오류전략을 잘 못 구현하여 수정이 필요하다. 디버기을 위해서 original_study_description 등을 사용하고 있다.</li>
-<li></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pydicom</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_dicom_files(directory):</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    dicom_files <span class="op">=</span> []</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> root, dirs, files <span class="kw">in</span> os.walk(directory):</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">file</span>.endswith(<span class="st">".dcm"</span>):</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                file_path <span class="op">=</span> os.path.join(root, <span class="bu">file</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                ds <span class="op">=</span> pydicom.dcmread(file_path, stop_before_pixels<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                character_set <span class="op">=</span> ds.get(<span class="st">'SpecificCharacterSet'</span>, <span class="st">'ISO_IR 192'</span>)  <span class="co"># UTF-8 as default</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                original_study_description <span class="op">=</span> ds.get(<span class="st">'StudyDescription'</span>, <span class="st">'N/A'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                original_patient_name <span class="op">=</span> ds.get(<span class="st">'PatientName'</span>, <span class="st">'N/A'</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"File: </span><span class="sc">{</span><span class="bu">file</span><span class="sc">}</span><span class="ss"> - Specific Character Set: </span><span class="sc">{</span>character_set<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="st">'StudyDescription'</span> <span class="kw">in</span> ds:</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                    study_description <span class="op">=</span> decode_based_on_character_set(ds.StudyDescription, character_set)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                    ds.StudyDescription <span class="op">=</span> study_description</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"Original Study Description: </span><span class="sc">{</span>original_study_description<span class="sc">}</span><span class="ss"> -&gt; Decoded: </span><span class="sc">{</span>study_description<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="st">'PatientName'</span> <span class="kw">in</span> ds:</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                    patient_name <span class="op">=</span> decode_based_on_character_set(ds.PatientName, character_set)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                    ds.PatientName <span class="op">=</span> patient_name</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"Original Patient Name: </span><span class="sc">{</span>original_patient_name<span class="sc">}</span><span class="ss"> -&gt; Decoded: </span><span class="sc">{</span>patient_name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                dicom_files.append(ds)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dicom_files</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> decode_based_on_character_set(value, character_set):</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> character_set <span class="op">==</span> <span class="st">'ISO_IR 100'</span>:</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> value.encode(<span class="st">'iso-8859-1'</span>).decode(<span class="st">'latin1'</span>)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> character_set <span class="op">==</span> <span class="st">'ISO_IR 192'</span>:</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> value  <span class="co"># UTF-8 encoded, no need to transform</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> character_set <span class="op">==</span> <span class="st">'ISO_IR 149'</span>:</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> value.encode(<span class="st">'iso-8859-1'</span>).decode(<span class="st">'euc-kr'</span>)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> value  <span class="co"># Default or unknown character set, return as is</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># 실행할 디렉토리 경로 설정</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>directory <span class="op">=</span> <span class="vs">r"C:\NMDose\data"</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co"># 지정된 디렉토리에서 DICOM 파일들을 읽어옵니다.</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>dicom_files <span class="op">=</span> read_dicom_files(directory)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024022200491945300000190.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: NOH OK BUN -&gt; Decoded: NOH OK BUN
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024031223303798400000224.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: KIM SUK JA -&gt; Decoded: KIM SUK JA
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024011023285176500000773.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: SEO JUNG YE -&gt; Decoded: SEO JUNG YE
-File: CT_0999_1.2.840.113619.2.290.3.296522351.221.1704686293.232.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Song Jong Rim -&gt; Decoded: Song Jong Rim
-File: SR_0997_1.2.840.113619.2.290.3.296522351.221.1704686293.234.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Song Jong Rim -&gt; Decoded: Song Jong Rim
-File: CT_0999_1.2.840.113619.2.290.3.296522351.345.1710718439.32.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Jung Yang Gu -&gt; Decoded: Jung Yang Gu
-File: SR_0997_1.2.840.113619.2.290.3.296522351.345.1710718439.34.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Jung Yang Gu -&gt; Decoded: Jung Yang Gu
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024020423410571800001245.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: PARK KEUM SEON -&gt; Decoded: PARK KEUM SEON
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024010923324851500000245.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: KIM JUNG BUN -&gt; Decoded: KIM JUNG BUN
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024013123395351500000200.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: JEON HAE YEONG -&gt; Decoded: JEON HAE YEONG
-File: CT_0999_1.2.840.113619.2.290.3.296522351.163.1708299137.595.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Kim Gwi Sun -&gt; Decoded: Kim Gwi Sun
-File: SR_0997_1.2.840.113619.2.290.3.296522351.163.1708299137.597.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Kim Gwi Sun -&gt; Decoded: Kim Gwi Sun
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024010823285431200000274.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: LEE SANG YEONG -&gt; Decoded: LEE SANG YEONG
-File: CT_0999_1.2.840.113619.2.290.3.296522351.31.1705997406.736.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: (Á¾ÇÕ°ËÁø)F-18 ÇÃ·Î¶óÇ -&gt; Decoded: (Á¾ÇÕ°ËÁø)F-18 ÇÃ·Î¶óÇ
-Original Patient Name: Lee Gyeong Seon -&gt; Decoded: Lee Gyeong Seon
-File: SR_0997_1.2.840.113619.2.290.3.296522351.31.1705997406.738.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: (Á¾ÇÕ°ËÁø)F-18 ÇÃ·Î¶óÇ -&gt; Decoded: (Á¾ÇÕ°ËÁø)F-18 ÇÃ·Î¶óÇ
-Original Patient Name: Lee Gyeong Seon -&gt; Decoded: Lee Gyeong Seon
-File: CT_0999_1.2.840.113619.2.290.3.296522351.30.1707286774.167.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Park Yeong E -&gt; Decoded: Park Yeong E
-File: SR_0997_1.2.840.113619.2.290.3.296522351.30.1707286774.169.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Park Yeong E -&gt; Decoded: Park Yeong E
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024021400020553100000614.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: KIM MI JA -&gt; Decoded: KIM MI JA
-File: CT_0999_1.2.840.113619.2.290.3.296522351.31.1705997414.669.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Choi Eul Rye -&gt; Decoded: Choi Eul Rye
-File: SR_0997_1.2.840.113619.2.290.3.296522351.31.1705997414.671.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Choi Eul Rye -&gt; Decoded: Choi Eul Rye
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024011823432560900000123.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: PARK MYUNG JA -&gt; Decoded: PARK MYUNG JA</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 읽어온 DICOM 파일의 개수를 출력합니다.</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"dicom 파일 개수: </span><span class="sc">{</span><span class="bu">len</span>(dicom_files)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>dicom 파일 개수: 21</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> filter_dicom_files_by_description(dicom_files):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""DICOM 파일들을 SeriesDescription에 따라 'Dose Report'와 'Patient Protocol'로 필터링합니다."""</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    dose_report_files <span class="op">=</span> []</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    patient_protocol_files <span class="op">=</span> []</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> dicom_files:</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">hasattr</span>(<span class="bu">file</span>, <span class="st">'SeriesDescription'</span>):</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">file</span>.SeriesDescription <span class="op">==</span> <span class="st">"Dose Report"</span>:</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                dose_report_files.append(<span class="bu">file</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> <span class="bu">file</span>.SeriesDescription <span class="op">==</span> <span class="st">"Patient Protocol"</span>:</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                patient_protocol_files.append(<span class="bu">file</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dose_report_files, patient_protocol_files</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 'Dose Report'와 'Patient Protocol'에 해당하는 파일 필터링</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>dose_report_files, patient_protocol_files <span class="op">=</span> filter_dicom_files_by_description(dicom_files)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 결과 확인</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dose Report 파일 개수: </span><span class="sc">{</span><span class="bu">len</span>(dose_report_files)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Dose Report 파일 개수: 6</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Patient Protocol 파일 개수: </span><span class="sc">{</span><span class="bu">len</span>(patient_protocol_files)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Patient Protocol 파일 개수: 9</code></pre>
-</div>
-</div>
 
 
-</section>
-</section>
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="c3RhbmRhcmRpemF0aW9uJTJDcHJvY2VkdXJl" data-listing-date-sort="1740754800000" data-listing-file-modified-sort="1740843616713" data-listing-date-modified-sort="1740843616000" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/standardization/procedure/procedure.html" class="no-external"></a></p><a href="./posts/standardization/procedure/procedure.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/standardization/procedure/procedure.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/standardization/procedure/procedure.html" class="no-external">Procedure</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/standardization/procedure/procedure.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhbmRhcmRpemF0aW9u'); return false;">
+standardization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cHJvY2VkdXJl'); return false;">
+procedure
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/standardization/procedure/procedure.html" class="no-external">표준 검사명칭</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/standardization/procedure/procedure.html" class="no-external">
+<div class="listing-date">
+Mar 1, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="RElDT00=" data-listing-date-sort="1740754800000" data-listing-file-modified-sort="1740843159856" data-listing-date-modified-sort="1740843159000" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/dicom/information/information.html" class="no-external"></a></p><a href="./posts/dicom/information/information.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/dicom/information/information.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/dicom/information/information.html" class="no-external">Information</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/dicom/information/information.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RElDT00='); return false;">
+DICOM
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/dicom/information/information.html" class="no-external">DICOM 정보</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/dicom/information/information.html" class="no-external">
+<div class="listing-date">
+Mar 1, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="RElDT00lMkNzdHJ1Y3R1cmU=" data-listing-date-sort="1740754800000" data-listing-file-modified-sort="1740842595020" data-listing-date-modified-sort="1740842595000" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/dicom/information/structure.html" class="no-external"></a></p><a href="./posts/dicom/information/structure.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/dicom/information/structure.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/dicom/information/structure.html" class="no-external">구조</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/dicom/information/structure.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RElDT00='); return false;">
+DICOM
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c3RydWN0dXJl'); return false;">
+structure
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/dicom/information/structure.html" class="no-external">DICOM 파일의 구조</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/dicom/information/structure.html" class="no-external">
+<div class="listing-date">
+Mar 1, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="ZGV2ZW9scG1lbnQlMkNkaWNvbSUyQ2Rvc2UlMjBleHRyYXRvciUyQ29wZW4lMjBzb3VyY2UlMkNPcGVuUkVN" data-listing-date-sort="1708268400000" data-listing-file-modified-sort="1740842327534" data-listing-date-modified-sort="1740842327000" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/tools/dose_extractor/OpenREM.html" class="no-external"></a></p><a href="./posts/tools/dose_extractor/OpenREM.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/tools/dose_extractor/OpenREM.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/tools/dose_extractor/OpenREM.html" class="no-external">OpenREM</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/tools/dose_extractor/OpenREM.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGV2ZW9scG1lbnQ='); return false;">
+deveolpment
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZGljb20='); return false;">
+dicom
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZG9zZSUyMGV4dHJhdG9y'); return false;">
+dose extrator
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMHNvdXJjZQ=='); return false;">
+open source
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('T3BlblJFTQ=='); return false;">
+OpenREM
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/tools/dose_extractor/OpenREM.html" class="no-external">DICOM에서 선량정보 추출 open source</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/tools/dose_extractor/OpenREM.html" class="no-external">
+<div class="listing-date">
+Feb 19, 2024
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="ZGV2ZW9scG1lbnQlMkNkaWNvbSUyQ2Rvc2UlMjBleHRyYXRvciUyQ29wZW4lMjBzb3VyY2UlMkNEb3NlVXRpbGl0eQ==" data-listing-date-sort="1708268400000" data-listing-file-modified-sort="1740842244408" data-listing-date-modified-sort="1740842244000" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/tools/dose_extractor/DoseUtility.html" class="no-external"></a></p><a href="./posts/tools/dose_extractor/DoseUtility.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/tools/dose_extractor/DoseUtility.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/tools/dose_extractor/DoseUtility.html" class="no-external">DoseUtility</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/tools/dose_extractor/DoseUtility.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGV2ZW9scG1lbnQ='); return false;">
+deveolpment
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZGljb20='); return false;">
+dicom
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZG9zZSUyMGV4dHJhdG9y'); return false;">
+dose extrator
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMHNvdXJjZQ=='); return false;">
+open source
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RG9zZVV0aWxpdHk='); return false;">
+DoseUtility
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/tools/dose_extractor/DoseUtility.html" class="no-external">DICOM에서 선량정보 추출 open source</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/tools/dose_extractor/DoseUtility.html" class="no-external">
+<div class="listing-date">
+Feb 19, 2024
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="ZGljb20lMjBzZXJ2ZXIlMkNEaWNvb2dsZQ==" data-listing-date-sort="1740495600000" data-listing-file-modified-sort="1740842128141" data-listing-date-modified-sort="1740842128000" data-listing-reading-time-sort="1" data-listing-word-count-sort="17">
+<div class="thumbnail">
+<p><a href="./posts/tools/dicom_server/dicoogle.html" class="no-external"></a></p><a href="./posts/tools/dicom_server/dicoogle.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/tools/dicom_server/dicoogle.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/tools/dicom_server/dicoogle.html" class="no-external">Dicoogle</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/tools/dicom_server/dicoogle.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGljb20lMjBzZXJ2ZXI='); return false;">
+dicom server
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RGljb29nbGU='); return false;">
+Dicoogle
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/tools/dicom_server/dicoogle.html" class="no-external">dicom server open source</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/tools/dicom_server/dicoogle.html" class="no-external">
+<div class="listing-date">
+Feb 26, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="ZGljb20lMjBzZXJ2ZXI=" data-listing-date-sort="1740495600000" data-listing-file-modified-sort="1740842006660" data-listing-date-modified-sort="1740842006000" data-listing-reading-time-sort="1" data-listing-word-count-sort="17">
+<div class="thumbnail">
+<p><a href="./posts/tools/dicom_server/Slicer.html" class="no-external"></a></p><a href="./posts/tools/dicom_server/Slicer.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/tools/dicom_server/Slicer.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/tools/dicom_server/Slicer.html" class="no-external">Slicer</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/tools/dicom_server/Slicer.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGljb20lMjBzZXJ2ZXI='); return false;">
+dicom server
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/tools/dicom_server/Slicer.html" class="no-external">dicom server open source</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/tools/dicom_server/Slicer.html" class="no-external">
+<div class="listing-date">
+Feb 26, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="ZGljb20lMjBzZXJ2ZXI=" data-listing-date-sort="1740495600000" data-listing-file-modified-sort="1740841910648" data-listing-date-modified-sort="1740841910000" data-listing-reading-time-sort="2" data-listing-word-count-sort="339">
+<div class="thumbnail">
+<p><a href="./posts/tools/dicom_server/Orthanc.html" class="no-external"></a></p><a href="./posts/tools/dicom_server/Orthanc.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/tools/dicom_server/Orthanc.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/tools/dicom_server/Orthanc.html" class="no-external">Orthanc</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/tools/dicom_server/Orthanc.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGljb20lMjBzZXJ2ZXI='); return false;">
+dicom server
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/tools/dicom_server/Orthanc.html" class="no-external">dicom server open source</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/tools/dicom_server/Orthanc.html" class="no-external">
+<div class="listing-date">
+Feb 26, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="ZGljb20lMjBzZXJ2ZXI=" data-listing-date-sort="1740495600000" data-listing-file-modified-sort="1740841841308" data-listing-date-modified-sort="1740841841000" data-listing-reading-time-sort="1" data-listing-word-count-sort="169">
+<div class="thumbnail">
+<p><a href="./posts/tools/dicom_server/Conquest.html" class="no-external"></a></p><a href="./posts/tools/dicom_server/Conquest.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/tools/dicom_server/Conquest.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/tools/dicom_server/Conquest.html" class="no-external">Conquest</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/tools/dicom_server/Conquest.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGljb20lMjBzZXJ2ZXI='); return false;">
+dicom server
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/tools/dicom_server/Conquest.html" class="no-external">dicom server open source</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/tools/dicom_server/Conquest.html" class="no-external">
+<div class="listing-date">
+Feb 26, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="ZGV2ZW9scG1lbnQlMkNkaWNvbSUyQ2Rvc2UlMjBleHRyYXRvciUyQ29wZW4lMjBzb3VyY2U=" data-listing-date-sort="1708268400000" data-listing-file-modified-sort="1740841531635" data-listing-date-modified-sort="1740841531000" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/tools/dose_extractor/dose_extractor.html" class="no-external"></a></p><a href="./posts/tools/dose_extractor/dose_extractor.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/tools/dose_extractor/dose_extractor.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/tools/dose_extractor/dose_extractor.html" class="no-external">dose_extractor</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/tools/dose_extractor/dose_extractor.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGV2ZW9scG1lbnQ='); return false;">
+deveolpment
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZGljb20='); return false;">
+dicom
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZG9zZSUyMGV4dHJhdG9y'); return false;">
+dose extrator
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMHNvdXJjZQ=='); return false;">
+open source
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/tools/dose_extractor/dose_extractor.html" class="no-external">DICOM에서 선량정보 추출 open source</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/tools/dose_extractor/dose_extractor.html" class="no-external">
+<div class="listing-date">
+Feb 19, 2024
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="ZGV2ZW9scG1lbnQlMkNub3RlJTJDb3BlbiUyMHNvdXJjZQ==" data-listing-date-sort="1708268400000" data-listing-file-modified-sort="1740837227525" data-listing-date-modified-sort="1740837227000" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/tools/tools.html" class="no-external"></a></p><a href="./posts/tools/tools.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/tools/tools.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/tools/tools.html" class="no-external">Tools</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/tools/tools.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGV2ZW9scG1lbnQ='); return false;">
+deveolpment
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bm90ZQ=='); return false;">
+note
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMHNvdXJjZQ=='); return false;">
+open source
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/tools/tools.html" class="no-external">open source 이용한 반자동화</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/tools/tools.html" class="no-external">
+<div class="listing-date">
+Feb 19, 2024
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11" data-categories="Tk1Eb3NlJTJDRElDT00lMkNTcGVjaWZpY0NoYXJhY3RvclNldCUyQ2RlY29kaW5n" data-listing-date-sort="1740409200000" data-listing-file-modified-sort="1740810459488" data-listing-date-modified-sort="1740810459000" data-listing-reading-time-sort="1" data-listing-word-count-sort="140">
+<div class="thumbnail">
+<p><a href="./posts/development/NMDose/SpecificCharactorSet_decoding.html" class="no-external"></a></p><a href="./posts/development/NMDose/SpecificCharactorSet_decoding.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/development/NMDose/SpecificCharactorSet_decoding.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/development/NMDose/SpecificCharactorSet_decoding.html" class="no-external">SpeficifCharactorSet decoding</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/development/NMDose/SpecificCharactorSet_decoding.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Tk1Eb3Nl'); return false;">
+NMDose
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RElDT00='); return false;">
+DICOM
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U3BlY2lmaWNDaGFyYWN0b3JTZXQ='); return false;">
+SpecificCharactorSet
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVjb2Rpbmc='); return false;">
+decoding
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/development/NMDose/SpecificCharactorSet_decoding.html" class="no-external">NMDose 개발 중 DICOM SpeficifCharactorSet decoding 오류 해결하기</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/development/NMDose/SpecificCharactorSet_decoding.html" class="no-external">
+<div class="listing-date">
+Feb 25, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="12" data-categories="ZGV2ZW9scG1lbnQlMkNub3RlJTJDTk1Eb3Nl" data-listing-date-sort="1739890800000" data-listing-file-modified-sort="1740810277920" data-listing-date-modified-sort="1740810277000" data-listing-reading-time-sort="5" data-listing-word-count-sort="830">
+<div class="thumbnail">
+<p><a href="./posts/development/NMDose/NMDose.html" class="no-external"></a></p><a href="./posts/development/NMDose/NMDose.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/development/NMDose/NMDose.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/development/NMDose/NMDose.html" class="no-external">NMDose</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/development/NMDose/NMDose.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGV2ZW9scG1lbnQ='); return false;">
+deveolpment
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bm90ZQ=='); return false;">
+note
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Tk1Eb3Nl'); return false;">
+NMDose
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/development/NMDose/NMDose.html" class="no-external">NMDose 개발과정기록</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/development/NMDose/NMDose.html" class="no-external">
+<div class="listing-date">
+Feb 19, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="13" data-categories="ZGV2ZW9scG1lbnQlMkNub3RlJTJDb3BlbiUyMHNvdXJjZQ==" data-listing-date-sort="1708268400000" data-listing-file-modified-sort="1740810156465" data-listing-date-modified-sort="1740810156000" data-listing-reading-time-sort="1" data-listing-word-count-sort="5">
+<div class="thumbnail">
+<p><a href="./posts/development/open_source/open_source.html" class="no-external"></a></p><a href="./posts/development/open_source/open_source.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/development/open_source/open_source.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/development/open_source/open_source.html" class="no-external">Open Source</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/development/open_source/open_source.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGV2ZW9scG1lbnQ='); return false;">
+deveolpment
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bm90ZQ=='); return false;">
+note
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMHNvdXJjZQ=='); return false;">
+open source
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/development/open_source/open_source.html" class="no-external">오픈소스들을 이용한 선량추출 시스템 구축과정을 기록</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/development/open_source/open_source.html" class="no-external">
+<div class="listing-date">
+Feb 19, 2024
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="14" data-categories="ZGV2ZW9scG1lbnQlMkNub3RlJTJDb3BlbiUyMHNvdXJjZQ==" data-listing-date-sort="1708268400000" data-listing-file-modified-sort="1740810156465" data-listing-date-modified-sort="1740810156000" data-listing-reading-time-sort="1" data-listing-word-count-sort="5">
+<div class="thumbnail">
+<p><a href="./posts/development/open_source/others.html" class="no-external"></a></p><a href="./posts/development/open_source/others.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/development/open_source/others.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/development/open_source/others.html" class="no-external">Open Source</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/development/open_source/others.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGV2ZW9scG1lbnQ='); return false;">
+deveolpment
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bm90ZQ=='); return false;">
+note
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b3BlbiUyMHNvdXJjZQ=='); return false;">
+open source
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/development/open_source/others.html" class="no-external">오픈소스들을 이용한 선량추출 시스템 구축과정을 기록</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/development/open_source/others.html" class="no-external">
+<div class="listing-date">
+Feb 19, 2024
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="15" data-categories="ZGV2ZW9scG1lbnQlMkNub3Rl" data-listing-date-sort="1708268400000" data-listing-file-modified-sort="1740809794910" data-listing-date-modified-sort="1740809794000" data-listing-reading-time-sort="1" data-listing-word-count-sort="109">
+<div class="thumbnail">
+<p><a href="./posts/development/development.html" class="no-external"></a></p><a href="./posts/development/development.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/development/development.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/development/development.html" class="no-external">개발기록</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/development/development.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGV2ZW9scG1lbnQ='); return false;">
+deveolpment
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bm90ZQ=='); return false;">
+note
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/development/development.html" class="no-external">개발과정을 기록하여 나의 기억과 협업에 도움이 되고자 함</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/development/development.html" class="no-external">
+<div class="listing-date">
+Feb 19, 2024
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="16" data-categories="RElDT00=" data-listing-date-sort="1740754800000" data-listing-file-modified-sort="1740843143044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/dicom/dicom.html" class="no-external"></a></p><a href="./posts/dicom/dicom.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/dicom/dicom.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/dicom/dicom.html" class="no-external">DICOM</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/dicom/dicom.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RElDT00='); return false;">
+DICOM
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/dicom/dicom.html" class="no-external">DICOM 공부한 것을 정리하였습니다.</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/dicom/dicom.html" class="no-external">
+<div class="listing-date">
+Mar 1, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="17" data-categories="ZGljb20lMjBzZXJ2ZXI=" data-listing-date-sort="1740495600000" data-listing-file-modified-sort="1740806500314" data-listing-date-modified-sort="1740806500000" data-listing-reading-time-sort="3" data-listing-word-count-sort="492">
+<div class="thumbnail">
+<p><a href="./posts/tools/dicom_server/dicom_server.html" class="no-external"></a></p><a href="./posts/tools/dicom_server/dicom_server.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/tools/dicom_server/dicom_server.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/tools/dicom_server/dicom_server.html" class="no-external">DICOM 서버</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/tools/dicom_server/dicom_server.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGljb20lMjBzZXJ2ZXI='); return false;">
+dicom server
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/tools/dicom_server/dicom_server.html" class="no-external">개발기록</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/tools/dicom_server/dicom_server.html" class="no-external">
+<div class="listing-date">
+Feb 26, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="18" data-categories="JUVDJTgyJUFDJUVDJTlBJUE5JUVCJUIyJTk1" data-listing-date-sort="1734620400000" data-listing-file-modified-sort="1740844977638" data-listing-date-modified-sort="1739286000000" data-listing-reading-time-sort="1" data-listing-word-count-sort="145">
+<div class="thumbnail">
+<p><a href="./posts/manual.html" class="no-external"></a></p><a href="./posts/manual.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/manual.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/manual.html" class="no-external">사이트사용법</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/manual.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('JUVDJTgyJUFDJUVDJTlBJUE5JUVCJUIyJTk1'); return false;">
+사용법
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/manual.html" class="no-external">이 웹사이트 고유의 사용법이 설명되어 있습니다.</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/manual.html" class="no-external">
+<div class="listing-date">
+Dec 20, 2024
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="19" data-categories="c3RhbmRhcmRpemF0aW9uJTJDS05NSVA=" data-listing-date-sort="1740754800000" data-listing-file-modified-sort="1740843538034" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/standardization/procedure/KNMIP.html" class="no-external"></a></p><a href="./posts/standardization/procedure/KNMIP.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/standardization/procedure/KNMIP.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/standardization/procedure/KNMIP.html" class="no-external">KNMIP</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/standardization/procedure/KNMIP.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhbmRhcmRpemF0aW9u'); return false;">
+standardization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('S05NSVA='); return false;">
+KNMIP
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/standardization/procedure/KNMIP.html" class="no-external">Korea Nuclear Medicine Imaging Proceudure Version v1.0</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/standardization/procedure/KNMIP.html" class="no-external">
+<div class="listing-date">
+Mar 1, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="20" data-categories="RElDT00=" data-listing-date-sort="1740754800000" data-listing-file-modified-sort="1740843647279" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="thumbnail">
+<p><a href="./posts/standardization/standardization.html" class="no-external"></a></p><a href="./posts/standardization/standardization.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/standardization/standardization.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/standardization/standardization.html" class="no-external">Standardization</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/standardization/standardization.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RElDT00='); return false;">
+DICOM
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/standardization/standardization.html" class="no-external">핵릐학 검사명칭 표준화</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/standardization/standardization.html" class="no-external">
+<div class="listing-date">
+Mar 1, 2025
+</div>
+<div class="listing-author">
+BenKorea
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

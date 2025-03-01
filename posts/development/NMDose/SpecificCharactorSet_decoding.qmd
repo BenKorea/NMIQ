@@ -1,10 +1,10 @@
 ---
-title: "한글 디코딩"
-description: "개발기록"
+title: "SpeficifCharactorSet decoding"
+description: "NMDose 개발 중 DICOM SpeficifCharactorSet decoding 오류 해결하기"
 author: "BenKorea"
 date: "2025-02-25"
-date-modified: "2025-02-25"
-categories: [decoding]
+date-modified: last-modified
+categories: [NMDose, DICOM, SpecificCharactorSet, decoding]
 ---
 
 DICOM에서 사용되는 문자열은 인코딩(Encoding) 시 1~3바이트(또는 그 이상)의 이진 데이터로 저장되며, 이때 인코딩 방식은 SpecificCharacterSet(0008,0005) 태그에 기록된다. 따라서, SpecificCharacterSet의 값에 맞추어 디코딩(Decoding)하면 문자열이 깨지지 않고 올바르게 변환될 수 있다.

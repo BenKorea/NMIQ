@@ -7,15 +7,65 @@ website:
   
   navbar:
     left:
-      - text: NMIQ
-        href: index.qmd
-      - text: ResearchPACS
-        href: researchPACS.qmd
+      - text: 블로그
+        href: index.qmd    
+      - text: 개발기록
+        href: posts/development/development.qmd
+      - text: Tools
+        href: posts/tools/tools.qmd 
+      - text: DICOM
+        href: posts/dicom/dicom.qmd
+      - text: 표준화
+        href: posts/standardization/standardization.qmd        
+      - text: 사이트사용법
+        href: posts/manual.qmd        
         
     right:
       - icon: github
         href: https://github.com/
     search: true
+    
+  sidebar:
+    - title: "개발기록"
+      contents:
+        - posts/development/development.qmd
+        - section: "opon source"
+          href: posts/development/open_source/open_source.qmd
+          contents:
+          - posts/development/open_source/others.qmd   
+        - section: "NM Dose"
+          href: posts/development/NMDose/NMDose.qmd
+          contents:
+          - posts/development/NMDose/SpecificCharactorSet_decoding.qmd            
+    - title: "Tools"
+      contents:
+        - posts/tools/tools.qmd
+        - section: "dicom server"
+          href: posts/tools/dicom_server/dicom_server.qmd
+          contents:
+          - posts/tools/dicom_server/Conquest.qmd
+          - posts/tools/dicom_server/Orthanc.qmd
+          - posts/tools/dicom_server/Slicer.qmd
+          - posts/tools/dicom_server/dicoogle.qmd
+        - section: "dose extractor"
+          href: posts/tools/dose_extractor/dose_extractor.qmd
+          contents:
+          - posts/tools/dose_extractor/DoseUtility.qmd
+          - posts/tools/dose_extractor/OpenREM.qmd
+    - title: "DICOM"
+      contents:
+        - posts/dicom/dicom.qmd
+        - section: "Information"
+          href: posts/dicom/information/information.qmd
+          contents:
+          - posts/dicom/information/structure.qmd     
+    - title: "Standardization"
+      contents:
+        - posts/standardization/standardization.qmd
+        - section: "검사명"
+          href: posts/standardization/procedure/procedure.qmd
+          contents:
+          - posts/standardization/procedure/KNMIP.qmd            
     
 format:
   html:

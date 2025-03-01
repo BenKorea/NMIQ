@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="BenKorea">
-<meta name="dcterms.date" content="2025-02-25">
-<meta name="description" content="개발기록">
+<meta name="dcterms.date" content="2024-02-19">
+<meta name="description" content="open source 이용한 반자동화">
 
-<title>한글 디코딩 – NMIQ</title>
+<title>Tools – NMIQ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,22 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,17 +71,17 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles/tooltip.css">
+<link rel="stylesheet" href="../../styles/tooltip.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">NMIQ</span>
     </a>
   </div>
@@ -92,12 +92,28 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">NMIQ</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">블로그</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./researchPACS.html"> 
-<span class="menu-text">ResearchPACS</span></a>
+    <a class="nav-link" href="../../posts/development/development.html"> 
+<span class="menu-text">개발기록</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../posts/tools/tools.html" aria-current="page"> 
+<span class="menu-text">Tools</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/dicom/dicom.html"> 
+<span class="menu-text">DICOM</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/standardization/standardization.html"> 
+<span class="menu-text">표준화</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/manual.html"> 
+<span class="menu-text">사이트사용법</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -112,10 +128,91 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/tools/tools.html">Tools</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/tools.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Tools</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/tools/dicom_server/dicom_server.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">dicom server</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/dicom_server/Conquest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conquest</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/dicom_server/Orthanc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orthanc</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/dicom_server/Slicer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Slicer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/dicom_server/dicoogle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dicoogle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/tools/dose_extractor/dose_extractor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">dose extractor</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/dose_extractor/DoseUtility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DoseUtility</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/dose_extractor/OpenREM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OpenREM</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
@@ -125,15 +222,17 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">한글 디코딩</h1>
+<h1 class="title">Tools</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">decoding</div>
+    <div class="quarto-category">deveolpment</div>
+    <div class="quarto-category">note</div>
+    <div class="quarto-category">open source</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    개발기록
+    open source 이용한 반자동화
   </div>
 </div>
 
@@ -150,14 +249,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 25, 2025</p>
+      <p class="date">February 19, 2024</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 25, 2025</p>
+      <p class="date-modified">March 1, 2025</p>
     </div>
   </div>
     
@@ -168,12 +267,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>DICOM에서 사용되는 문자열은 인코딩(Encoding) 시 1~3바이트(또는 그 이상)의 이진 데이터로 저장되며, 이때 인코딩 방식은 SpecificCharacterSet(0008,0005) 태그에 기록된다. 따라서, SpecificCharacterSet의 값에 맞추어 디코딩(Decoding)하면 문자열이 깨지지 않고 올바르게 변환될 수 있다.</p>
-<p>한글이 포함된 문자열은 DICOM에서 최소 두 가지 방식으로 저장될 수 있다. - ISO_IR 149(EUC-KR)는 과거 한글 DICOM 시스템에서 사용되었으며, 완성형 한글만 지원하므로 일부 한글 표현이 제한될 수 있다. - ISO_IR 192(UTF-8)은 유니코드 기반의 인코딩 방식으로 다국어 지원이 가능하며, 최신 DICOM 시스템에서 가장 권장되는 방식이다.</p>
-<p>pydicom.dcmread()를 사용하면 DICOM 파일 내의 문자열 데이터는 SpecificCharacterSet(0008,0005)에 따라 자동으로 디코딩되어 Python의 str 객체로 반환됩니다.</p>
-<p>만약에 실제 encoding과 specificcharacterset 지정이 다르면 pydicom 결과는 깨진 문자열이 보이게 되는데, 이 때, 지정대로 다시 encoding해주고 dicom 저장 시 되었던 encoding으로 decoding 한다면 오류를 해결 할 수 있다.</p>
-<p>a1_dicom_reader에 정의된 함수에서는 조건과 인코딩과 디코딩이 모두 같은 방식으로 잘 못 만들어진 부분이 있다. 수정이 필요함 2025-02-26</p>
-<p>스캐너 종류에 따라 검사명이 깨어져 있으며 이는 deccoding fix가 되지 않는다.</p>
 
 
 
@@ -598,7 +691,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="RadiationSafetyNM/website" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
-<script src="./scripts/tooltip.js"></script>
+<script src="../../scripts/tooltip.js"></script>
 
 
 
