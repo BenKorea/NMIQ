@@ -219,15 +219,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#구축-필요성" id="toc-구축-필요성" class="nav-link active" data-scroll-target="#구축-필요성">구축 필요성</a></li>
-  <li><a href="#orthanc-dicom-server" id="toc-orthanc-dicom-server" class="nav-link" data-scroll-target="#orthanc-dicom-server">Orthanc DICOM Server</a>
-  <ul>
+  <li><a href="#완전제거방법" id="toc-완전제거방법" class="nav-link active" data-scroll-target="#완전제거방법">완전제거방법</a></li>
   <li><a href="#설치파일" id="toc-설치파일" class="nav-link" data-scroll-target="#설치파일">설치파일</a></li>
-  <li><a href="#주의사항" id="toc-주의사항" class="nav-link" data-scroll-target="#주의사항">주의사항</a></li>
+  <li><a href="#설치폴더" id="toc-설치폴더" class="nav-link" data-scroll-target="#설치폴더">설치폴더</a></li>
+  <li><a href="#설정파일" id="toc-설정파일" class="nav-link" data-scroll-target="#설정파일">설정파일</a></li>
+  <li><a href="#dicommodality-설정" id="toc-dicommodality-설정" class="nav-link" data-scroll-target="#dicommodality-설정">DICOMModality 설정</a></li>
+  <li><a href="#port" id="toc-port" class="nav-link" data-scroll-target="#port">Port</a></li>
+  <li><a href="#hppt-port" id="toc-hppt-port" class="nav-link" data-scroll-target="#hppt-port">HPPT port</a></li>
   <li><a href="#장단점" id="toc-장단점" class="nav-link" data-scroll-target="#장단점">장단점</a></li>
-  <li><a href="#설정" id="toc-설정" class="nav-link" data-scroll-target="#설정">설정</a></li>
-  <li><a href="#remote-server" id="toc-remote-server" class="nav-link" data-scroll-target="#remote-server">remote server</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -239,6 +238,7 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="title">Orthanc</h1>
   <div class="quarto-categories">
     <div class="quarto-category">dicom server</div>
+    <div class="quarto-category">Orthanc</div>
   </div>
   </div>
 
@@ -268,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 2, 2025</p>
+      <p class="date-modified">March 3, 2025</p>
     </div>
   </div>
     
@@ -279,39 +279,67 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="구축-필요성" class="level3">
-<h3 class="anchored" data-anchor-id="구축-필요성">구축 필요성</h3>
-<p>개발 단계에서 실제 PACS를 모사할 수 있는 별도의 DICOM 서버를 구축할 필요가 아래와 같은 오픈소스들을 검토하였다.</p>
-</section>
-<section id="orthanc-dicom-server" class="level3">
-<h3 class="anchored" data-anchor-id="orthanc-dicom-server">Orthanc DICOM Server</h3>
 <p>벨기에에서 개발한 오픈소스이다. Restful APT를 지원하기 때문에 DICOM query, retrieve, send, move 등을 쉽게 구현할 수 있으리라는기대감으로 설치하여 향후의 시스템을 모사하여 개발을 진행하고 있다.</p>
-<section id="설치파일" class="level4">
-<h4 class="anchored" data-anchor-id="설치파일">설치파일</h4>
-<p>2025년 2월 27일 release된 25.2.0 버전이 최신이다. https://orthanc.uclouvain.be/downloads/windows-64/installers/index.html 저자는 C:\Program Files\ 폴더보다는 C:\를 선호하여 C:\Orthanc에 설치하였다.</p>
+<section id="완전제거방법" class="level3">
+<h3 class="anchored" data-anchor-id="완전제거방법">완전제거방법</h3>
+<p>구동이 제대로 되지 않을 때가 많아서 완전제거방법을 조사하니 아래와 같았다.</p>
+<ol type="1">
+<li><p>서비스 관리자에서 “Orthanc” 서비스를 찾아 중지합니다.</p></li>
+<li><p>C:\Program Files\Orthanc 폴더를 삭제합니다.</p></li>
+<li><p>C:\Users\&lt;username&gt;\AppData\Local\Orthanc 폴더를 삭제합니다.</p></li>
+<li><p>Orthanc 설정 레지스트리 삭제 (Windows만 해당):</p>
+<ol type="1">
+<li><p>regedit를 실행합니다.</p></li>
+<li><p>HKEY_LOCAL_MACHINE\SOFTWARE\Orthanc 키를 삭제합니다.</p></li>
+</ol></li>
+<li><p>제어판에서 “프로그램 제거”를 선택하고 “Orthanc”를 제거합니다.</p></li>
+</ol>
 </section>
-<section id="주의사항" class="level4">
-<h4 class="anchored" data-anchor-id="주의사항">주의사항</h4>
-<p>설치이후 처음 실행시에 설치폴더의 Orthanc.exe를 먼저 실핼시키고 방화벽을 해제한 후 explorer를 실행해야 하는 것 같다.</p>
+<section id="설치파일" class="level3">
+<h3 class="anchored" data-anchor-id="설치파일">설치파일</h3>
+<p>공식사이트 https://orthanc.uclouvain.be/downloads/windows-64/installers/index.html 2025년 2월 27일 release된 25.2.0 버전이 최신이다.</p>
 </section>
-<section id="장단점" class="level4">
-<h4 class="anchored" data-anchor-id="장단점">장단점</h4>
+<section id="설치폴더" class="level3">
+<h3 class="anchored" data-anchor-id="설치폴더">설치폴더</h3>
+<p>기본설치폴더는 C:\Program Files\Orthanc Server이며 data는 C:\Orthanc에 기본 설치된다. 이를 변경하면 Plugins에서 설치경로 인식의 문제 등으로 실행에 문제가 발생하는 것 같으므로 기본설치폴더에 설치하는 것이 좋겠다.</p>
+</section>
+<section id="설정파일" class="level3">
+<h3 class="anchored" data-anchor-id="설정파일">설정파일</h3>
+<p>main 설정파일은 C:\Program Files\Orthanc Server\Configuration\orthanc.json이다.</p>
+</section>
+<section id="dicommodality-설정" class="level3">
+<h3 class="anchored" data-anchor-id="dicommodality-설정">DICOMModality 설정</h3>
+<p>매뉴얼(https://orthanc.uclouvain.be/book/integrations/modality.html#configure-modality)의 예시는 아래와 같았다.</p>
+<pre class="{bash}"><code>// The list of the known DICOM modalities
+"DicomModalities" : {
+  "echo1" : [ "ECHO1", "123.124.125.10", 104 ]
+},</code></pre>
+<p>위를 참고하여 개발시스템의 DICOMModality를 아래와 같이 설정하였다.</p>
+<pre class="{bash}"><code>  "NMDOSE" : [ "NMDOSE", "127.0.0.1", 5678 ],
+  "NMIQ" : [ "NMIQ", "127.0.0.1", 5679 ],
+  "NMFULLDATA" : [ "NMFULLDATA", "127.0.0.1", 5680 ],
+  "NMTEMPSERVER" : [ "NMTEMPSERVER", "127.0.0.1", 5681 ],
+  "ZETTAPACS" : [ "ZETTAPACS", "127.0.0.1", 5682 ],
+  "SLICER" : [ "SLICER", "127.0.0.1", 11112 ]</code></pre>
+<p>configuration을 설정하는 동안에 Orthanc를 완전히 중지하였다가 수정 후 service를 재개하여야 수정사항이 반영됨을 주의해야 한다. 그리고 쓰기권한이 제한된 경우에는 이를 해결해야 한다.</p>
+</section>
+<section id="port" class="level3">
+<h3 class="anchored" data-anchor-id="port">Port</h3>
+<ul>
+<li>4242</li>
+</ul>
+</section>
+<section id="hppt-port" class="level3">
+<h3 class="anchored" data-anchor-id="hppt-port">HPPT port</h3>
+<ul>
+<li>8042</li>
+</ul>
+</section>
+<section id="장단점" class="level3">
+<h3 class="anchored" data-anchor-id="장단점">장단점</h3>
 <p>Orthanc은 웹 기반 DICOM 관리 및 AI 분석, 클라우드 통합이 필요한 경우 유리하다고 한다. Conquest DICOM Server는 빠른 속도의 로컬 PACS, 대량의 DICOM 데이터 처리, <strong>자동화된 스크립팅 (Lua)</strong>이 필요한 경우 적합하다고 한다.</p>
-</section>
-<section id="설정" class="level4">
-<h4 class="anchored" data-anchor-id="설정">설정</h4>
-<p>.Configuration\orthanc.json을 notepad 등으로 수정하며 default 값으로 진행하였다.</p>
-<p>// HTTP port for the REST services and for the GUI “HttpPort” : 8042,</p>
-<p>// The DICOM Application Entity Title (cannot be longer than 16 // characters) “DicomAet” : “ORTHANC”,</p>
-<p>// The DICOM port “DicomPort” : 4242,</p>
-<p>// The default encoding that is assumed for DICOM files without // “SpecificCharacterSet” DICOM tag, and that is used when answering // C-FIND requests (including worklists). The allowed values are // “Ascii”, “Utf8”, “Latin1”, “Latin2”, “Latin3”, “Latin4”, // “Latin5”, “Cyrillic”, “Windows1251”, “Arabic”, “Greek”, “Hebrew”, // “Thai”, “Japanese”, “Chinese”, “JapaneseKanji”, “Korean”, and // “SimplifiedChinese”. “DefaultEncoding” : “Latin1”,</p>
-<p>// The list of the known DICOM modalities. This option is ignored if // “DicomModalitiesInDatabase” is set to “true”, in which case you // must use the REST API to define modalities. “DicomModalities” : { “NMDOSE” : [ “NMDOSE”, “127.0.0.1”, 5678 ], “NMIQ” : [ “NMIQ”, “127.0.0.1”, 5679 ], “NMFULLDATA” : [ “NMFULLDATA”, “127.0.0.1”, 5680 ], “NMTEMPSERVER” : [ “NMTEMPSERVER”, “127.0.0.1”, 5681 ], “ZETTAPACS” : [ “ZETTAPACS”, “127.0.0.1”, 5682 ], “SLICER” : [ “SLICER”, “127.0.0.1”, 11112 ] /**</p>
-</section>
-<section id="remote-server" class="level4">
-<h4 class="anchored" data-anchor-id="remote-server">remote server</h4>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/tools/dicom_server/Orthanc.html",
       "/posts/standardization/procedure/procedure.html",
       "/posts/dicom/information/information.html",
       "/posts/dicom/information/structure.html",
@@ -9,7 +10,6 @@
       "/posts/tools/dose_extractor/DoseUtility.html",
       "/posts/tools/dicom_server/dicoogle.html",
       "/posts/tools/dicom_server/Slicer.html",
-      "/posts/tools/dicom_server/Orthanc.html",
       "/posts/tools/dicom_server/Conquest.html",
       "/posts/tools/dose_extractor/dose_extractor.html",
       "/posts/tools/tools.html",

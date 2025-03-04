@@ -4,70 +4,72 @@ description: "dicom server open source"
 author: "BenKorea"
 date: "2025-02-26"
 date-modified: last-modified
-categories: [dicom server]
+categories: [dicom server, Orthanc]
 ---
 
-
-### 구축 필요성
-
-개발 단계에서 실제 PACS를 모사할 수 있는 별도의 DICOM 서버를 구축할 필요가 아래와 같은 오픈소스들을 검토하였다.
-
-
-### Orthanc DICOM Server
 벨기에에서 개발한 오픈소스이다.
 Restful APT를 지원하기 때문에 DICOM query, retrieve, send, move 등을 쉽게 구현할 수 있으리라는기대감으로 설치하여 향후의 시스템을 모사하여 개발을 진행하고 있다.
 
-#### 설치파일
+### 완전제거방법
+
+구동이 제대로 되지 않을 때가 많아서 완전제거방법을 조사하니 아래와 같았다.
+
+1.  서비스 관리자에서 "Orthanc" 서비스를 찾아 중지합니다.
+
+2.  C:\\Program Files\\Orthanc 폴더를 삭제합니다.
+
+3.  C:\\Users\\\<username\>\\AppData\\Local\\Orthanc 폴더를 삭제합니다.
+
+4.  Orthanc 설정 레지스트리 삭제 (Windows만 해당):
+
+    1.  regedit를 실행합니다.
+
+    2.  HKEY_LOCAL_MACHINE\\SOFTWARE\\Orthanc 키를 삭제합니다.
+
+5.  제어판에서 "프로그램 제거"를 선택하고 "Orthanc"를 제거합니다.
+
+
+### 설치파일
+
+공식사이트 https://orthanc.uclouvain.be/downloads/windows-64/installers/index.html 
 2025년 2월 27일 release된 25.2.0 버전이 최신이다.
-https://orthanc.uclouvain.be/downloads/windows-64/installers/index.html
-저자는 C:\\Program Files\\ 폴더보다는 C:\\를 선호하여 C:\\Orthanc에 설치하였다.
 
-#### 주의사항
-설치이후 처음 실행시에 설치폴더의 Orthanc.exe를 먼저 실핼시키고 방화벽을 해제한 후 explorer를 실행해야 하는 것 같다.
+### 설치폴더
+기본설치폴더는 C:\\Program Files\\Orthanc Server이며 data는 C:\\Orthanc에 기본 설치된다. 이를 변경하면 Plugins에서 설치경로 인식의 문제 등으로 실행에 문제가 발생하는 것 같으므로 기본설치폴더에 설치하는 것이 좋겠다.
 
-#### 장단점
+### 설정파일
+main 설정파일은 C:\\Program Files\\Orthanc Server\\Configuration\\orthanc.json이다. 
+
+### DICOMModality 설정
+매뉴얼(https://orthanc.uclouvain.be/book/integrations/modality.html#configure-modality)의 예시는 아래와 같았다.
+
+```{bash}
+// The list of the known DICOM modalities
+"DicomModalities" : {
+  "echo1" : [ "ECHO1", "123.124.125.10", 104 ]
+},
+```
+
+위를 참고하여 개발시스템의 DICOMModality를 아래와 같이 설정하였다.
+```{bash}
+  "NMDOSE" : [ "NMDOSE", "127.0.0.1", 5678 ],
+  "NMIQ" : [ "NMIQ", "127.0.0.1", 5679 ],
+  "NMFULLDATA" : [ "NMFULLDATA", "127.0.0.1", 5680 ],
+  "NMTEMPSERVER" : [ "NMTEMPSERVER", "127.0.0.1", 5681 ],
+  "ZETTAPACS" : [ "ZETTAPACS", "127.0.0.1", 5682 ],
+  "SLICER" : [ "SLICER", "127.0.0.1", 11112 ]
+```
+
+configuration을 설정하는 동안에 Orthanc를 완전히 중지하였다가 수정 후 service를 재개하여야 수정사항이 반영됨을 주의해야 한다.
+그리고 쓰기권한이 제한된 경우에는 이를 해결해야 한다.
+
+### Port
+- 4242
+
+### HPPT port
+- 8042
+
+### 장단점
+
 Orthanc은 웹 기반 DICOM 관리 및 AI 분석, 클라우드 통합이 필요한 경우 유리하다고 한다.
 Conquest DICOM Server는 빠른 속도의 로컬 PACS, 대량의 DICOM 데이터 처리, **자동화된 스크립팅 (Lua)**이 필요한 경우 적합하다고 한다.
-
-#### 설정
-.Configuration\\orthanc.json을 notepad 등으로 수정하며 default 값으로 진행하였다.
-
-  // HTTP port for the REST services and for the GUI
-  "HttpPort" : 8042,
-  
-  // The DICOM Application Entity Title (cannot be longer than 16
-  // characters)
-  "DicomAet" : "ORTHANC",  
-  
-  // The DICOM port
-  "DicomPort" : 4242,
-  
-  // The default encoding that is assumed for DICOM files without
-  // "SpecificCharacterSet" DICOM tag, and that is used when answering
-  // C-FIND requests (including worklists). The allowed values are
-  // "Ascii", "Utf8", "Latin1", "Latin2", "Latin3", "Latin4",
-  // "Latin5", "Cyrillic", "Windows1251", "Arabic", "Greek", "Hebrew",
-  // "Thai", "Japanese", "Chinese", "JapaneseKanji", "Korean", and
-  // "SimplifiedChinese".
-  "DefaultEncoding" : "Latin1",
-  
-  // The list of the known DICOM modalities. This option is ignored if
-  // "DicomModalitiesInDatabase" is set to "true", in which case you
-  // must use the REST API to define modalities.
-  "DicomModalities" : {
-     "NMDOSE" : [ "NMDOSE", "127.0.0.1", 5678 ],
-     "NMIQ" : [ "NMIQ", "127.0.0.1", 5679 ],
-     "NMFULLDATA" : [ "NMFULLDATA", "127.0.0.1", 5680 ],
-     "NMTEMPSERVER" : [ "NMTEMPSERVER", "127.0.0.1", 5681 ],
-     "ZETTAPACS" : [ "ZETTAPACS", "127.0.0.1", 5682 ],
-     "SLICER" : [ "SLICER", "127.0.0.1", 11112 ]
-    /**  
-
-
-#### remote server
-
-
-
-
-
-
