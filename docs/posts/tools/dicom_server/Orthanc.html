@@ -23,6 +23,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -268,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 3, 2025</p>
+      <p class="date-modified">March 5, 2025</p>
     </div>
   </div>
     
@@ -310,17 +344,17 @@ ul.task-list li input[type="checkbox"] {
 <section id="dicommodality-설정" class="level3">
 <h3 class="anchored" data-anchor-id="dicommodality-설정">DICOMModality 설정</h3>
 <p>매뉴얼(https://orthanc.uclouvain.be/book/integrations/modality.html#configure-modality)의 예시는 아래와 같았다.</p>
-<pre class="{bash}"><code>// The list of the known DICOM modalities
-"DicomModalities" : {
-  "echo1" : [ "ECHO1", "123.124.125.10", 104 ]
-},</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">/</span> The list of the known DICOM modalities</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="st">"DicomModalities"</span> <span class="sc">:</span> {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"echo1"</span> <span class="sc">:</span> [ <span class="st">"ECHO1"</span>, <span class="st">"123.124.125.10"</span>, <span class="dv">104</span> ]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>},</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>위를 참고하여 개발시스템의 DICOMModality를 아래와 같이 설정하였다.</p>
-<pre class="{bash}"><code>  "NMDOSE" : [ "NMDOSE", "127.0.0.1", 5678 ],
-  "NMIQ" : [ "NMIQ", "127.0.0.1", 5679 ],
-  "NMFULLDATA" : [ "NMFULLDATA", "127.0.0.1", 5680 ],
-  "NMTEMPSERVER" : [ "NMTEMPSERVER", "127.0.0.1", 5681 ],
-  "ZETTAPACS" : [ "ZETTAPACS", "127.0.0.1", 5682 ],
-  "SLICER" : [ "SLICER", "127.0.0.1", 11112 ]</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NMDOSE"</span> <span class="sc">:</span> [ <span class="st">"NMDOSE"</span>, <span class="st">"127.0.0.1"</span>, <span class="dv">5678</span> ],</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NMIQ"</span> <span class="sc">:</span> [ <span class="st">"NMIQ"</span>, <span class="st">"127.0.0.1"</span>, <span class="dv">5679</span> ],</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NMFULLDATA"</span> <span class="sc">:</span> [ <span class="st">"NMFULLDATA"</span>, <span class="st">"127.0.0.1"</span>, <span class="dv">5680</span> ],</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NMTEMPSERVER"</span> <span class="sc">:</span> [ <span class="st">"NMTEMPSERVER"</span>, <span class="st">"127.0.0.1"</span>, <span class="dv">5681</span> ],</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ZETTAPACS"</span> <span class="sc">:</span> [ <span class="st">"ZETTAPACS"</span>, <span class="st">"127.0.0.1"</span>, <span class="dv">5682</span> ],</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SLICER"</span> <span class="sc">:</span> [ <span class="st">"SLICER"</span>, <span class="st">"127.0.0.1"</span>, <span class="dv">11112</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>configuration을 설정하는 동안에 Orthanc를 완전히 중지하였다가 수정 후 service를 재개하여야 수정사항이 반영됨을 주의해야 한다. 그리고 쓰기권한이 제한된 경우에는 이를 해결해야 한다.</p>
 </section>
 <section id="port" class="level3">

@@ -1,0 +1,12 @@
+---
+title: "DCMTK"
+description: "open source 이용한 반자동화"
+author: "BenKorea"
+date: "2025-03-04"
+date-modified: last-modified
+categories: [deveolpment, note, open source]
+---
+
+독일의 Office 회사에서 개발한 오픈소스로 C++로 작성되어 속도가 빠르지만 사용법이 어려움
+
+프로젝트에서는 DCM4che가 쿼리가 원하는 만큼 가능하여 2순위로 둠

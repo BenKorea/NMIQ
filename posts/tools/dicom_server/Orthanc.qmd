@@ -43,15 +43,15 @@ main 설정파일은 C:\\Program Files\\Orthanc Server\\Configuration\\orthanc.j
 ### DICOMModality 설정
 매뉴얼(https://orthanc.uclouvain.be/book/integrations/modality.html#configure-modality)의 예시는 아래와 같았다.
 
-```{bash}
+```r
 // The list of the known DICOM modalities
 "DicomModalities" : {
   "echo1" : [ "ECHO1", "123.124.125.10", 104 ]
 },
 ```
 
-위를 참고하여 개발시스템의 DICOMModality를 아래와 같이 설정하였다.
-```{bash}
+위를 참고하여 개발시스템의 DicomModality를 아래와 같이 설정하였다.
+```r
   "NMDOSE" : [ "NMDOSE", "127.0.0.1", 5678 ],
   "NMIQ" : [ "NMIQ", "127.0.0.1", 5679 ],
   "NMFULLDATA" : [ "NMFULLDATA", "127.0.0.1", 5680 ],

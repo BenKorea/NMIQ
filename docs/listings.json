@@ -3,26 +3,27 @@
     "listing": "/index.html",
     "items": [
       "/posts/tools/dicom_server/Orthanc.html",
+      "/posts/tools/dcmtk/dcmtk.html",
+      "/posts/development/development.html",
+      "/posts/development/open_source/open_source.html",
+      "/posts/dicom/conformance/conformance.html",
       "/posts/standardization/procedure/procedure.html",
-      "/posts/dicom/information/information.html",
       "/posts/dicom/information/structure.html",
       "/posts/tools/dose_extractor/OpenREM.html",
       "/posts/tools/dose_extractor/DoseUtility.html",
       "/posts/tools/dicom_server/dicoogle.html",
       "/posts/tools/dicom_server/Slicer.html",
       "/posts/tools/dicom_server/Conquest.html",
-      "/posts/tools/dose_extractor/dose_extractor.html",
       "/posts/tools/tools.html",
       "/posts/development/NMDose/SpecificCharactorSet_decoding.html",
       "/posts/development/NMDose/NMDose.html",
-      "/posts/development/open_source/open_source.html",
       "/posts/development/open_source/others.html",
-      "/posts/development/development.html",
       "/posts/dicom/dicom.html",
       "/posts/tools/dicom_server/dicom_server.html",
       "/posts/manual.html",
       "/posts/standardization/procedure/KNMIP.html",
-      "/posts/standardization/standardization.html"
+      "/posts/standardization/standardization.html",
+      "/posts/tools/dose_extractor/dose_extractor.html"
     ]
   }
 ]
