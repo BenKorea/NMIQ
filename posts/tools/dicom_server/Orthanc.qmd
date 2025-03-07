@@ -69,7 +69,41 @@ configuration을 설정하는 동안에 Orthanc를 완전히 중지하였다가 
 ### HPPT port
 - 8042
 
-### 장단점
+### 설정
+- PostgreSQL로 DICOM metadata를 저장하기 위해서 postgresql.json을 아래와 같이 설정하였다.
 
-Orthanc은 웹 기반 DICOM 관리 및 AI 분석, 클라우드 통합이 필요한 경우 유리하다고 한다.
-Conquest DICOM Server는 빠른 속도의 로컬 PACS, 대량의 DICOM 데이터 처리, **자동화된 스크립팅 (Lua)**이 필요한 경우 적합하다고 한다.
+```json
+{
+  "PostgreSQL" : {
+    "EnableIndex" : true,
+    "EnableStorage" : false,               // You likely don't need to enable this option
+    "Host" : "localhost",
+    "Port" : 5432,
+    "Database" : "orthanc",
+    "Username" : "nmuser",
+    "Password" : "iloveben",
+    "Lock" : true,
+    "EnableSsl" : false,                   // New in release 3.0
+    "MaximumConnectionRetries" : 10,       // New in release 3.0
+    "ConnectionRetryInterval" : 5,         // New in release 3.0
+    "IndexConnectionsCount" : 50,          // New in release 4.0 - new default value in 7.0
+    "TransactionMode": "ReadCommitted",    // New in release 6.0 - new default value in 7.0
+    "EnableVerboseLogs": false,            // New in release 6.0
+    "HousekeepingInterval": 1,             // New in release 7.0
+    "AllowInconsistentChildCounts": false  // New in release 7.2
+  }
+}
+```
+
+### Retrieve 자동화
+Orthanc에 내장된 Lua engine으로 특정기간동안의 Modality=="PT"인 경우를 retrieve하도록 다음의 단계를 진행하였다.
+- orthanc.json에서 Lua script를 아래와 같이 활성화하였다.
+```orthanc.json
+"LuaScripts" : [C:\\Orthanc\\lua\\retrieve_nm_studies.lua"],
+```
+
+그러나 query 요청에 실패해 일단 보류
+
+```curl
+curl -X POST http://localhost:8042/tools/execute-script --data-binary "OnTimer()"
+```

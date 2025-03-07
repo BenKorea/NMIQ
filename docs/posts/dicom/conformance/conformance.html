@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="BenKorea">
-<meta name="dcterms.date" content="2024-02-19">
-<meta name="description" content="개발과정을 기록하여 나의 기억과 협업에 도움이 되고자 함">
+<meta name="dcterms.date" content="2025-03-01">
+<meta name="description" content="DICOM Conformance">
 
-<title>개발기록 – NMIQ</title>
+<title>Conformance – NMIQ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,22 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,17 +71,17 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles/tooltip.css">
+<link rel="stylesheet" href="../../../styles/tooltip.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">NMIQ</span>
     </a>
   </div>
@@ -92,27 +92,27 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">블로그</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../posts/development/development.html" aria-current="page"> 
+    <a class="nav-link" href="../../../posts/development/development.html"> 
 <span class="menu-text">개발기록</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/tools/tools.html"> 
+    <a class="nav-link" href="../../../posts/tools/tools.html"> 
 <span class="menu-text">Tools</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/dicom/dicom.html"> 
+    <a class="nav-link" href="../../../posts/dicom/dicom.html"> 
 <span class="menu-text">DICOM</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/standardization/standardization.html"> 
+    <a class="nav-link" href="../../../posts/standardization/standardization.html"> 
 <span class="menu-text">표준화</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/manual.html"> 
+    <a class="nav-link" href="../../../posts/manual.html"> 
 <span class="menu-text">사이트사용법</span></a>
   </li>  
 </ul>
@@ -128,74 +128,17 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/development/development.html">개발기록</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/development/development.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">개발기록</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../posts/development/open_source/open_source.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">opon source</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/development/open_source/others.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Open Source</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../posts/development/NMDose/NMDose.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">NM Dose</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/development/NMDose/SpecificCharactorSet_decoding.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SpeficifCharactorSet decoding</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#dicom-서버" id="toc-dicom-서버" class="nav-link active" data-scroll-target="#dicom-서버">DICOM 서버</a></li>
+  <li><a href="#discovery-710610-optima-560" id="toc-discovery-710610-optima-560" class="nav-link active" data-scroll-target="#discovery-710610-optima-560">Discovery 710/610 Optima 560</a></li>
   </ul>
 </nav>
     </div>
@@ -204,16 +147,16 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">개발기록</h1>
+<h1 class="title">Conformance</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">deveolpment</div>
-    <div class="quarto-category">note</div>
+    <div class="quarto-category">DICOM</div>
+    <div class="quarto-category">Conformance</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    개발과정을 기록하여 나의 기억과 협업에 도움이 되고자 함
+    DICOM Conformance
   </div>
 </div>
 
@@ -230,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 19, 2024</p>
+      <p class="date">March 1, 2025</p>
     </div>
   </div>
   
@@ -248,12 +191,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>핵의학 영상의 최적화는 품질과 선량을 동시에 고려해야 한다. 그러나 현재는 최적화를 검토하기 위한 기초자료의 생성과정이 수작업에 많이 의존해야 하며, 영상품질은 consensus를 이룬 지표조차 없는 상태이다. 따라서 최적화를 검토하기 위한 기초자료 생성용 프로그램 개발이 필요하다. 이 프로그램은 우선을 선량정보를 추출하는 기능을 구현하고자 한다. 가능할지 모르겠지만 향후에는 영상품질지표까지 추출하는 기능까지 구현하고자 한다.</p>
-<p>개발은 크게 - open source 이용한 반자동화 - 가칭 NMDose 프로그램 개발 - 방사성의약품투여량과 CT dose index를 추출하여 선량-영상관리의 도구로 활용 - 장차 DLR 조사의 도구로 활용하는 것을 목표로 한다. - 가칭 NMIQ 프로그램의 개발 - 장차 영상품질지표를 수집하여 데이터베이스로 구축하여 선량과 연계분석하고 - 장차 영상으로부터 자동으로 영상품질지표를 추출하는 것을 목표로 한다.</p>
-<p>본격적인 개발에 앞서 PACS 시스템을 모사하는 것이 필요하여 다음과 같이 모사하고자 한다.</p>
-<section id="dicom-서버" class="level3">
-<h3 class="anchored" data-anchor-id="dicom-서버">DICOM 서버</h3>
-<p>병원 PACS로부터 선량정보를 추출할 때를 모사하고자 하면, 병원 PACS에 대한 모사 시스템과</p>
+<section id="discovery-710610-optima-560" class="level3">
+<h3 class="anchored" data-anchor-id="discovery-710610-optima-560">Discovery 710/610 Optima 560</h3>
+<p><img src="images/clipboard-2397552121.png" class="img-fluid"></p>
 
 
 </section>
@@ -679,7 +619,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="RadiationSafetyNM/website" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
-<script src="../../scripts/tooltip.js"></script>
+<script src="../../../scripts/tooltip.js"></script>
 
 
 

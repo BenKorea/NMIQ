@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/tools/dicom_server/Orthanc.html",
+      "/posts/tools/dicom_server/PostgreSQL.html",
       "/posts/tools/dcmtk/dcmtk.html",
       "/posts/development/development.html",
       "/posts/development/open_source/open_source.html",
