@@ -1,0 +1,45 @@
+---
+title: "Docker"
+description: ""
+author: "BenKorea"
+date: "2025-03-09"
+date-modified: last-modified
+categories: [docker]
+---
+
+### WSL 설치
+저자의 개발환경은 윈도우10이며, 노트북은 10 home edition이다. WSL를 사용하기 위해서 https://learn.microsoft.com/ko-kr/windows/wsl/install을 참고하여 진행하였다.
+
+자동설치가 잘 되지 않아서 수동설치를 진행하였다.
+
+#### 설정
+
+1. 단계 - Linux용 Windows 하위 시스템 사용
+- PowerShell 관리자 권한
+```PS
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+```
+
+2. 단계 - WSL 2 실행을 위한 요구 사항 확인
+
+3. 단계 - Virtual Machine 기능 사용
+
+
+#### Window edition 및 버전확인
+
+윈도우 10 HOME 버전의 경우 WSL 1 사용이 불가능했으나, 빌드 19603부터 WSL 2를 지원한다.
+
+![](images/clipboard-2774030562.png)
+
+#### WSL2 활성화
+
+powershell 관리자권한으로 열어
+
+``` powershell
+install wsl
+wsl --set-default-version 2
+```
+
+#### Linux 배포판 설치
+
+Microsoft Store에서 Ubuntu를 설치한다.
