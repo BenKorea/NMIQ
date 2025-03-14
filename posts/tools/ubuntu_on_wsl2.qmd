@@ -1,5 +1,5 @@
 ---
-title: "WSL2"
+title: "Ubuntu on WSL2"
 description: ""
 author: "BenKorea"
 date: "2025-03-13"
@@ -12,6 +12,28 @@ number-sections: true
 
 유지보수를 간편하게 하고자 배포시 도커를 사용하고자 하였다.
 도커는 리눅스환경이 필요하여, 일단은 윈도우10에서 WSL2을 활성화시켜야 하였다.
+
+## WSL2 완전 제거
+
+### VirtualMachinePlatform 제거
+```{r remove_vm, eval=FALSE, filename="PowerShell"}
+dism.exe /online /disable-feature /featurename:VirtualMachinePlatform /norestart
+```
+
+### wsl 제거
+```{r remove_wsl, eval=FALSE, filename="PowerShell"}
+dism.exe /online /disable-feature /featurename:Microsoft-Windows-Subsystem-Linux /norestart
+```
+
+### 재부팅
+
+### WSL2 커널 및 배포판 삭제
+
+`C:\Users\<사용자이름>\AppData\Local\Packages\` 에서 `Canonical* 폴더` 삭제
+`C:\Program Files\WindowsApps` 내 `Canonical* 폴더` 삭제 (권한 필요)
+
+
+자동설치가 잘 되지 않아서 수동설치를 진행하였다.
 
 ## WSL2 설치
 

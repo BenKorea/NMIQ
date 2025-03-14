@@ -40,22 +40,13 @@ website:
     - title: "Tools"
       contents:
         - posts/tools/tools.qmd
-        - section: "운영체제"
-          href: posts/tools/os/os.qmd
-          contents:
-          - posts/tools/os/wsl2.qmd        
-        - section: "dicom server"
-          href: posts/tools/dicom_server/dicom_server.qmd
-          contents:
-          - posts/tools/dicom_server/Conquest.qmd
-          - posts/tools/dicom_server/Orthanc.qmd
-          - posts/tools/dicom_server/Slicer.qmd
-          - posts/tools/dicom_server/dicoogle.qmd
-        - section: "dose extractor"
-          href: posts/tools/dose_extractor/dose_extractor.qmd
-          contents:
-          - posts/tools/dose_extractor/DoseUtility.qmd
-          - posts/tools/dose_extractor/OpenREM.qmd
+        - posts/tools/ubuntu_on_wsl2.qmd        
+        - posts/tools/Conquest.qmd
+        - posts/tools/Orthanc.qmd
+        - posts/tools/Slicer.qmd
+        - posts/tools/dicoogle.qmd
+        - posts/tools/DoseUtility.qmd
+        - posts/tools/OpenREM.qmd
     - title: "DICOM"
       contents:
         - posts/dicom/dicom.qmd

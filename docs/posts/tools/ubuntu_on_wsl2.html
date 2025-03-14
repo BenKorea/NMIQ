@@ -7,10 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="BenKorea">
-<meta name="dcterms.date" content="2024-02-19">
-<meta name="description" content="open source 이용한 반자동화">
+<meta name="dcterms.date" content="2025-03-13">
 
-<title>Tools – NMIQ</title>
+<title>WSL2 – NMIQ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -133,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/tools/tools.html">Tools</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/tools/ubuntu_on_wsl2.html">WSL2</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -147,13 +180,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/tools.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/tools/tools.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tools</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/ubuntu_on_wsl2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/tools/ubuntu_on_wsl2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">WSL2</span></a>
   </div>
 </li>
@@ -198,27 +231,37 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#필요성" id="toc-필요성" class="nav-link active" data-scroll-target="#필요성"><span class="header-section-number">1</span> 필요성</a></li>
+  <li><a href="#wsl2-설치" id="toc-wsl2-설치" class="nav-link" data-scroll-target="#wsl2-설치"><span class="header-section-number">2</span> WSL2 설치</a>
+  <ul>
+  <li><a href="#설정" id="toc-설정" class="nav-link" data-scroll-target="#설정"><span class="header-section-number">2.1</span> 설정</a>
+  <ul class="collapse">
+  <li><a href="#window-edition-및-버전확인" id="toc-window-edition-및-버전확인" class="nav-link" data-scroll-target="#window-edition-및-버전확인"><span class="header-section-number">2.1.1</span> Window edition 및 버전확인</a></li>
+  <li><a href="#wsl2-활성화" id="toc-wsl2-활성화" class="nav-link" data-scroll-target="#wsl2-활성화"><span class="header-section-number">2.1.2</span> WSL2 활성화</a></li>
+  <li><a href="#linux-배포판-설치" id="toc-linux-배포판-설치" class="nav-link" data-scroll-target="#linux-배포판-설치"><span class="header-section-number">2.1.3</span> Linux 배포판 설치</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tools</h1>
+<h1 class="title">WSL2</h1>
   <div class="quarto-categories">
     <div class="quarto-category">deveolpment</div>
-    <div class="quarto-category">note</div>
     <div class="quarto-category">open source</div>
+    <div class="quarto-category">operating system</div>
   </div>
   </div>
 
-<div>
-  <div class="description">
-    open source 이용한 반자동화
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -233,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 19, 2024</p>
+      <p class="date">March 13, 2025</p>
     </div>
   </div>
   
@@ -251,8 +294,53 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="필요성" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="필요성"><span class="header-section-number">1</span> 필요성</h2>
+<p>유지보수를 간편하게 하고자 배포시 도커를 사용하고자 하였다. 도커는 리눅스환경이 필요하여, 일단은 윈도우10에서 WSL2을 활성화시켜야 하였다.</p>
+</section>
+<section id="wsl2-설치" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="wsl2-설치"><span class="header-section-number">2</span> WSL2 설치</h2>
+<p>배포를 도커를 할 예정이라, WSL2를 설치하여 우분투로 설치하고 도커설치를 진행하였다. https://learn.microsoft.com/ko-kr/windows/wsl/install을 참고하여 진행하였다.</p>
+<p>자동설치가 잘 되지 않아서 수동설치를 진행하였다.</p>
+<section id="설정" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="설정"><span class="header-section-number">2.1</span> 설정</h3>
+<ol type="1">
+<li>단계 - Linux용 Windows 하위 시스템 사용</li>
+</ol>
+<ul>
+<li><code>Win+X</code>를 이용하여 PowerShell을 관리자권한으로 열고 아래를 실행시킨다. 이는</li>
+</ul>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>PowerShell</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dism.exe <span class="sc">/</span>online <span class="sc">/</span>enable<span class="sc">-</span>feature <span class="sc">/</span>featurename<span class="sc">:</span>Microsoft<span class="sc">-</span>Windows<span class="sc">-</span>Subsystem<span class="sc">-</span>Linux <span class="sc">/</span>all <span class="sc">/</span>norestart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ol start="2" type="1">
+<li><p>단계 - WSL 2 실행을 위한 요구 사항 확인</p></li>
+<li><p>단계 - Virtual Machine 기능 사용</p></li>
+</ol>
+<section id="window-edition-및-버전확인" class="level4" data-number="2.1.1">
+<h4 data-number="2.1.1" class="anchored" data-anchor-id="window-edition-및-버전확인"><span class="header-section-number">2.1.1</span> Window edition 및 버전확인</h4>
+<p>윈도우 10 HOME 버전의 경우 WSL 1 사용이 불가능했으나, 빌드 19603부터 WSL 2를 지원한다.</p>
+<p><img src="images/노트북_Window_버전.png" class="img-fluid"></p>
+</section>
+<section id="wsl2-활성화" class="level4" data-number="2.1.2">
+<h4 data-number="2.1.2" class="anchored" data-anchor-id="wsl2-활성화"><span class="header-section-number">2.1.2</span> WSL2 활성화</h4>
+<p>powershell 관리자권한으로 열어</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>install wsl</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>wsl <span class="op">--</span>set-default-version <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="linux-배포판-설치" class="level4" data-number="2.1.3">
+<h4 data-number="2.1.3" class="anchored" data-anchor-id="linux-배포판-설치"><span class="header-section-number">2.1.3</span> Linux 배포판 설치</h4>
+<p>Microsoft Store에서 Ubuntu를 설치한다.</p>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

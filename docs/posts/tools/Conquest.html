@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="BenKorea">
-<meta name="dcterms.date" content="2024-02-19">
-<meta name="description" content="open source 이용한 반자동화">
+<meta name="dcterms.date" content="2025-02-26">
+<meta name="description" content="dicom server open source">
 
-<title>Tools – NMIQ</title>
+<title>Conquest – NMIQ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -133,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/tools/tools.html">Tools</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/tools/Conquest.html">Conquest</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -147,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/tools.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/tools/tools.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tools</span></a>
   </div>
 </li>
@@ -159,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/Conquest.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/tools/Conquest.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Conquest</span></a>
   </div>
 </li>
@@ -198,25 +198,37 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#구축-필요성" id="toc-구축-필요성" class="nav-link active" data-scroll-target="#구축-필요성">구축 필요성</a></li>
+  <li><a href="#conquest-dicom-server" id="toc-conquest-dicom-server" class="nav-link" data-scroll-target="#conquest-dicom-server">Conquest dicom server</a>
+  <ul>
+  <li><a href="#설치파일" id="toc-설치파일" class="nav-link" data-scroll-target="#설치파일">설치파일</a></li>
+  <li><a href="#설치방법" id="toc-설치방법" class="nav-link" data-scroll-target="#설치방법">설치방법</a></li>
+  <li><a href="#활용-현황" id="toc-활용-현황" class="nav-link" data-scroll-target="#활용-현황">활용 현황</a></li>
+  <li><a href="#lua-script" id="toc-lua-script" class="nav-link" data-scroll-target="#lua-script">Lua script</a></li>
+  <li><a href="#저장파일의-이름을-지정하는-방식" id="toc-저장파일의-이름을-지정하는-방식" class="nav-link" data-scroll-target="#저장파일의-이름을-지정하는-방식">저장파일의 이름을 지정하는 방식</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tools</h1>
+<h1 class="title">Conquest</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">deveolpment</div>
-    <div class="quarto-category">note</div>
-    <div class="quarto-category">open source</div>
+    <div class="quarto-category">dicom server</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    open source 이용한 반자동화
+    dicom server open source
   </div>
 </div>
 
@@ -233,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 19, 2024</p>
+      <p class="date">February 26, 2025</p>
     </div>
   </div>
   
@@ -251,8 +263,36 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="구축-필요성" class="level3">
+<h3 class="anchored" data-anchor-id="구축-필요성">구축 필요성</h3>
+<p>개발 단계에서 실제 PACS를 모사할 수 있는 별도의 DICOM 서버를 구축할 필요가 아래와 같은 오픈소스들을 검토하였다.</p>
+</section>
+<section id="conquest-dicom-server" class="level3">
+<h3 class="anchored" data-anchor-id="conquest-dicom-server">Conquest dicom server</h3>
+<p>설정과 사용법이 간단하여 저자가 테스트에 가장 먼저 성공한 프로그램이기도 하다. 특히 저장폴더가 직관적이다.</p>
+<section id="설치파일" class="level4">
+<h4 class="anchored" data-anchor-id="설치파일">설치파일</h4>
+<p>최신 설치파일은 공식사이트가 아닌 Cnquest User Forum에 공개된 2024년 9월 25일 release된 버전 1.5.0e (dicomserver-1.5.0e.zip, https://forum.iq-image.com/forum/index.php?thread/50654-conquest-1-5-0e-released/)가 최신이다.</p>
+</section>
+<section id="설치방법" class="level4">
+<h4 class="anchored" data-anchor-id="설치방법">설치방법</h4>
+<p>설치방법은 원하는 폴더에서 설치파일의 압축을 풀면된다. 업그레이드시에는 매뉴얼에 따르면 다음의 지시를 따르면 된다. - 기본적으로 exe 및 dll 파일을 교체하면 업데이트 가능하지만, - 일부 설정 파일(dicom.sql, dgatesop.lst, dicom.ini)을 조정할 경우 데이터베이스를 다시 생성해야 할 수도 있습니다. - 서버는 반드시 업데이트 전에 중지해야 하며, 서비스로 실행 중이면 제어판에서 중지 또는 서비스 해제가 필요합니다. - 데이터베이스 재생성이 필요한 경우 매우 오랜 시간이 걸릴 수 있으므로 주의해야 합니다. - 기존 데이터를 유지하려면 dicom.sql을 백업 후 복원하는 것이 좋습니다. - 저자의 경우는 data폴더, acrnema.map, dicom.ini 파일을 제외하고 삭제한 뒤 설치압축파일을 풀면 데이터와 설정이 유지된 체로 업그레이드 하고 database reganeration을 하였다.</p>
+</section>
+<section id="활용-현황" class="level4">
+<h4 class="anchored" data-anchor-id="활용-현황">활용 현황</h4>
+<p>이 서버프로그램으로 저자는 NMDose, NMIQ, NMFullData, NMTEMPSERVER, ZettaPACS를 구축하여 선량분석시스템, 영상품질자동화, clinical PACS모사, 임시서버, clinical PACS 모사의 목적으로 사용하고 있다.</p>
+</section>
+<section id="lua-script" class="level4">
+<h4 class="anchored" data-anchor-id="lua-script">Lua script</h4>
+<p>쿼리를 정교하게 할 수 있다.</p>
+</section>
+<section id="저장파일의-이름을-지정하는-방식" class="level4">
+<h4 class="anchored" data-anchor-id="저장파일의-이름을-지정하는-방식">저장파일의 이름을 지정하는 방식</h4>
+<p>%id_%studydate%modality_%series_%sopuid.dcm</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
