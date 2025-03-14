@@ -40,6 +40,10 @@ website:
     - title: "Tools"
       contents:
         - posts/tools/tools.qmd
+        - section: "운영체제"
+          href: posts/tools/os/os.qmd
+          contents:
+          - posts/tools/os/wsl2.qmd        
         - section: "dicom server"
           href: posts/tools/dicom_server/dicom_server.qmd
           contents:

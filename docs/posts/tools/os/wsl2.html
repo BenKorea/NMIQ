@@ -7,10 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="BenKorea">
-<meta name="dcterms.date" content="2024-02-19">
-<meta name="description" content="개발과정을 기록하여 나의 기억과 협업에 도움이 되고자 함">
+<meta name="dcterms.date" content="2025-03-13">
 
-<title>개발기록 – NMIQ</title>
+<title>WSL2 – NMIQ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +22,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles/tooltip.css">
+<link rel="stylesheet" href="../../../styles/tooltip.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -81,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">NMIQ</span>
     </a>
   </div>
@@ -92,27 +125,27 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">블로그</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../posts/development/development.html" aria-current="page"> 
+    <a class="nav-link" href="../../../posts/development/development.html"> 
 <span class="menu-text">개발기록</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/tools/tools.html"> 
+    <a class="nav-link active" href="../../../posts/tools/tools.html" aria-current="page"> 
 <span class="menu-text">Tools</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/dicom/dicom.html"> 
+    <a class="nav-link" href="../../../posts/dicom/dicom.html"> 
 <span class="menu-text">DICOM</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/standardization/standardization.html"> 
+    <a class="nav-link" href="../../../posts/standardization/standardization.html"> 
 <span class="menu-text">표준화</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/manual.html"> 
+    <a class="nav-link" href="../../../posts/manual.html"> 
 <span class="menu-text">사이트사용법</span></a>
   </li>  
 </ul>
@@ -133,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/development/development.html">개발기록</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../posts/tools/os/os.html">운영체제</a></li><li class="breadcrumb-item"><a href="../../../posts/tools/os/wsl2.html">WSL2</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -147,14 +180,14 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/development/development.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">개발기록</span></a>
+  <a href="../../../posts/tools/tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tools</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/development/open_source/open_source.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">opon source</span></a>
+            <a href="../../../posts/tools/os/os.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">운영체제</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -162,16 +195,16 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/development/open_source/others.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Open Source</span></a>
+  <a href="../../../posts/tools/os/wsl2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">WSL2</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../posts/development/NMDose/NMDose.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">NM Dose</span></a>
+            <a href="../../../posts/tools/dicom_server/dicom_server.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">dicom server</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -179,8 +212,49 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/development/NMDose/SpecificCharactorSet_decoding.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SpeficifCharactorSet decoding</span></a>
+  <a href="../../../posts/tools/dicom_server/Conquest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conquest</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/tools/dicom_server/Orthanc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orthanc</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/tools/dicom_server/Slicer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Slicer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/tools/dicom_server/dicoogle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dicoogle</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../posts/tools/dose_extractor/dose_extractor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">dose extractor</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/tools/dose_extractor/DoseUtility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DoseUtility</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/tools/dose_extractor/OpenREM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OpenREM</span></a>
   </div>
 </li>
       </ul>
@@ -195,27 +269,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#dicom-서버" id="toc-dicom-서버" class="nav-link active" data-scroll-target="#dicom-서버">DICOM 서버</a></li>
+  <li><a href="#필요성" id="toc-필요성" class="nav-link active" data-scroll-target="#필요성"><span class="header-section-number">1</span> 필요성</a></li>
+  <li><a href="#wsl2-설치" id="toc-wsl2-설치" class="nav-link" data-scroll-target="#wsl2-설치"><span class="header-section-number">2</span> WSL2 설치</a>
+  <ul>
+  <li><a href="#설정" id="toc-설정" class="nav-link" data-scroll-target="#설정"><span class="header-section-number">2.1</span> 설정</a>
+  <ul class="collapse">
+  <li><a href="#window-edition-및-버전확인" id="toc-window-edition-및-버전확인" class="nav-link" data-scroll-target="#window-edition-및-버전확인"><span class="header-section-number">2.1.1</span> Window edition 및 버전확인</a></li>
+  <li><a href="#wsl2-활성화" id="toc-wsl2-활성화" class="nav-link" data-scroll-target="#wsl2-활성화"><span class="header-section-number">2.1.2</span> WSL2 활성화</a></li>
+  <li><a href="#linux-배포판-설치" id="toc-linux-배포판-설치" class="nav-link" data-scroll-target="#linux-배포판-설치"><span class="header-section-number">2.1.3</span> Linux 배포판 설치</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../posts/tools/os/os.html">운영체제</a></li><li class="breadcrumb-item"><a href="../../../posts/tools/os/wsl2.html">WSL2</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">개발기록</h1>
+<h1 class="title">WSL2</h1>
   <div class="quarto-categories">
     <div class="quarto-category">deveolpment</div>
-    <div class="quarto-category">note</div>
+    <div class="quarto-category">open source</div>
+    <div class="quarto-category">operating system</div>
   </div>
   </div>
 
-<div>
-  <div class="description">
-    개발과정을 기록하여 나의 기억과 협업에 도움이 되고자 함
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -230,7 +309,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 19, 2024</p>
+      <p class="date">March 13, 2025</p>
     </div>
   </div>
   
@@ -248,14 +327,52 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>핵의학 영상의 최적화는 품질과 선량을 동시에 고려해야 한다. 그러나 현재는 최적화를 검토하기 위한 기초자료의 생성과정이 수작업에 많이 의존해야 하며, 영상품질은 consensus를 이룬 지표조차 없는 상태이다. 따라서 최적화를 검토하기 위한 기초자료 생성용 프로그램 개발이 필요하다. 이 프로그램은 우선을 선량정보를 추출하는 기능을 구현하고자 한다. 가능할지 모르겠지만 향후에는 영상품질지표까지 추출하는 기능까지 구현하고자 한다.</p>
-<p>개발은 크게 - open source 이용한 반자동화 - 가칭 NMDose 프로그램 개발 - 방사성의약품투여량과 CT dose index를 추출하여 선량-영상관리의 도구로 활용 - 장차 DLR 조사의 도구로 활용하는 것을 목표로 한다. - 가칭 NMIQ 프로그램의 개발 - 장차 영상품질지표를 수집하여 데이터베이스로 구축하여 선량과 연계분석하고 - 장차 영상으로부터 자동으로 영상품질지표를 추출하는 것을 목표로 한다.</p>
-<p>본격적인 개발에 앞서 PACS 시스템을 모사하는 것이 필요하여 다음과 같이 모사하고자 한다.</p>
-<section id="dicom-서버" class="level3">
-<h3 class="anchored" data-anchor-id="dicom-서버">DICOM 서버</h3>
-<p>병원 PACS로부터 선량정보를 추출할 때를 모사하고자 하면, 병원 PACS에 대한 모사 시스템과</p>
+<section id="필요성" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="필요성"><span class="header-section-number">1</span> 필요성</h2>
+<p>유지보수를 간편하게 하고자 배포시 도커를 사용하고자 하였다. 도커는 리눅스환경이 필요하여, 일단은 윈도우10에서 WSL2을 활성화시켜야 하였다.</p>
+</section>
+<section id="wsl2-설치" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="wsl2-설치"><span class="header-section-number">2</span> WSL2 설치</h2>
+<p>배포를 도커를 할 예정이라, WSL2를 설치하여 우분투로 설치하고 도커설치를 진행하였다. https://learn.microsoft.com/ko-kr/windows/wsl/install을 참고하여 진행하였다.</p>
+<p>자동설치가 잘 되지 않아서 수동설치를 진행하였다.</p>
+<section id="설정" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="설정"><span class="header-section-number">2.1</span> 설정</h3>
+<ol type="1">
+<li>단계 - Linux용 Windows 하위 시스템 사용</li>
+</ol>
+<ul>
+<li><code>Win+X</code>를 이용하여 PowerShell을 관리자권한으로 열고 아래를 실행시킨다. 이는</li>
+</ul>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>PowerShell</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dism.exe <span class="sc">/</span>online <span class="sc">/</span>enable<span class="sc">-</span>feature <span class="sc">/</span>featurename<span class="sc">:</span>Microsoft<span class="sc">-</span>Windows<span class="sc">-</span>Subsystem<span class="sc">-</span>Linux <span class="sc">/</span>all <span class="sc">/</span>norestart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ol start="2" type="1">
+<li><p>단계 - WSL 2 실행을 위한 요구 사항 확인</p></li>
+<li><p>단계 - Virtual Machine 기능 사용</p></li>
+</ol>
+<section id="window-edition-및-버전확인" class="level4" data-number="2.1.1">
+<h4 data-number="2.1.1" class="anchored" data-anchor-id="window-edition-및-버전확인"><span class="header-section-number">2.1.1</span> Window edition 및 버전확인</h4>
+<p>윈도우 10 HOME 버전의 경우 WSL 1 사용이 불가능했으나, 빌드 19603부터 WSL 2를 지원한다.</p>
+<p><img src="images/노트북_Window_버전.png" class="img-fluid"></p>
+</section>
+<section id="wsl2-활성화" class="level4" data-number="2.1.2">
+<h4 data-number="2.1.2" class="anchored" data-anchor-id="wsl2-활성화"><span class="header-section-number">2.1.2</span> WSL2 활성화</h4>
+<p>powershell 관리자권한으로 열어</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>install wsl</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>wsl <span class="op">--</span>set-default-version <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="linux-배포판-설치" class="level4" data-number="2.1.3">
+<h4 data-number="2.1.3" class="anchored" data-anchor-id="linux-배포판-설치"><span class="header-section-number">2.1.3</span> Linux 배포판 설치</h4>
+<p>Microsoft Store에서 Ubuntu를 설치한다.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -679,7 +796,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="RadiationSafetyNM/website" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
-<script src="../../scripts/tooltip.js"></script>
+<script src="../../../scripts/tooltip.js"></script>
 
 
 
