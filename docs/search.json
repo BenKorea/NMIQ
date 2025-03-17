@@ -143,45 +143,73 @@
     ]
   },
   {
-    "objectID": "posts/standardization/standardization.html",
-    "href": "posts/standardization/standardization.html",
-    "title": "Standardization",
+    "objectID": "posts/tools/Conquest.html",
+    "href": "posts/tools/Conquest.html",
+    "title": "Conquest",
     "section": "",
-    "text": "다기관 선량정보수집에 필요한 검사명칭 표준화 현황과 제안",
+    "text": "구축 필요성\n개발 단계에서 실제 PACS를 모사할 수 있는 별도의 DICOM 서버를 구축할 필요가 아래와 같은 오픈소스들을 검토하였다.\n\n\nConquest dicom server\n설정과 사용법이 간단하여 저자가 테스트에 가장 먼저 성공한 프로그램이기도 하다. 특히 저장폴더가 직관적이다.\n\n설치파일\n최신 설치파일은 공식사이트가 아닌 Cnquest User Forum에 공개된 2024년 9월 25일 release된 버전 1.5.0e (dicomserver-1.5.0e.zip, https://forum.iq-image.com/forum/index.php?thread/50654-conquest-1-5-0e-released/)가 최신이다.\n\n\n설치방법\n설치방법은 원하는 폴더에서 설치파일의 압축을 풀면된다. 업그레이드시에는 매뉴얼에 따르면 다음의 지시를 따르면 된다. - 기본적으로 exe 및 dll 파일을 교체하면 업데이트 가능하지만, - 일부 설정 파일(dicom.sql, dgatesop.lst, dicom.ini)을 조정할 경우 데이터베이스를 다시 생성해야 할 수도 있습니다. - 서버는 반드시 업데이트 전에 중지해야 하며, 서비스로 실행 중이면 제어판에서 중지 또는 서비스 해제가 필요합니다. - 데이터베이스 재생성이 필요한 경우 매우 오랜 시간이 걸릴 수 있으므로 주의해야 합니다. - 기존 데이터를 유지하려면 dicom.sql을 백업 후 복원하는 것이 좋습니다. - 저자의 경우는 data폴더, acrnema.map, dicom.ini 파일을 제외하고 삭제한 뒤 설치압축파일을 풀면 데이터와 설정이 유지된 체로 업그레이드 하고 database reganeration을 하였다.\n\n\n활용 현황\n이 서버프로그램으로 저자는 NMDose, NMIQ, NMFullData, NMTEMPSERVER, ZettaPACS를 구축하여 선량분석시스템, 영상품질자동화, clinical PACS모사, 임시서버, clinical PACS 모사의 목적으로 사용하고 있다.\n\n\nLua script\n쿼리를 정교하게 할 수 있다.\n\n\n저장파일의 이름을 지정하는 방식\n%id_%studydate%modality_%series_%sopuid.dcm",
     "crumbs": [
-      "표준화",
-      "Standardization"
+      "Tools",
+      "Conquest"
     ]
   },
   {
-    "objectID": "posts/dicom/information/structure.html",
-    "href": "posts/dicom/information/structure.html",
-    "title": "구조",
+    "objectID": "posts/manual.html",
+    "href": "posts/manual.html",
+    "title": "사이트사용법",
     "section": "",
-    "text": "DICOM Structure",
+    "text": "날짜의 의미\n\n각 웹페이지는 두 가지 날짜가 있으며 이 웹사이트에서는 구별되어 사용되고 있습니다.\n\nPUBLISHED는 최초작성일에 해당하는 개념입니다.\n\n블로그에서 Date-Oldest, Date-Newest 정렬(Order By)할 때 기준으로 사용됩니다.\n\nMODIFIED는 최종수정일에 해당하는 개념입니다.\n\n블로그에서 Default로 정렬할 때 기준으로 사용됩니다.\nDefault로 정렬할 때 내부적으로 MODIFIED 날짜의 최신순으로 되지만, 정렬된 페이지목록에서 각 페이지의 왼쪽의 보여지는 날짜는 MODIFIED가 아닌 PUBLISHED를 보여줍니다. 이로인해 Defalut 정렬에서 각 페이지의 날짜와 정렬이 맞지 않는 것처럼 착각될 수 있으므로 주의를 요합니다.\n\n\n\n\n\n댓글\n\n댓글 기능은 guthub에 가입해야 가능합니다.\n아직 개발중인 기능이라 웹페이지가 갱신될 때 기존 댓글이 사라질 수 있으니 알파/베타 테스터 분들의 양해를 바랍니다."
+  },
+  {
+    "objectID": "posts/dicom/dicom.html",
+    "href": "posts/dicom/dicom.html",
+    "title": "DICOM",
+    "section": "",
+    "text": "DICOM",
     "crumbs": [
-      "DICOM",
-      "Information",
-      "구조"
+      "DICOM"
     ]
   },
   {
-    "objectID": "posts/dicom/conformance/conformance.html",
-    "href": "posts/dicom/conformance/conformance.html",
-    "title": "Conformance",
-    "section": "",
-    "text": "Discovery 710/610 Optima 560"
-  },
-  {
-    "objectID": "posts/development/open_source/open_source.html",
-    "href": "posts/development/open_source/open_source.html",
+    "objectID": "posts/development/open_source/others.html",
+    "href": "posts/development/open_source/others.html",
     "title": "Open Source",
     "section": "",
-    "text": "Dose Report Retrieve\n\n병원 PACS로부터 추출하는 것은 시도하지 않았다.\n핵의학과 mini PACS로부터 선량정보를 가지고 있는 DICOM 파일들만 선택적으로 추출 가능한지 검토하였다.\nDiscovery 710에서 Dose Report는 SeriesDescription 태그에 “Dose Report”가 기록되어 있거나 SeriesNumber 태그에 “999”가 기록되어져 있으므로 이를 이용해서 query & retrieve 할 수 있다.\n저자의 병원 Zetta PACS에서는 SeriesDescription이나 SeriesNumber를 필터하여 DICOM send할 수 있는 기능이 없으므로 open source dicom server에서 query & retrieve 하는 방식으로 먼저 접근하였다.\nConquest에서는 SeriesDescription\n\nopen source를 이용해서 추출했을 때 결과는 아래와 같았다.",
+    "text": "open source 이용한 반자동화",
     "crumbs": [
       "개발기록",
-      "opon source"
+      "opon source",
+      "Open Source"
     ]
+  },
+  {
+    "objectID": "posts/development/NMDose/SpecificCharactorSet_decoding.html",
+    "href": "posts/development/NMDose/SpecificCharactorSet_decoding.html",
+    "title": "SpeficifCharactorSet decoding",
+    "section": "",
+    "text": "DICOM에서 사용되는 문자열은 인코딩(Encoding) 시 1~3바이트(또는 그 이상)의 이진 데이터로 저장되며, 이때 인코딩 방식은 SpecificCharacterSet(0008,0005) 태그에 기록된다. 따라서, SpecificCharacterSet의 값에 맞추어 디코딩(Decoding)하면 문자열이 깨지지 않고 올바르게 변환될 수 있다.\n한글이 포함된 문자열은 DICOM에서 최소 두 가지 방식으로 저장될 수 있다. - ISO_IR 149(EUC-KR)는 과거 한글 DICOM 시스템에서 사용되었으며, 완성형 한글만 지원하므로 일부 한글 표현이 제한될 수 있다. - ISO_IR 192(UTF-8)은 유니코드 기반의 인코딩 방식으로 다국어 지원이 가능하며, 최신 DICOM 시스템에서 가장 권장되는 방식이다.\npydicom.dcmread()를 사용하면 DICOM 파일 내의 문자열 데이터는 SpecificCharacterSet(0008,0005)에 따라 자동으로 디코딩되어 Python의 str 객체로 반환됩니다.\n만약에 실제 encoding과 specificcharacterset 지정이 다르면 pydicom 결과는 깨진 문자열이 보이게 되는데, 이 때, 지정대로 다시 encoding해주고 dicom 저장 시 되었던 encoding으로 decoding 한다면 오류를 해결 할 수 있다.\na1_dicom_reader에 정의된 함수에서는 조건과 인코딩과 디코딩이 모두 같은 방식으로 잘 못 만들어진 부분이 있다. 수정이 필요함 2025-02-26\n스캐너 종류에 따라 검사명이 깨어져 있으며 이는 deccoding fix가 되지 않는다.",
+    "crumbs": [
+      "개발기록",
+      "NM Dose",
+      "SpeficifCharactorSet decoding"
+    ]
+  },
+  {
+    "objectID": "posts/development/development.html",
+    "href": "posts/development/development.html",
+    "title": "개발기록",
+    "section": "",
+    "text": "핵의학 영상의 최적화는 품질과 선량을 동시에 고려해야 한다. 그러나 현재는 최적화를 검토하기 위한 기초자료의 생성과정이 수작업에 많이 의존해야 하며, 영상품질은 consensus를 이룬 지표조차 없는 상태이다. 따라서 최적화를 검토하기 위한 기초자료 생성용 프로그램 개발이 필요하다. 이 프로그램은 우선을 선량정보를 추출하는 기능을 구현하고자 한다. 가능할지 모르겠지만 향후에는 영상품질지표까지 추출하는 기능까지 구현하고자 한다.\n개발은 크게 - open source 이용한 반자동화 - 가칭 NMDose 프로그램 개발 - 방사성의약품투여량과 CT dose index를 추출하여 선량-영상관리의 도구로 활용 - 장차 DLR 조사의 도구로 활용하는 것을 목표로 한다. - 가칭 NMIQ 프로그램의 개발 - 장차 영상품질지표를 수집하여 데이터베이스로 구축하여 선량과 연계분석하고 - 장차 영상으로부터 자동으로 영상품질지표를 추출하는 것을 목표로 한다.\n본격적인 개발에 앞서 PACS 시스템을 모사하는 것이 필요하여 다음과 같이 모사하고자 한다.\n\nDICOM 서버\n병원 PACS로부터 선량정보를 추출할 때를 모사하고자 하면, 병원 PACS에 대한 모사 시스템과",
+    "crumbs": [
+      "개발기록"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "블로그",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nDocker\n\n\n\n\n\n\ndocker\n\n\n\nUbuntu에 Docker 설치 및 사용법\n\n\n\n\n\nMar 9, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nUbuntu on WSL2\n\n\n\n\n\n\ndeveolpment\n\n\nopen source\n\n\noperating system\n\n\n\n\n\n\n\n\n\nMar 13, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\n개발기록\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\n\n개발과정을 기록하여 나의 기억과 협업에 도움이 되고자 함\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nNMDose\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\nNMDose\n\n\n\nNMDose 개발과정기록\n\n\n\n\n\nFeb 19, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nSpeficifCharactorSet decoding\n\n\n\n\n\n\nNMDose\n\n\nDICOM\n\n\nSpecificCharactorSet\n\n\ndecoding\n\n\n\nNMDose 개발 중 DICOM SpeficifCharactorSet decoding 오류 해결하기\n\n\n\n\n\nFeb 25, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nOpen Source\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\nopen source\n\n\n\n오픈소스들을 이용한 선량추출 시스템 구축과정을 기록\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nOpen Source\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\nopen source\n\n\n\n오픈소스들을 이용한 선량추출 시스템 구축과정을 기록\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nConformance\n\n\n\n\n\n\nDICOM\n\n\nConformance\n\n\n\nDICOM Conformance\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nDICOM\n\n\n\n\n\n\nDICOM\n\n\n\nDICOM 공부한 것을 정리하였습니다.\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nDCM4chee\n\n\n\n\n\n\nDCM4che\n\n\n\nDCM4che로 구현한 open source PACS\n\n\n\n\n\nMar 7, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\n구조\n\n\n\n\n\n\nDICOM\n\n\nstructure\n\n\n\nDICOM 파일의 구조\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nPostgreSQL\n\n\n\n\n\n\ntools\n\n\nopen source\n\n\ndatabase\n\n\nPostgreSQL\n\n\n\ndatabase open source\n\n\n\n\n\nMar 5, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nSlicer\n\n\n\n\n\n\ndicom server\n\n\n\ndicom server open source\n\n\n\n\n\nFeb 26, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\n사이트사용법\n\n\n\n\n\n\n사용법\n\n\n\n이 웹사이트 고유의 사용법이 설명되어 있습니다.\n\n\n\n\n\nDec 20, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nKNMIP\n\n\n\n\n\n\nstandardization\n\n\nKNMIP\n\n\n\nKorea Nuclear Medicine Imaging Proceudure Version v1.0\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nProcedure\n\n\n\n\n\n\nstandardization\n\n\nprocedure\n\n\n\n표준 검사명칭\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nStandardization\n\n\n\n\n\n\nDICOM\n\n\n\n핵릐학 검사명칭 표준화\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nConquest\n\n\n\n\n\n\ndicom server\n\n\n\ndicom server open source\n\n\n\n\n\nFeb 26, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nDCMTK\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\nopen source\n\n\n\nopen source 이용한 반자동화\n\n\n\n\n\nMar 4, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nDicoogle\n\n\n\n\n\n\ndicom server\n\n\nDicoogle\n\n\n\ndicom server open source\n\n\n\n\n\nFeb 26, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nDoseUtility\n\n\n\n\n\n\ndeveolpment\n\n\ndicom\n\n\ndose extrator\n\n\nopen source\n\n\nDoseUtility\n\n\n\nDICOM에서 선량정보 추출 open source\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nOpenREM\n\n\n\n\n\n\ndeveolpment\n\n\ndicom\n\n\ndose extrator\n\n\nopen source\n\n\nOpenREM\n\n\n\nDICOM에서 선량정보 추출 open source\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nOrthanc\n\n\n\n\n\n\ndicom server\n\n\nOrthanc\n\n\n\ndicom server open source\n\n\n\n\n\nFeb 26, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nSDKMAN\n\n\n\n\n\n\nJAVA\n\n\n\n개발도구 관리툴\n\n\n\n\n\nMar 7, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nTools\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\nopen source\n\n\n\nopen source 이용한 반자동화\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/development/NMDose/NMDose.html",
@@ -206,72 +234,55 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "블로그",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nDocker\n\n\n\n\n\n\ndocker\n\n\n\nUbuntu에 Docker 설치 및 사용법\n\n\n\n\n\nMar 9, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nUbuntu on WSL2\n\n\n\n\n\n\ndeveolpment\n\n\nopen source\n\n\noperating system\n\n\n\n\n\n\n\n\n\nMar 13, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\n개발기록\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\n\n개발과정을 기록하여 나의 기억과 협업에 도움이 되고자 함\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nNMDose\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\nNMDose\n\n\n\nNMDose 개발과정기록\n\n\n\n\n\nFeb 19, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nSpeficifCharactorSet decoding\n\n\n\n\n\n\nNMDose\n\n\nDICOM\n\n\nSpecificCharactorSet\n\n\ndecoding\n\n\n\nNMDose 개발 중 DICOM SpeficifCharactorSet decoding 오류 해결하기\n\n\n\n\n\nFeb 25, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nOpen Source\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\nopen source\n\n\n\n오픈소스들을 이용한 선량추출 시스템 구축과정을 기록\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nOpen Source\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\nopen source\n\n\n\n오픈소스들을 이용한 선량추출 시스템 구축과정을 기록\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nConformance\n\n\n\n\n\n\nDICOM\n\n\nConformance\n\n\n\nDICOM Conformance\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nDICOM\n\n\n\n\n\n\nDICOM\n\n\n\nDICOM 공부한 것을 정리하였습니다.\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\n구조\n\n\n\n\n\n\nDICOM\n\n\nstructure\n\n\n\nDICOM 파일의 구조\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nOrthanc\n\n\n\n\n\n\ndicom server\n\n\nOrthanc\n\n\n\ndicom server open source\n\n\n\n\n\nFeb 26, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nSDKMAN\n\n\n\n\n\n\nJAVA\n\n\n\n개발도구 관리툴\n\n\n\n\n\nMar 7, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nTools\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\nopen source\n\n\n\nopen source 이용한 반자동화\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\n사이트사용법\n\n\n\n\n\n\n사용법\n\n\n\n이 웹사이트 고유의 사용법이 설명되어 있습니다.\n\n\n\n\n\nDec 20, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nKNMIP\n\n\n\n\n\n\nstandardization\n\n\nKNMIP\n\n\n\nKorea Nuclear Medicine Imaging Proceudure Version v1.0\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nProcedure\n\n\n\n\n\n\nstandardization\n\n\nprocedure\n\n\n\n표준 검사명칭\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nStandardization\n\n\n\n\n\n\nDICOM\n\n\n\n핵릐학 검사명칭 표준화\n\n\n\n\n\nMar 1, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nConquest\n\n\n\n\n\n\ndicom server\n\n\n\ndicom server open source\n\n\n\n\n\nFeb 26, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nDCMTK\n\n\n\n\n\n\ndeveolpment\n\n\nnote\n\n\nopen source\n\n\n\nopen source 이용한 반자동화\n\n\n\n\n\nMar 4, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nDicoogle\n\n\n\n\n\n\ndicom server\n\n\nDicoogle\n\n\n\ndicom server open source\n\n\n\n\n\nFeb 26, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nDoseUtility\n\n\n\n\n\n\ndeveolpment\n\n\ndicom\n\n\ndose extrator\n\n\nopen source\n\n\nDoseUtility\n\n\n\nDICOM에서 선량정보 추출 open source\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nOpenREM\n\n\n\n\n\n\ndeveolpment\n\n\ndicom\n\n\ndose extrator\n\n\nopen source\n\n\nOpenREM\n\n\n\nDICOM에서 선량정보 추출 open source\n\n\n\n\n\nFeb 19, 2024\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nPostgreSQL\n\n\n\n\n\n\ntools\n\n\nopen source\n\n\ndatabase\n\n\nPostgreSQL\n\n\n\ndatabase open source\n\n\n\n\n\nMar 5, 2025\n\n\nBenKorea\n\n\n\n\n\n\n\n\n\n\n\n\nSlicer\n\n\n\n\n\n\ndicom server\n\n\n\ndicom server open source\n\n\n\n\n\nFeb 26, 2025\n\n\nBenKorea\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/development/development.html",
-    "href": "posts/development/development.html",
-    "title": "개발기록",
-    "section": "",
-    "text": "핵의학 영상의 최적화는 품질과 선량을 동시에 고려해야 한다. 그러나 현재는 최적화를 검토하기 위한 기초자료의 생성과정이 수작업에 많이 의존해야 하며, 영상품질은 consensus를 이룬 지표조차 없는 상태이다. 따라서 최적화를 검토하기 위한 기초자료 생성용 프로그램 개발이 필요하다. 이 프로그램은 우선을 선량정보를 추출하는 기능을 구현하고자 한다. 가능할지 모르겠지만 향후에는 영상품질지표까지 추출하는 기능까지 구현하고자 한다.\n개발은 크게 - open source 이용한 반자동화 - 가칭 NMDose 프로그램 개발 - 방사성의약품투여량과 CT dose index를 추출하여 선량-영상관리의 도구로 활용 - 장차 DLR 조사의 도구로 활용하는 것을 목표로 한다. - 가칭 NMIQ 프로그램의 개발 - 장차 영상품질지표를 수집하여 데이터베이스로 구축하여 선량과 연계분석하고 - 장차 영상으로부터 자동으로 영상품질지표를 추출하는 것을 목표로 한다.\n본격적인 개발에 앞서 PACS 시스템을 모사하는 것이 필요하여 다음과 같이 모사하고자 한다.\n\nDICOM 서버\n병원 PACS로부터 선량정보를 추출할 때를 모사하고자 하면, 병원 PACS에 대한 모사 시스템과",
-    "crumbs": [
-      "개발기록"
-    ]
-  },
-  {
-    "objectID": "posts/development/NMDose/SpecificCharactorSet_decoding.html",
-    "href": "posts/development/NMDose/SpecificCharactorSet_decoding.html",
-    "title": "SpeficifCharactorSet decoding",
-    "section": "",
-    "text": "DICOM에서 사용되는 문자열은 인코딩(Encoding) 시 1~3바이트(또는 그 이상)의 이진 데이터로 저장되며, 이때 인코딩 방식은 SpecificCharacterSet(0008,0005) 태그에 기록된다. 따라서, SpecificCharacterSet의 값에 맞추어 디코딩(Decoding)하면 문자열이 깨지지 않고 올바르게 변환될 수 있다.\n한글이 포함된 문자열은 DICOM에서 최소 두 가지 방식으로 저장될 수 있다. - ISO_IR 149(EUC-KR)는 과거 한글 DICOM 시스템에서 사용되었으며, 완성형 한글만 지원하므로 일부 한글 표현이 제한될 수 있다. - ISO_IR 192(UTF-8)은 유니코드 기반의 인코딩 방식으로 다국어 지원이 가능하며, 최신 DICOM 시스템에서 가장 권장되는 방식이다.\npydicom.dcmread()를 사용하면 DICOM 파일 내의 문자열 데이터는 SpecificCharacterSet(0008,0005)에 따라 자동으로 디코딩되어 Python의 str 객체로 반환됩니다.\n만약에 실제 encoding과 specificcharacterset 지정이 다르면 pydicom 결과는 깨진 문자열이 보이게 되는데, 이 때, 지정대로 다시 encoding해주고 dicom 저장 시 되었던 encoding으로 decoding 한다면 오류를 해결 할 수 있다.\na1_dicom_reader에 정의된 함수에서는 조건과 인코딩과 디코딩이 모두 같은 방식으로 잘 못 만들어진 부분이 있다. 수정이 필요함 2025-02-26\n스캐너 종류에 따라 검사명이 깨어져 있으며 이는 deccoding fix가 되지 않는다.",
-    "crumbs": [
-      "개발기록",
-      "NM Dose",
-      "SpeficifCharactorSet decoding"
-    ]
-  },
-  {
-    "objectID": "posts/development/open_source/others.html",
-    "href": "posts/development/open_source/others.html",
+    "objectID": "posts/development/open_source/open_source.html",
+    "href": "posts/development/open_source/open_source.html",
     "title": "Open Source",
     "section": "",
-    "text": "open source 이용한 반자동화",
+    "text": "Dose Report Retrieve\n\n병원 PACS로부터 추출하는 것은 시도하지 않았다.\n핵의학과 mini PACS로부터 선량정보를 가지고 있는 DICOM 파일들만 선택적으로 추출 가능한지 검토하였다.\nDiscovery 710에서 Dose Report는 SeriesDescription 태그에 “Dose Report”가 기록되어 있거나 SeriesNumber 태그에 “999”가 기록되어져 있으므로 이를 이용해서 query & retrieve 할 수 있다.\n저자의 병원 Zetta PACS에서는 SeriesDescription이나 SeriesNumber를 필터하여 DICOM send할 수 있는 기능이 없으므로 open source dicom server에서 query & retrieve 하는 방식으로 먼저 접근하였다.\nConquest에서는 SeriesDescription\n\nopen source를 이용해서 추출했을 때 결과는 아래와 같았다.",
     "crumbs": [
       "개발기록",
-      "opon source",
-      "Open Source"
+      "opon source"
     ]
   },
   {
-    "objectID": "posts/dicom/dicom.html",
-    "href": "posts/dicom/dicom.html",
-    "title": "DICOM",
+    "objectID": "posts/dicom/conformance/conformance.html",
+    "href": "posts/dicom/conformance/conformance.html",
+    "title": "Conformance",
     "section": "",
-    "text": "DICOM",
+    "text": "Discovery 710/610 Optima 560"
+  },
+  {
+    "objectID": "posts/dicom/information/structure.html",
+    "href": "posts/dicom/information/structure.html",
+    "title": "구조",
+    "section": "",
+    "text": "DICOM Structure",
     "crumbs": [
-      "DICOM"
+      "DICOM",
+      "Information",
+      "구조"
     ]
   },
   {
-    "objectID": "posts/manual.html",
-    "href": "posts/manual.html",
-    "title": "사이트사용법",
+    "objectID": "posts/standardization/standardization.html",
+    "href": "posts/standardization/standardization.html",
+    "title": "Standardization",
     "section": "",
-    "text": "날짜의 의미\n\n각 웹페이지는 두 가지 날짜가 있으며 이 웹사이트에서는 구별되어 사용되고 있습니다.\n\nPUBLISHED는 최초작성일에 해당하는 개념입니다.\n\n블로그에서 Date-Oldest, Date-Newest 정렬(Order By)할 때 기준으로 사용됩니다.\n\nMODIFIED는 최종수정일에 해당하는 개념입니다.\n\n블로그에서 Default로 정렬할 때 기준으로 사용됩니다.\nDefault로 정렬할 때 내부적으로 MODIFIED 날짜의 최신순으로 되지만, 정렬된 페이지목록에서 각 페이지의 왼쪽의 보여지는 날짜는 MODIFIED가 아닌 PUBLISHED를 보여줍니다. 이로인해 Defalut 정렬에서 각 페이지의 날짜와 정렬이 맞지 않는 것처럼 착각될 수 있으므로 주의를 요합니다.\n\n\n\n\n\n댓글\n\n댓글 기능은 guthub에 가입해야 가능합니다.\n아직 개발중인 기능이라 웹페이지가 갱신될 때 기존 댓글이 사라질 수 있으니 알파/베타 테스터 분들의 양해를 바랍니다."
+    "text": "다기관 선량정보수집에 필요한 검사명칭 표준화 현황과 제안",
+    "crumbs": [
+      "표준화",
+      "Standardization"
+    ]
   },
   {
-    "objectID": "posts/tools/Conquest.html",
-    "href": "posts/tools/Conquest.html",
-    "title": "Conquest",
+    "objectID": "posts/tools/dcm4chee.html",
+    "href": "posts/tools/dcm4chee.html",
+    "title": "DCM4chee",
     "section": "",
-    "text": "구축 필요성\n개발 단계에서 실제 PACS를 모사할 수 있는 별도의 DICOM 서버를 구축할 필요가 아래와 같은 오픈소스들을 검토하였다.\n\n\nConquest dicom server\n설정과 사용법이 간단하여 저자가 테스트에 가장 먼저 성공한 프로그램이기도 하다. 특히 저장폴더가 직관적이다.\n\n설치파일\n최신 설치파일은 공식사이트가 아닌 Cnquest User Forum에 공개된 2024년 9월 25일 release된 버전 1.5.0e (dicomserver-1.5.0e.zip, https://forum.iq-image.com/forum/index.php?thread/50654-conquest-1-5-0e-released/)가 최신이다.\n\n\n설치방법\n설치방법은 원하는 폴더에서 설치파일의 압축을 풀면된다. 업그레이드시에는 매뉴얼에 따르면 다음의 지시를 따르면 된다. - 기본적으로 exe 및 dll 파일을 교체하면 업데이트 가능하지만, - 일부 설정 파일(dicom.sql, dgatesop.lst, dicom.ini)을 조정할 경우 데이터베이스를 다시 생성해야 할 수도 있습니다. - 서버는 반드시 업데이트 전에 중지해야 하며, 서비스로 실행 중이면 제어판에서 중지 또는 서비스 해제가 필요합니다. - 데이터베이스 재생성이 필요한 경우 매우 오랜 시간이 걸릴 수 있으므로 주의해야 합니다. - 기존 데이터를 유지하려면 dicom.sql을 백업 후 복원하는 것이 좋습니다. - 저자의 경우는 data폴더, acrnema.map, dicom.ini 파일을 제외하고 삭제한 뒤 설치압축파일을 풀면 데이터와 설정이 유지된 체로 업그레이드 하고 database reganeration을 하였다.\n\n\n활용 현황\n이 서버프로그램으로 저자는 NMDose, NMIQ, NMFullData, NMTEMPSERVER, ZettaPACS를 구축하여 선량분석시스템, 영상품질자동화, clinical PACS모사, 임시서버, clinical PACS 모사의 목적으로 사용하고 있다.\n\n\nLua script\n쿼리를 정교하게 할 수 있다.\n\n\n저장파일의 이름을 지정하는 방식\n%id_%studydate%modality_%series_%sopuid.dcm",
+    "text": "SDKMAN\n\nSDKMAN(Software Development Kit MANager)은 유닉스 환경에서 여러 소프트웨어 개발 키트를 손쉽게 관리할 수 있는 CLI 도구이다.\n여기에서는 프로젝트별로 Java 버전을 관리(matching)하기 위해 설치하였다.\n\n\n설치\n\ncurl(Client URL)은 명령줄에서 HTTP, HTTPS, FTP, SCP 등의 프로토콜을 사용하여 데이터를 전송하는 도구인데, Git bash가 설치될 때 같이 설치되므로 git bash에서 아래와 같이 설치하였다.\n\ncurl -s \"https://get.sdkman.io\" | bash\n\n설치 경로\n\nSDKMAN은 기본적으로 현재 로그인한 사용자 계정의 홈 디렉토리에 설치된다.\n따라서 로그인 사용자에 따라 아래와 같은 차이가 발생함을 주의해야 한다.\n\nLaptop: C:.sdkman\nDesktop: C:.sdkman\n\n\npath 설정도 manual로 해주어야 한다.\n설치확인은 git bash에서 아래와 같이 입력한다.\n\nsdk version\n\n\n\nJAVA\n\n기존 Java가 어떤 프로그램에서 사용되는지 명확하지 않아, 먼저 삭제하고 필요할 때 SDKMAN으로 다시 설치하는 전략으로 진행함. #### 기존 Java 삭제\n제어판 -&gt; 프로그램 및 기능 -&gt; Java 삭제\npath에서도 삭제\n\n\nJAVA 설치\nsdk install java 17.0.8-tem\n설치는 .sdkman/candidates/java/17.0.8-tem에 설치됨\nC:\\Users\\Benjamin\\.sdkman\\candidates\\java\\current\\bin\\java.exe\n\n\nJAVA_HOME 설정\nJAVA_HOME: C:\\Users\\Benjamin\\.sdkman\\candidates\\current\n\n\nPATH 설정\nC:\\Users\\Benjamin\\.sdkman\\candidates\\current\\bin\n\n\nJAVA 설치 확인\njava -version\n\n\n\nDCM4chee binary install\n\nDCM4chee는 open source PACS로서 Java로 구현되어 있어 Java가 필요하다.\nJava가 설치되어 있지 않다면 SDKMAN으로 설치하고, DCM4chee를 설치한다.\nDCM4chee는 binary로 설치 시도 하였지만 압축해제 후 폴더에 실행파일이 없는 오류의 원인을 찾지못해 보류하였다.\n\n\n\nApache Maven\n\nApache Maven은 open source build up 도구이며, DCM4chee source build up이 이미 Maven으로 되어 있어 Maven을 설치하였다.\n\n\n설치\n\nSDKMAN으로 설치하였다.\n\nsdk install maven\n설치된 폴더는 아래와 같았다.\nC:\\Users\\Benjamin\\.sdkman\\candidates\\maven\\\n\n\nPATH 설정\nC:\\Users\\Benjamin\\.sdkman\\candidates\\maven\\current\\bin\n\n\nMAVEN 설치 확인\nmvn -version\n\n\n\nDCM4chee source build up\n\nDCM4chee는 source build up이 필요하여 아래의 github를 clone 하였다.\n\ngit clone",
     "crumbs": [
       "Tools",
-      "Conquest"
+      "DCM4chee"
     ]
   },
   {

@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="BenKorea">
-<meta name="dcterms.date" content="2025-03-05">
-<meta name="description" content="database open source">
+<meta name="dcterms.date" content="2025-03-07">
+<meta name="description" content="DCM4che로 구현한 open source PACS">
 
-<title>PostgreSQL – NMIQ</title>
+<title>DCM4chee – NMIQ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/tools/PostgreSQL.html">PostgreSQL</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/tools/dcm4chee.html">DCM4chee</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -199,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/dcm4chee.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/tools/dcm4chee.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">DCM4chee</span></a>
   </div>
 </li>
@@ -217,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/PostgreSQL.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/tools/PostgreSQL.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PostgreSQL</span></a>
   </div>
 </li>
@@ -261,13 +261,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#필요성" id="toc-필요성" class="nav-link active" data-scroll-target="#필요성">필요성</a></li>
-  <li><a href="#설치파일" id="toc-설치파일" class="nav-link" data-scroll-target="#설치파일">설치파일</a></li>
-  <li><a href="#설치방법" id="toc-설치방법" class="nav-link" data-scroll-target="#설치방법">설치방법</a></li>
-  <li><a href="#orthanc의-dicom-저장소로-설정하기" id="toc-orthanc의-dicom-저장소로-설정하기" class="nav-link" data-scroll-target="#orthanc의-dicom-저장소로-설정하기">Orthanc의 dicom 저장소로 설정하기</a>
+  <li><a href="#sdkman" id="toc-sdkman" class="nav-link active" data-scroll-target="#sdkman">SDKMAN</a>
   <ul>
-  <li><a href="#database-만들기" id="toc-database-만들기" class="nav-link" data-scroll-target="#database-만들기">database 만들기</a></li>
+  <li><a href="#설치" id="toc-설치" class="nav-link" data-scroll-target="#설치">설치</a></li>
   </ul></li>
+  <li><a href="#java" id="toc-java" class="nav-link" data-scroll-target="#java">JAVA</a>
+  <ul>
+  <li><a href="#java-설치" id="toc-java-설치" class="nav-link" data-scroll-target="#java-설치">JAVA 설치</a></li>
+  <li><a href="#java_home-설정" id="toc-java_home-설정" class="nav-link" data-scroll-target="#java_home-설정">JAVA_HOME 설정</a></li>
+  <li><a href="#path-설정" id="toc-path-설정" class="nav-link" data-scroll-target="#path-설정">PATH 설정</a></li>
+  <li><a href="#java-설치-확인" id="toc-java-설치-확인" class="nav-link" data-scroll-target="#java-설치-확인">JAVA 설치 확인</a></li>
+  </ul></li>
+  <li><a href="#dcm4chee-binary-install" id="toc-dcm4chee-binary-install" class="nav-link" data-scroll-target="#dcm4chee-binary-install">DCM4chee binary install</a></li>
+  <li><a href="#apache-maven" id="toc-apache-maven" class="nav-link" data-scroll-target="#apache-maven">Apache Maven</a>
+  <ul>
+  <li><a href="#설치-1" id="toc-설치-1" class="nav-link" data-scroll-target="#설치-1">설치</a></li>
+  <li><a href="#path-설정-1" id="toc-path-설정-1" class="nav-link" data-scroll-target="#path-설정-1">PATH 설정</a></li>
+  <li><a href="#maven-설치-확인" id="toc-maven-설치-확인" class="nav-link" data-scroll-target="#maven-설치-확인">MAVEN 설치 확인</a></li>
+  </ul></li>
+  <li><a href="#dcm4chee-source-build-up" id="toc-dcm4chee-source-build-up" class="nav-link" data-scroll-target="#dcm4chee-source-build-up">DCM4chee source build up</a></li>
   </ul>
 </nav>
     </div>
@@ -276,18 +288,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PostgreSQL</h1>
+<h1 class="title">DCM4chee</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">tools</div>
-    <div class="quarto-category">open source</div>
-    <div class="quarto-category">database</div>
-    <div class="quarto-category">PostgreSQL</div>
+    <div class="quarto-category">DCM4che</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    database open source
+    DCM4che로 구현한 open source PACS
   </div>
 </div>
 
@@ -304,14 +313,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 5, 2025</p>
+      <p class="date">March 7, 2025</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 14, 2025</p>
+      <p class="date-modified">March 17, 2025</p>
     </div>
   </div>
     
@@ -322,44 +331,99 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="sdkman" class="level3">
+<h3 class="anchored" data-anchor-id="sdkman">SDKMAN</h3>
 <ul>
-<li>Berkeley Software Distribution (BSD) license</li>
+<li>SDKMAN(Software Development Kit MANager)은 유닉스 환경에서 여러 소프트웨어 개발 키트를 손쉽게 관리할 수 있는 CLI 도구이다.</li>
+<li>여기에서는 프로젝트별로 Java 버전을 관리(matching)하기 위해 설치하였다.</li>
 </ul>
-<section id="필요성" class="level3">
-<h3 class="anchored" data-anchor-id="필요성">필요성</h3>
-<p>Orthanc dicom 저장시 연결하면 속도가 향상되므로 필요</p>
-</section>
-<section id="설치파일" class="level3">
-<h3 class="anchored" data-anchor-id="설치파일">설치파일</h3>
-<p>https://www.enterprisedb.com/downloads/postgres-postgresql-downloads</p>
-</section>
-<section id="설치방법" class="level3">
-<h3 class="anchored" data-anchor-id="설치방법">설치방법</h3>
+<section id="설치" class="level4">
+<h4 class="anchored" data-anchor-id="설치">설치</h4>
 <ul>
-<li>프로그램 자체는 default folder에 설치한다.</li>
-<li>그러나 data는 여러가지 목적에 의해서
+<li>curl(Client URL)은 명령줄에서 HTTP, HTTPS, FTP, SCP 등의 프로토콜을 사용하여 데이터를 전송하는 도구인데, Git bash가 설치될 때 같이 설치되므로 git bash에서 아래와 같이 설치하였다.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> <span class="st">"https://get.sdkman.io"</span> <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>PC에서는 E:\17,</li>
-<li>노트북에서는 C:\17설치하였다.</li>
+<li>설치 경로
+<ul>
+<li>SDKMAN은 기본적으로 현재 로그인한 사용자 계정의 홈 디렉토리에 설치된다.</li>
+<li>따라서 로그인 사용자에 따라 아래와 같은 차이가 발생함을 주의해야 한다.
+<ul>
+<li>Laptop: C:.sdkman</li>
+<li>Desktop: C:.sdkman</li>
 </ul></li>
-<li>passworkd는 “postgres”로 진행하고 추후 변경하기로 했다.</li>
-<li>path 설정은 manual로 해야 한다.</li>
+</ul></li>
+<li>path 설정도 manual로 해주어야 한다.</li>
+<li>설치확인은 git bash에서 아래와 같이 입력한다.</li>
 </ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sdk</span> version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="orthanc의-dicom-저장소로-설정하기" class="level3">
-<h3 class="anchored" data-anchor-id="orthanc의-dicom-저장소로-설정하기">Orthanc의 dicom 저장소로 설정하기</h3>
-<section id="database-만들기" class="level4">
-<h4 class="anchored" data-anchor-id="database-만들기">database 만들기</h4>
+</section>
+<section id="java" class="level3">
+<h3 class="anchored" data-anchor-id="java">JAVA</h3>
 <ul>
-<li>PostgreSQL의 정상실행여부는 윈도우 서비스에서 확인할 수 있고, 다양한 command로도 확인할 수 있다.</li>
+<li>기존 Java가 어떤 프로그램에서 사용되는지 명확하지 않아, 먼저 삭제하고 필요할 때 SDKMAN으로 다시 설치하는 전략으로 진행함. #### 기존 Java 삭제</li>
+<li>제어판 -&gt; 프로그램 및 기능 -&gt; Java 삭제</li>
+<li>path에서도 삭제</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>psql <span class="at">-U</span> postgres</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>CREATE USER nmuser WITH PASSWORD 'iloveben';</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>CREATE DATABASE orthanc OWNER nmuser;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>GRANT ALL PRIVILEGES ON DATABASE orthanc TO nmuser;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
+<section id="java-설치" class="level4">
+<h4 class="anchored" data-anchor-id="java-설치">JAVA 설치</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sdk</span> install java 17.0.8-tem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>설치는 .sdkman/candidates/java/17.0.8-tem에 설치됨</p>
+<pre><code>C:\Users\Benjamin\.sdkman\candidates\java\current\bin\java.exe</code></pre>
 </section>
+<section id="java_home-설정" class="level4">
+<h4 class="anchored" data-anchor-id="java_home-설정">JAVA_HOME 설정</h4>
+<pre class="path"><code>JAVA_HOME: C:\Users\Benjamin\.sdkman\candidates\current</code></pre>
+</section>
+<section id="path-설정" class="level4">
+<h4 class="anchored" data-anchor-id="path-설정">PATH 설정</h4>
+<pre class="path"><code>C:\Users\Benjamin\.sdkman\candidates\current\bin</code></pre>
+</section>
+<section id="java-설치-확인" class="level4">
+<h4 class="anchored" data-anchor-id="java-설치-확인">JAVA 설치 확인</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>java <span class="at">-version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="dcm4chee-binary-install" class="level3">
+<h3 class="anchored" data-anchor-id="dcm4chee-binary-install">DCM4chee binary install</h3>
+<ul>
+<li>DCM4chee는 open source PACS로서 Java로 구현되어 있어 Java가 필요하다.</li>
+<li>Java가 설치되어 있지 않다면 SDKMAN으로 설치하고, DCM4chee를 설치한다.</li>
+<li>DCM4chee는 binary로 설치 시도 하였지만 압축해제 후 폴더에 실행파일이 없는 오류의 원인을 찾지못해 보류하였다.</li>
+</ul>
+</section>
+<section id="apache-maven" class="level3">
+<h3 class="anchored" data-anchor-id="apache-maven">Apache Maven</h3>
+<ul>
+<li>Apache Maven은 open source build up 도구이며, DCM4chee source build up이 이미 Maven으로 되어 있어 Maven을 설치하였다.</li>
+</ul>
+<section id="설치-1" class="level4">
+<h4 class="anchored" data-anchor-id="설치-1">설치</h4>
+<ul>
+<li>SDKMAN으로 설치하였다.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sdk</span> install maven</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>설치된 폴더는 아래와 같았다.</p>
+<pre><code>C:\Users\Benjamin\.sdkman\candidates\maven\</code></pre>
+</section>
+<section id="path-설정-1" class="level4">
+<h4 class="anchored" data-anchor-id="path-설정-1">PATH 설정</h4>
+<pre class="path"><code>C:\Users\Benjamin\.sdkman\candidates\maven\current\bin</code></pre>
+</section>
+<section id="maven-설치-확인" class="level4">
+<h4 class="anchored" data-anchor-id="maven-설치-확인">MAVEN 설치 확인</h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mvn <span class="at">-version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="dcm4chee-source-build-up" class="level3">
+<h3 class="anchored" data-anchor-id="dcm4chee-source-build-up">DCM4chee source build up</h3>
+<ul>
+<li>DCM4chee는 source build up이 필요하여 아래의 github를 clone 하였다.</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
 </section>
 
 </main> <!-- /main -->
