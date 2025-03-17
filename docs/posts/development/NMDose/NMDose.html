@@ -280,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 13, 2025</p>
+      <p class="date-modified">March 14, 2025</p>
     </div>
   </div>
     
@@ -387,17 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co"># 지정된 디렉토리에서 DICOM 파일들을 읽어옵니다.</span></span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>dicom_files <span class="op">=</span> read_dicom_files(directory)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>File: 1.3.46.670589.5.2.10.2156913941.892665339.860724_0001_002000_14579035620000.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: 
- -&gt; Decoded: 
-
-Original Patient Name: HEAD EXP2 -&gt; Decoded: HEAD EXP2
-File: 1.3.46.670589.5.2.10.2156913941.892665339.860724_0001_003000_14579035620001.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: 
- -&gt; Decoded: 
-
-Original Patient Name: HEAD EXP2 -&gt; Decoded: HEAD EXP2
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024022200491945300000190.dcm - Specific Character Set: ISO_IR 100
+<pre><code>File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024022200491945300000190.dcm - Specific Character Set: ISO_IR 100
 Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
 Original Patient Name: NOH OK BUN -&gt; Decoded: NOH OK BUN
 File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024031223303798400000224.dcm - Specific Character Set: ISO_IR 100
@@ -464,7 +454,7 @@ Original Patient Name: PARK MYUNG JA -&gt; Decoded: PARK MYUNG JA</code></pre>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 읽어온 DICOM 파일의 개수를 출력합니다.</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"dicom 파일 개수: </span><span class="sc">{</span><span class="bu">len</span>(dicom_files)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>dicom 파일 개수: 23</code></pre>
+<pre><code>dicom 파일 개수: 21</code></pre>
 </div>
 </div>
 <div class="cell">

@@ -40,13 +40,17 @@ website:
     - title: "Tools"
       contents:
         - posts/tools/tools.qmd
-        - posts/tools/ubuntu_on_wsl2.qmd        
+        - posts/tools/ubuntu_on_wsl2.qmd   
+        - posts/tools/docker.qmd 
+        - posts/tools/dcm4chee.qmd         
         - posts/tools/Conquest.qmd
         - posts/tools/Orthanc.qmd
+        - posts/tools/PostgreSQL.qmd  
         - posts/tools/Slicer.qmd
         - posts/tools/dicoogle.qmd
         - posts/tools/DoseUtility.qmd
         - posts/tools/OpenREM.qmd
+        - posts/tools/dcmtk.qmd         
     - title: "DICOM"
       contents:
         - posts/dicom/dicom.qmd

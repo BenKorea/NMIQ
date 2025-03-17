@@ -137,7 +137,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles/tooltip.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -163,7 +163,7 @@ window.Quarto = {
 <span class="menu-text">개발기록</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/tools/tools.html"> 
+    <a class="nav-link active" href="../../posts/tools/tools.html" aria-current="page"> 
 <span class="menu-text">Tools</span></a>
   </li>  
   <li class="nav-item">
@@ -191,10 +191,96 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/tools/docker.html">Docker</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tools</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/ubuntu_on_wsl2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ubuntu on WSL2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/docker.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Docker</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+ <span class="menu-text">posts/tools/dcm4chee.qmd</span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/Conquest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conquest</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/Orthanc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orthanc</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/PostgreSQL.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PostgreSQL</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/Slicer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Slicer</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/dicoogle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dicoogle</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/DoseUtility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DoseUtility</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/OpenREM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OpenREM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/dcmtk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DCMTK</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -228,6 +314,14 @@ window.Quarto = {
   <li><a href="#portainer-컨테이너-실행" id="toc-portainer-컨테이너-실행" class="nav-link" data-scroll-target="#portainer-컨테이너-실행">Portainer 컨테이너 실행**</a></li>
   <li><a href="#실행중인-container-확인" id="toc-실행중인-container-확인" class="nav-link" data-scroll-target="#실행중인-container-확인">실행중인 container 확인</a></li>
   <li><a href="#portainer-제거" id="toc-portainer-제거" class="nav-link" data-scroll-target="#portainer-제거">Portainer 제거</a></li>
+  <li><a href="#로그인-id-password" id="toc-로그인-id-password" class="nav-link" data-scroll-target="#로그인-id-password">로그인 id &amp; password</a></li>
+  </ul></li>
+  <li><a href="#docker-compose" id="toc-docker-compose" class="nav-link" data-scroll-target="#docker-compose">docker-compose</a>
+  <ul class="collapse">
+  <li><a href="#설치-1" id="toc-설치-1" class="nav-link" data-scroll-target="#설치-1">설치</a></li>
+  <li><a href="#프로젝트-만들기" id="toc-프로젝트-만들기" class="nav-link" data-scroll-target="#프로젝트-만들기">프로젝트 만들기</a></li>
+  <li><a href="#docker-compose.yml-파일-작성" id="toc-docker-compose.yml-파일-작성" class="nav-link" data-scroll-target="#docker-compose.yml-파일-작성">docker-compose.yml 파일 작성</a></li>
+  <li><a href="#실행" id="toc-실행" class="nav-link" data-scroll-target="#실행">실행</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -270,7 +364,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 16, 2025</p>
+      <p class="date-modified">March 17, 2025</p>
     </div>
   </div>
     
@@ -497,6 +591,78 @@ CLI(Command Line Interface) 없이도 <strong>컨테이너, 이미지, 네트워
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>docker stop portainer</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>docker rm <span class="sc">-</span>f portainer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="로그인-id-password" class="level4">
+<h4 class="anchored" data-anchor-id="로그인-id-password">로그인 id &amp; password</h4>
+<p>ben benjamin060318</p>
+</section>
+</section>
+<section id="docker-compose" class="level3">
+<h3 class="anchored" data-anchor-id="docker-compose">docker-compose</h3>
+<p>Docker Compose는 다중 컨테이너 애플리케이션을 정의하고 실행하기 위한 도구입니다. 이 도구를 활용하면 개발 및 배포 과정을 간소화하고 효율적으로 관리할 수 있습니다.</p>
+<p>Compose를 사용하면 하나의 이해하기 쉬운 YAML 구성 파일 내에서 서비스, 네트워크, 볼륨 등을 포함한 전체 애플리케이션 스택을 손쉽게 관리할 수 있습니다. 단 한 개의 명령어로 구성 파일에 명시된 모든 서비스를 생성하고 실행할 수 있다는 점이 큰 장점입니다.</p>
+<p>Docker Compose는 프로덕션, 스테이징, 개발, 테스트 환경은 물론 CI 워크플로우 등 다양한 환경에서 활용될 수 있습니다. 또한, 전체 애플리케이션의 라이프사이클을 관리하기 위한 명령어들을 제공하여,</p>
+<p>서비스 시작, 중지, 재구축 실행 중인 서비스의 상태 확인 실행 중인 서비스의 로그 출력 스트리밍 서비스에 대한 일회성 명령 실행 등의 작업을 손쉽게 수행할 수 있습니다.</p>
+<section id="설치-1" class="level4">
+<h4 class="anchored" data-anchor-id="설치-1">설치</h4>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sudo apt<span class="sc">-</span>get install docker<span class="sc">-</span>compose</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>docker<span class="sc">-</span>compose <span class="sc">--</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="프로젝트-만들기" class="level4">
+<h4 class="anchored" data-anchor-id="프로젝트-만들기">프로젝트 만들기</h4>
+<p>/home/user/docker-compose-test 디렉토리를 생성하고, 해당 디렉토리로 이동합니다.</p>
+</section>
+<section id="docker-compose.yml-파일-작성" class="level4">
+<h4 class="anchored" data-anchor-id="docker-compose.yml-파일-작성">docker-compose.yml 파일 작성</h4>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>docker-compose.yml</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>version<span class="sc">:</span> <span class="st">'3'</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>services<span class="sc">:</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  portainer<span class="sc">:</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> portainer<span class="sc">/</span>portainer<span class="sc">-</span>ce<span class="sc">:</span>latest</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    container_name<span class="sc">:</span> portainer</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    restart<span class="sc">:</span> always</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"8000:8000"</span>  <span class="co"># Portainer Agent 통신용</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9000:9000"</span>  <span class="co"># Portainer 웹 UI 접속용 (http://localhost:9000)</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9443:9443"</span>  <span class="co"># HTTPS 접속용</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>run<span class="sc">/</span>docker.sock<span class="sc">:</span><span class="er">/</span>var<span class="sc">/</span>run<span class="sc">/</span>docker.sock</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> portainer_data<span class="sc">:</span><span class="er">/</span>data</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>volumes<span class="sc">:</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  portainer_data<span class="sc">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="실행" class="level4">
+<h4 class="anchored" data-anchor-id="실행">실행</h4>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>docker compose up <span class="sc">-</span>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 
