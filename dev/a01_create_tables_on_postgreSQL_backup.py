@@ -1,6 +1,6 @@
 import pandas as pd
 import psycopg2
-from a0_extracted_dicom_tag_information import tag_information, subtag_information
+from dev.a0_extracted_dicom_tag_information import tag_information, subtag_information
 
 def create_table_from_tag_info(connection, cursor, table_name, tag_info, add_series_instance_uid=False, add_item_number=False, add_ctdivol_average=False):
     # 테이블 생성 SQL 쿼리 생성

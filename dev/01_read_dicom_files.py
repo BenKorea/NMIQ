@@ -1,6 +1,8 @@
 # %%
 import os
 import pydicom
+import platform
+
 
 
 def read_dicom_files(directory):
@@ -56,7 +58,14 @@ def filter_dicom_files_by_description(dicom_files):
 
 
 # 실행할 디렉토리 경로 설정
-directory = r"C:\NMDose\data"
+if platform.system() == 'Windows':
+    directory = r"C:\NMDose\data"
+elif platform.system() == 'Linux':
+    directory = "/mnt/c/NMDose/data"
+else:
+    raise OSError("지원하지 않는 운영체제입니다.")
+
+print("사용할 디렉토리:", directory)
 
 # 지정된 디렉토리에서 DICOM 파일들을 읽어옵니다.
 dicom_files = read_dicom_files(directory)

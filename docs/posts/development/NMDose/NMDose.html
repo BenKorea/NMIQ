@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-a78d143f50226e98f7090688eeb399e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -280,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 14, 2025</p>
+      <p class="date-modified">April 4, 2025</p>
     </div>
   </div>
     
@@ -385,105 +385,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>directory <span class="op">=</span> <span class="vs">r"C:\NMDose\data"</span></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co"># 지정된 디렉토리에서 DICOM 파일들을 읽어옵니다.</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>dicom_files <span class="op">=</span> read_dicom_files(directory)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>dicom_files <span class="op">=</span> read_dicom_files(directory)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co"># 읽어온 DICOM 파일의 개수를 출력합니다.</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"dicom 파일 개수: </span><span class="sc">{</span><span class="bu">len</span>(dicom_files)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024022200491945300000190.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: NOH OK BUN -&gt; Decoded: NOH OK BUN
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024031223303798400000224.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: KIM SUK JA -&gt; Decoded: KIM SUK JA
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024011023285176500000773.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: SEO JUNG YE -&gt; Decoded: SEO JUNG YE
-File: CT_0999_1.2.840.113619.2.290.3.296522351.221.1704686293.232.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Song Jong Rim -&gt; Decoded: Song Jong Rim
-File: SR_0997_1.2.840.113619.2.290.3.296522351.221.1704686293.234.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Song Jong Rim -&gt; Decoded: Song Jong Rim
-File: CT_0999_1.2.840.113619.2.290.3.296522351.345.1710718439.32.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Jung Yang Gu -&gt; Decoded: Jung Yang Gu
-File: SR_0997_1.2.840.113619.2.290.3.296522351.345.1710718439.34.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Jung Yang Gu -&gt; Decoded: Jung Yang Gu
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024020423410571800001245.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: PARK KEUM SEON -&gt; Decoded: PARK KEUM SEON
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024010923324851500000245.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: KIM JUNG BUN -&gt; Decoded: KIM JUNG BUN
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024013123395351500000200.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: JEON HAE YEONG -&gt; Decoded: JEON HAE YEONG
-File: CT_0999_1.2.840.113619.2.290.3.296522351.163.1708299137.595.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Kim Gwi Sun -&gt; Decoded: Kim Gwi Sun
-File: SR_0997_1.2.840.113619.2.290.3.296522351.163.1708299137.597.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Kim Gwi Sun -&gt; Decoded: Kim Gwi Sun
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024010823285431200000274.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: LEE SANG YEONG -&gt; Decoded: LEE SANG YEONG
-File: CT_0999_1.2.840.113619.2.290.3.296522351.31.1705997406.736.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: (Á¾ÇÕ°ËÁø)F-18 ÇÃ·Î¶óÇ -&gt; Decoded: (Á¾ÇÕ°ËÁø)F-18 ÇÃ·Î¶óÇ
-Original Patient Name: Lee Gyeong Seon -&gt; Decoded: Lee Gyeong Seon
-File: SR_0997_1.2.840.113619.2.290.3.296522351.31.1705997406.738.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: (Á¾ÇÕ°ËÁø)F-18 ÇÃ·Î¶óÇ -&gt; Decoded: (Á¾ÇÕ°ËÁø)F-18 ÇÃ·Î¶óÇ
-Original Patient Name: Lee Gyeong Seon -&gt; Decoded: Lee Gyeong Seon
-File: CT_0999_1.2.840.113619.2.290.3.296522351.30.1707286774.167.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Park Yeong E -&gt; Decoded: Park Yeong E
-File: SR_0997_1.2.840.113619.2.290.3.296522351.30.1707286774.169.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Park Yeong E -&gt; Decoded: Park Yeong E
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024021400020553100000614.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: KIM MI JA -&gt; Decoded: KIM MI JA
-File: CT_0999_1.2.840.113619.2.290.3.296522351.31.1705997414.669.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Choi Eul Rye -&gt; Decoded: Choi Eul Rye
-File: SR_0997_1.2.840.113619.2.290.3.296522351.31.1705997414.671.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾ -&gt; Decoded: F-18 ÇÃ·Î¶óÇÃ·Î³î ³ú ¾
-Original Patient Name: Choi Eul Rye -&gt; Decoded: Choi Eul Rye
-File: CT_0501_1.3.12.2.1107.5.1.4.45592.30000024011823432560900000123.dcm - Specific Character Set: ISO_IR 100
-Original Study Description: PET^KCCH_Brain_Alz (Adult) -&gt; Decoded: PET^KCCH_Brain_Alz (Adult)
-Original Patient Name: PARK MYUNG JA -&gt; Decoded: PARK MYUNG JA</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 읽어온 DICOM 파일의 개수를 출력합니다.</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"dicom 파일 개수: </span><span class="sc">{</span><span class="bu">len</span>(dicom_files)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>dicom 파일 개수: 21</code></pre>
+<pre><code>dicom 파일 개수: 0</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> filter_dicom_files_by_description(dicom_files):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""DICOM 파일들을 SeriesDescription에 따라 'Dose Report'와 'Patient Protocol'로 필터링합니다."""</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    dose_report_files <span class="op">=</span> []</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    patient_protocol_files <span class="op">=</span> []</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> dicom_files:</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">hasattr</span>(<span class="bu">file</span>, <span class="st">'SeriesDescription'</span>):</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">file</span>.SeriesDescription <span class="op">==</span> <span class="st">"Dose Report"</span>:</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                dose_report_files.append(<span class="bu">file</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> <span class="bu">file</span>.SeriesDescription <span class="op">==</span> <span class="st">"Patient Protocol"</span>:</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                patient_protocol_files.append(<span class="bu">file</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dose_report_files, patient_protocol_files</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 'Dose Report'와 'Patient Protocol'에 해당하는 파일 필터링</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>dose_report_files, patient_protocol_files <span class="op">=</span> filter_dicom_files_by_description(dicom_files)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 결과 확인</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dose Report 파일 개수: </span><span class="sc">{</span><span class="bu">len</span>(dose_report_files)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> filter_dicom_files_by_description(dicom_files):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""DICOM 파일들을 SeriesDescription에 따라 'Dose Report'와 'Patient Protocol'로 필터링합니다."""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    dose_report_files <span class="op">=</span> []</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    patient_protocol_files <span class="op">=</span> []</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> dicom_files:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">hasattr</span>(<span class="bu">file</span>, <span class="st">'SeriesDescription'</span>):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">file</span>.SeriesDescription <span class="op">==</span> <span class="st">"Dose Report"</span>:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                dose_report_files.append(<span class="bu">file</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> <span class="bu">file</span>.SeriesDescription <span class="op">==</span> <span class="st">"Patient Protocol"</span>:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                patient_protocol_files.append(<span class="bu">file</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dose_report_files, patient_protocol_files</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 'Dose Report'와 'Patient Protocol'에 해당하는 파일 필터링</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>dose_report_files, patient_protocol_files <span class="op">=</span> filter_dicom_files_by_description(dicom_files)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 결과 확인</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dose Report 파일 개수: </span><span class="sc">{</span><span class="bu">len</span>(dose_report_files)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Dose Report 파일 개수: 6</code></pre>
+<pre><code>Dose Report 파일 개수: 0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Patient Protocol 파일 개수: </span><span class="sc">{</span><span class="bu">len</span>(patient_protocol_files)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Patient Protocol 파일 개수: </span><span class="sc">{</span><span class="bu">len</span>(patient_protocol_files)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Patient Protocol 파일 개수: 9</code></pre>
+<pre><code>Patient Protocol 파일 개수: 0</code></pre>
 </div>
 </div>
 

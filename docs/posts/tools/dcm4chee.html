@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a78d143f50226e98f7090688eeb399e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -261,25 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sdkman" id="toc-sdkman" class="nav-link active" data-scroll-target="#sdkman">SDKMAN</a>
-  <ul>
-  <li><a href="#설치" id="toc-설치" class="nav-link" data-scroll-target="#설치">설치</a></li>
-  </ul></li>
-  <li><a href="#java" id="toc-java" class="nav-link" data-scroll-target="#java">JAVA</a>
-  <ul>
-  <li><a href="#java-설치" id="toc-java-설치" class="nav-link" data-scroll-target="#java-설치">JAVA 설치</a></li>
-  <li><a href="#java_home-설정" id="toc-java_home-설정" class="nav-link" data-scroll-target="#java_home-설정">JAVA_HOME 설정</a></li>
-  <li><a href="#path-설정" id="toc-path-설정" class="nav-link" data-scroll-target="#path-설정">PATH 설정</a></li>
-  <li><a href="#java-설치-확인" id="toc-java-설치-확인" class="nav-link" data-scroll-target="#java-설치-확인">JAVA 설치 확인</a></li>
-  </ul></li>
-  <li><a href="#dcm4chee-binary-install" id="toc-dcm4chee-binary-install" class="nav-link" data-scroll-target="#dcm4chee-binary-install">DCM4chee binary install</a></li>
-  <li><a href="#apache-maven" id="toc-apache-maven" class="nav-link" data-scroll-target="#apache-maven">Apache Maven</a>
-  <ul>
-  <li><a href="#설치-1" id="toc-설치-1" class="nav-link" data-scroll-target="#설치-1">설치</a></li>
-  <li><a href="#path-설정-1" id="toc-path-설정-1" class="nav-link" data-scroll-target="#path-설정-1">PATH 설정</a></li>
-  <li><a href="#maven-설치-확인" id="toc-maven-설치-확인" class="nav-link" data-scroll-target="#maven-설치-확인">MAVEN 설치 확인</a></li>
-  </ul></li>
-  <li><a href="#dcm4chee-source-build-up" id="toc-dcm4chee-source-build-up" class="nav-link" data-scroll-target="#dcm4chee-source-build-up">DCM4chee source build up</a></li>
+  <li><a href="#docker-compose-설치" id="toc-docker-compose-설치" class="nav-link active" data-scroll-target="#docker-compose-설치">Docker-compose 설치</a></li>
   </ul>
 </nav>
     </div>
@@ -290,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title">
 <h1 class="title">DCM4chee</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">DCM4che</div>
+    <div class="quarto-category">DCM4chee</div>
   </div>
   </div>
 
@@ -320,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 17, 2025</p>
+      <p class="date-modified">April 6, 2025</p>
     </div>
   </div>
     
@@ -331,97 +313,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="sdkman" class="level3">
-<h3 class="anchored" data-anchor-id="sdkman">SDKMAN</h3>
+<section id="docker-compose-설치" class="level2">
+<h2 class="anchored" data-anchor-id="docker-compose-설치">Docker-compose 설치</h2>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sudo curl <span class="sc">-</span>L <span class="st">"https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)"</span> <span class="sc">-</span>o <span class="sc">/</span>usr<span class="sc">/</span>local<span class="sc">/</span>bin<span class="sc">/</span>docker<span class="sc">-</span>compose</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sudo chmod <span class="sc">+</span>x <span class="sc">/</span>usr<span class="sc">/</span>local<span class="sc">/</span>bin<span class="sc">/</span>docker<span class="sc">-</span>compose</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>docker<span class="sc">-</span>compose <span class="sc">--</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>매뉴얼 https://github.com/dcm4che/dcm4chee-arc-light/wiki/Run-minimum-set-of-archive-services-on-a-single-host</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>docker-compose.yml</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>services<span class="sc">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  ldap<span class="sc">:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> dcm4che<span class="sc">/</span>slapd<span class="sc">-</span>dcm4chee<span class="sc">:</span><span class="dv">2</span>.<span class="fl">6.7-33.1</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    logging<span class="sc">:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      driver<span class="sc">:</span> json<span class="sc">-</span>file</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      options<span class="sc">:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        max<span class="sc">-</span>size<span class="sc">:</span> <span class="st">"10m"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"389:389"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    environment<span class="sc">:</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      STORAGE_DIR<span class="sc">:</span> <span class="er">/</span>storage<span class="sc">/</span>fs1</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>ldap<span class="sc">:</span><span class="er">/</span>var<span class="sc">/</span>lib<span class="sc">/</span>openldap<span class="sc">/</span>openldap<span class="sc">-</span>data</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>slapd.d<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>openldap<span class="sc">/</span>slapd.d</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  db<span class="sc">:</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> dcm4che<span class="sc">/</span>postgres<span class="sc">-</span>dcm4chee<span class="sc">:</span><span class="fl">17.1</span><span class="dv">-33</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    logging<span class="sc">:</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      driver<span class="sc">:</span> json<span class="sc">-</span>file</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      options<span class="sc">:</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        max<span class="sc">-</span>size<span class="sc">:</span> <span class="st">"10m"</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>     <span class="sc">-</span> <span class="st">"5432:5432"</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    environment<span class="sc">:</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      POSTGRES_DB<span class="sc">:</span> pacsdb</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      POSTGRES_USER<span class="sc">:</span> pacs</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      POSTGRES_PASSWORD<span class="sc">:</span> pacs</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span>ro</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span>ro</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>db<span class="sc">:</span><span class="er">/</span>var<span class="sc">/</span>lib<span class="sc">/</span>postgresql<span class="sc">/</span>data</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  arc<span class="sc">:</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> dcm4che<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">-</span>psql<span class="sc">:</span><span class="dv">5</span>.<span class="fl">33.1</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    logging<span class="sc">:</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>      driver<span class="sc">:</span> json<span class="sc">-</span>file</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>      options<span class="sc">:</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        max<span class="sc">-</span>size<span class="sc">:</span> <span class="st">"10m"</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"8080:8080"</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"8443:8443"</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9990:9990"</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9993:9993"</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"11112:11112"</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"2762:2762"</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"2575:2575"</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"12575:12575"</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    environment<span class="sc">:</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>      POSTGRES_DB<span class="sc">:</span> pacsdb</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>      POSTGRES_USER<span class="sc">:</span> pacs</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>      POSTGRES_PASSWORD<span class="sc">:</span> pacs</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>      WILDFLY_CHOWN<span class="sc">:</span> <span class="er">/</span>storage</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>      WILDFLY_WAIT_FOR<span class="sc">:</span> ldap<span class="sc">:</span><span class="dv">389</span> db<span class="sc">:</span><span class="dv">5432</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    depends_on<span class="sc">:</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ldap</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> db</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span>ro</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span>ro</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>wildfly<span class="sc">:</span><span class="er">/</span>opt<span class="sc">/</span>wildfly<span class="sc">/</span>standalone</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>storage<span class="sc">:</span><span class="er">/</span>storage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sudo docker<span class="sc">-</span>compose <span class="sc">-</span>p dcm4chee up <span class="sc">-</span>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 <ul>
-<li>SDKMAN(Software Development Kit MANager)은 유닉스 환경에서 여러 소프트웨어 개발 키트를 손쉽게 관리할 수 있는 CLI 도구이다.</li>
-<li>여기에서는 프로젝트별로 Java 버전을 관리(matching)하기 위해 설치하였다.</li>
+<li>sudo를 하지 않으면 권한문제로 오류가 발생함</li>
 </ul>
-<section id="설치" class="level4">
-<h4 class="anchored" data-anchor-id="설치">설치</h4>
-<ul>
-<li>curl(Client URL)은 명령줄에서 HTTP, HTTPS, FTP, SCP 등의 프로토콜을 사용하여 데이터를 전송하는 도구인데, Git bash가 설치될 때 같이 설치되므로 git bash에서 아래와 같이 설치하였다.</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> <span class="st">"https://get.sdkman.io"</span> <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>설치 경로
-<ul>
-<li>SDKMAN은 기본적으로 현재 로그인한 사용자 계정의 홈 디렉토리에 설치된다.</li>
-<li>따라서 로그인 사용자에 따라 아래와 같은 차이가 발생함을 주의해야 한다.
-<ul>
-<li>Laptop: C:.sdkman</li>
-<li>Desktop: C:.sdkman</li>
-</ul></li>
-</ul></li>
-<li>path 설정도 manual로 해주어야 한다.</li>
-<li>설치확인은 git bash에서 아래와 같이 입력한다.</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sdk</span> version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="java" class="level3">
-<h3 class="anchored" data-anchor-id="java">JAVA</h3>
-<ul>
-<li>기존 Java가 어떤 프로그램에서 사용되는지 명확하지 않아, 먼저 삭제하고 필요할 때 SDKMAN으로 다시 설치하는 전략으로 진행함. #### 기존 Java 삭제</li>
-<li>제어판 -&gt; 프로그램 및 기능 -&gt; Java 삭제</li>
-<li>path에서도 삭제</li>
-</ul>
-<section id="java-설치" class="level4">
-<h4 class="anchored" data-anchor-id="java-설치">JAVA 설치</h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sdk</span> install java 17.0.8-tem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>설치는 .sdkman/candidates/java/17.0.8-tem에 설치됨</p>
-<pre><code>C:\Users\Benjamin\.sdkman\candidates\java\current\bin\java.exe</code></pre>
-</section>
-<section id="java_home-설정" class="level4">
-<h4 class="anchored" data-anchor-id="java_home-설정">JAVA_HOME 설정</h4>
-<pre class="path"><code>JAVA_HOME: C:\Users\Benjamin\.sdkman\candidates\current</code></pre>
-</section>
-<section id="path-설정" class="level4">
-<h4 class="anchored" data-anchor-id="path-설정">PATH 설정</h4>
-<pre class="path"><code>C:\Users\Benjamin\.sdkman\candidates\current\bin</code></pre>
-</section>
-<section id="java-설치-확인" class="level4">
-<h4 class="anchored" data-anchor-id="java-설치-확인">JAVA 설치 확인</h4>
-<div class="sourceCode" id="cb7"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>java <span class="at">-version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="dcm4chee-binary-install" class="level3">
-<h3 class="anchored" data-anchor-id="dcm4chee-binary-install">DCM4chee binary install</h3>
-<ul>
-<li>DCM4chee는 open source PACS로서 Java로 구현되어 있어 Java가 필요하다.</li>
-<li>Java가 설치되어 있지 않다면 SDKMAN으로 설치하고, DCM4chee를 설치한다.</li>
-<li>DCM4chee는 binary로 설치 시도 하였지만 압축해제 후 폴더에 실행파일이 없는 오류의 원인을 찾지못해 보류하였다.</li>
-</ul>
-</section>
-<section id="apache-maven" class="level3">
-<h3 class="anchored" data-anchor-id="apache-maven">Apache Maven</h3>
-<ul>
-<li>Apache Maven은 open source build up 도구이며, DCM4chee source build up이 이미 Maven으로 되어 있어 Maven을 설치하였다.</li>
-</ul>
-<section id="설치-1" class="level4">
-<h4 class="anchored" data-anchor-id="설치-1">설치</h4>
-<ul>
-<li>SDKMAN으로 설치하였다.</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sdk</span> install maven</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>설치된 폴더는 아래와 같았다.</p>
-<pre><code>C:\Users\Benjamin\.sdkman\candidates\maven\</code></pre>
-</section>
-<section id="path-설정-1" class="level4">
-<h4 class="anchored" data-anchor-id="path-설정-1">PATH 설정</h4>
-<pre class="path"><code>C:\Users\Benjamin\.sdkman\candidates\maven\current\bin</code></pre>
-</section>
-<section id="maven-설치-확인" class="level4">
-<h4 class="anchored" data-anchor-id="maven-설치-확인">MAVEN 설치 확인</h4>
-<div class="sourceCode" id="cb11"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mvn <span class="at">-version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="dcm4chee-source-build-up" class="level3">
-<h3 class="anchored" data-anchor-id="dcm4chee-source-build-up">DCM4chee source build up</h3>
-<ul>
-<li>DCM4chee는 source build up이 필요하여 아래의 github를 clone 하였다.</li>
-</ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>https</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>http<span class="sc">:</span><span class="er">//</span>localhost<span class="sc">:</span><span class="dv">8080</span><span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>ui2 or https<span class="sc">:</span><span class="er">//</span>localhost<span class="sc">:</span><span class="dv">8443</span><span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>ui2<span class="sc">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 
 
 </section>
