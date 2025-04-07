@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-a78d143f50226e98f7090688eeb399e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-46b5437e78f6e9148093fe0dd53110ae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -172,25 +172,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sdkman" id="toc-sdkman" class="nav-link active" data-scroll-target="#sdkman">SDKMAN</a>
+  <li><a href="#wsl2-ubuntu-환경에서의-설치" id="toc-wsl2-ubuntu-환경에서의-설치" class="nav-link active" data-scroll-target="#wsl2-ubuntu-환경에서의-설치">WSL2 Ubuntu 환경에서의 설치</a>
   <ul>
+  <li><a href="#cpu-아키텍쳐-알아내기" id="toc-cpu-아키텍쳐-알아내기" class="nav-link" data-scroll-target="#cpu-아키텍쳐-알아내기">cpu 아키텍쳐 알아내기</a></li>
+  <li><a href="#sdkman" id="toc-sdkman" class="nav-link" data-scroll-target="#sdkman">SDKMAN</a>
+  <ul class="collapse">
   <li><a href="#설치" id="toc-설치" class="nav-link" data-scroll-target="#설치">설치</a></li>
   </ul></li>
-  <li><a href="#java" id="toc-java" class="nav-link" data-scroll-target="#java">JAVA</a>
-  <ul>
-  <li><a href="#java-설치" id="toc-java-설치" class="nav-link" data-scroll-target="#java-설치">JAVA 설치</a></li>
-  <li><a href="#java_home-설정" id="toc-java_home-설정" class="nav-link" data-scroll-target="#java_home-설정">JAVA_HOME 설정</a></li>
-  <li><a href="#path-설정" id="toc-path-설정" class="nav-link" data-scroll-target="#path-설정">PATH 설정</a></li>
-  <li><a href="#java-설치-확인" id="toc-java-설치-확인" class="nav-link" data-scroll-target="#java-설치-확인">JAVA 설치 확인</a></li>
-  </ul></li>
-  <li><a href="#dcm4chee-binary-install" id="toc-dcm4chee-binary-install" class="nav-link" data-scroll-target="#dcm4chee-binary-install">DCM4chee binary install</a></li>
+  <li><a href="#java" id="toc-java" class="nav-link" data-scroll-target="#java">JAVA</a></li>
   <li><a href="#apache-maven" id="toc-apache-maven" class="nav-link" data-scroll-target="#apache-maven">Apache Maven</a>
-  <ul>
+  <ul class="collapse">
   <li><a href="#설치-1" id="toc-설치-1" class="nav-link" data-scroll-target="#설치-1">설치</a></li>
-  <li><a href="#path-설정-1" id="toc-path-설정-1" class="nav-link" data-scroll-target="#path-설정-1">PATH 설정</a></li>
-  <li><a href="#maven-설치-확인" id="toc-maven-설치-확인" class="nav-link" data-scroll-target="#maven-설치-확인">MAVEN 설치 확인</a></li>
   </ul></li>
-  <li><a href="#dcm4chee-source-build-up" id="toc-dcm4chee-source-build-up" class="nav-link" data-scroll-target="#dcm4chee-source-build-up">DCM4chee source build up</a></li>
+  <li><a href="#dcm4che" id="toc-dcm4che" class="nav-link" data-scroll-target="#dcm4che">DCM4che</a>
+  <ul class="collapse">
+  <li><a href="#clone" id="toc-clone" class="nav-link" data-scroll-target="#clone">clone</a></li>
+  <li><a href="#build-up" id="toc-build-up" class="nav-link" data-scroll-target="#build-up">build up</a></li>
+  <li><a href="#manusal" id="toc-manusal" class="nav-link" data-scroll-target="#manusal">manusal</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 6, 2025</p>
+      <p class="date-modified">April 7, 2025</p>
     </div>
   </div>
     
@@ -242,99 +242,158 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="sdkman" class="level2">
-<h2 class="anchored" data-anchor-id="sdkman">SDKMAN</h2>
+<section id="wsl2-ubuntu-환경에서의-설치" class="level2">
+<h2 class="anchored" data-anchor-id="wsl2-ubuntu-환경에서의-설치">WSL2 Ubuntu 환경에서의 설치</h2>
+<p>https://github.com/dcm4che/dcm4che/blob/master/README.md</p>
+<section id="cpu-아키텍쳐-알아내기" class="level3">
+<h3 class="anchored" data-anchor-id="cpu-아키텍쳐-알아내기">cpu 아키텍쳐 알아내기</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>uname <span class="sc">-</span>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li>kimbi-laptop은 x86_64이므로 linux-x86-64 패키지로 진행</li>
+</ul>
+</section>
+<section id="sdkman" class="level3">
+<h3 class="anchored" data-anchor-id="sdkman">SDKMAN</h3>
 <ul>
 <li>SDKMAN(Software Development Kit MANager)은 유닉스 환경에서 여러 소프트웨어 개발 키트를 손쉽게 관리할 수 있는 CLI 도구이다.</li>
 <li>여기에서는 프로젝트별로 Java 버전을 관리(matching)하기 위해 설치하였다.</li>
 </ul>
-<section id="설치" class="level3">
-<h3 class="anchored" data-anchor-id="설치">설치</h3>
+<section id="설치" class="level4">
+<h4 class="anchored" data-anchor-id="설치">설치</h4>
 <ul>
 <li>curl(Client URL)은 명령줄에서 HTTP, HTTPS, FTP, SCP 등의 프로토콜을 사용하여 데이터를 전송하는 도구인데, Git bash가 설치될 때 같이 설치되므로 git bash에서 아래와 같이 설치하였다.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> <span class="st">"https://get.sdkman.io"</span> <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>curl <span class="sc">-</span>s <span class="st">"https://get.sdkman.io"</span> <span class="sc">|</span> bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>source <span class="st">"$HOME/.sdkman/bin/sdkman-init.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 <ul>
-<li>설치 경로
-<ul>
-<li>SDKMAN은 기본적으로 현재 로그인한 사용자 계정의 홈 디렉토리에 설치된다.</li>
-<li>따라서 로그인 사용자에 따라 아래와 같은 차이가 발생함을 주의해야 한다.
-<ul>
-<li>Laptop: C:.sdkman</li>
-<li>Desktop: C:.sdkman</li>
-</ul></li>
-</ul></li>
-<li>path 설정도 manual로 해주어야 한다.</li>
-<li>설치확인은 git bash에서 아래와 같이 입력한다.</li>
+<li>설치 후 초기화 스크립트를 실행하여 SDKMAN을 사용할 수 있도록 설정합니다.</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sdk</span> version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sdk version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </section>
 </section>
-<section id="java" class="level2">
-<h2 class="anchored" data-anchor-id="java">JAVA</h2>
+<section id="java" class="level3">
+<h3 class="anchored" data-anchor-id="java">JAVA</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sdk list java</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sdk install java <span class="dv">17</span>.<span class="fl">0.14</span><span class="sc">-</span>tem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 <ul>
-<li>기존 Java가 어떤 프로그램에서 사용되는지 명확하지 않아, 먼저 삭제하고 필요할 때 SDKMAN으로 다시 설치하는 전략으로 진행함. #### 기존 Java 삭제</li>
-<li>제어판 -&gt; 프로그램 및 기능 -&gt; Java 삭제</li>
-<li>path에서도 삭제</li>
+<li>설치 후 bash 재 실행 후 버전을 확인</li>
 </ul>
-<section id="java-설치" class="level3">
-<h3 class="anchored" data-anchor-id="java-설치">JAVA 설치</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sdk</span> install java 17.0.8-tem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>설치는 .sdkman/candidates/java/17.0.8-tem에 설치됨</p>
-<pre><code>C:\Users\Benjamin\.sdkman\candidates\java\current\bin\java.exe</code></pre>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>java <span class="sc">-</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </section>
-<section id="java_home-설정" class="level3">
-<h3 class="anchored" data-anchor-id="java_home-설정">JAVA_HOME 설정</h3>
-<pre class="path"><code>JAVA_HOME: C:\Users\Benjamin\.sdkman\candidates\current</code></pre>
-</section>
-<section id="path-설정" class="level3">
-<h3 class="anchored" data-anchor-id="path-설정">PATH 설정</h3>
-<pre class="path"><code>C:\Users\Benjamin\.sdkman\candidates\current\bin</code></pre>
-</section>
-<section id="java-설치-확인" class="level3">
-<h3 class="anchored" data-anchor-id="java-설치-확인">JAVA 설치 확인</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>java <span class="at">-version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="dcm4chee-binary-install" class="level2">
-<h2 class="anchored" data-anchor-id="dcm4chee-binary-install">DCM4chee binary install</h2>
+<section id="apache-maven" class="level3">
+<h3 class="anchored" data-anchor-id="apache-maven">Apache Maven</h3>
+<section id="설치-1" class="level4">
+<h4 class="anchored" data-anchor-id="설치-1">설치</h4>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sdk list maven</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sdk install maven</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 <ul>
-<li>DCM4chee는 open source PACS로서 Java로 구현되어 있어 Java가 필요하다.</li>
-<li>Java가 설치되어 있지 않다면 SDKMAN으로 설치하고, DCM4chee를 설치한다.</li>
-<li>DCM4chee는 binary로 설치 시도 하였지만 압축해제 후 폴더에 실행파일이 없는 오류의 원인을 찾지못해 보류하였다.</li>
+<li>설치 후 bash 재 실행 후 버전을 확인</li>
 </ul>
-</section>
-<section id="apache-maven" class="level2">
-<h2 class="anchored" data-anchor-id="apache-maven">Apache Maven</h2>
-<ul>
-<li>Apache Maven은 open source build up 도구이며, DCM4chee source build up이 이미 Maven으로 되어 있어 Maven을 설치하였다.</li>
-</ul>
-<section id="설치-1" class="level3">
-<h3 class="anchored" data-anchor-id="설치-1">설치</h3>
-<ul>
-<li>SDKMAN으로 설치하였다.</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sdk</span> install maven</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>설치된 폴더는 아래와 같았다.</p>
-<pre><code>C:\Users\Benjamin\.sdkman\candidates\maven\</code></pre>
-</section>
-<section id="path-설정-1" class="level3">
-<h3 class="anchored" data-anchor-id="path-설정-1">PATH 설정</h3>
-<pre class="path"><code>C:\Users\Benjamin\.sdkman\candidates\maven\current\bin</code></pre>
-</section>
-<section id="maven-설치-확인" class="level3">
-<h3 class="anchored" data-anchor-id="maven-설치-확인">MAVEN 설치 확인</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mvn <span class="at">-version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mvn <span class="sc">-</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </section>
 </section>
-<section id="dcm4chee-source-build-up" class="level2">
-<h2 class="anchored" data-anchor-id="dcm4chee-source-build-up">DCM4chee source build up</h2>
-<ul>
-<li>DCM4chee는 source build up이 필요하여 아래의 github를 clone 하였다.</li>
-</ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="dcm4che" class="level3">
+<h3 class="anchored" data-anchor-id="dcm4che">DCM4che</h3>
+<section id="clone" class="level4">
+<h4 class="anchored" data-anchor-id="clone">clone</h4>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>git clone https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>dcm4che<span class="sc">/</span>dcm4che.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="build-up" class="level4">
+<h4 class="anchored" data-anchor-id="build-up">build up</h4>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cd dcm4che</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>.<span class="sc">/</span>mvnw install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="manusal" class="level4">
+<h4 class="anchored" data-anchor-id="manusal">manusal</h4>
+<p>https://github.com/dcm4che/dcm4chee-arc-light/wiki</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

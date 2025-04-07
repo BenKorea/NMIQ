@@ -35,10 +35,10 @@ categories: [dicom server]
 
 ## WSL2 Ununtu에서의 설치
 
-```{r conquest_install, eval=FALSE}, filename="bash"}
+```{r conquest_install, eval=FALSE, filename="bash"}
 sudo apt install build-essential g++ make apache2 php libapache2-mod-php php-sqlite3 unzip p7zip-full lua5.1 liblua5.1-0-dev lua-socket luarocks liblua5.1-0
 ```
 
-```{r luafilesystem_install, eval=FALSE}, filename="bash"}
+```{r luafilesystem_install, eval=FALSE, filename="bash"}
 sudo luarocks install luafilesystem
 ```
