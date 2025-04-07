@@ -401,7 +401,7 @@
     "href": "posts/tools/Conquest.html#wsl2-ununtu에서의-설치",
     "title": "Conquest",
     "section": "WSL2 Ununtu에서의 설치",
-    "text": "WSL2 Ununtu에서의 설치\n\n\n\nbash\n\nsudo apt install build-essential g++ make apache2 php libapache2-mod-php php-sqlite3 unzip p7zip-full lua5.1 liblua5.1-0-dev lua-socket luarocks liblua5.1-0\n\n\n\n\n\nbash\n\nsudo luarocks install luafilesystem",
+    "text": "WSL2 Ununtu에서의 설치\n\n준비\n\n\n\nbash\n\nsudo apt install build-essential g++ make apache2 php libapache2-mod-php php-sqlite3 unzip p7zip-full lua5.1 liblua5.1-0-dev lua-socket luarocks liblua5.1-0\n\n\n\n\n\nbash\n\nsudo luarocks install luafilesystem\n\n\n\n\n\nbash\n\nsudo a2enmod cgi\nsudo a2enmod rewrite\nsudo sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf\nsudo sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php/*/apache2/php.ini\nsudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 250M/g' /etc/php/*/apache2/php.ini\nsudo sed -i 's/post_max_size = 8M/post_max_size = 250M/g' /etc/php/*/apache2/php.ini\nsudo systemctl restart apache2\n\n\n\n\n설치파일 다운로드\n\n\n\nbash\n\nwget http://natura-ingenium.nl/dicomserver/dicomserver150e.zip\nmkdir conquest\ncd conquest\nunzip ../dicomserver150e.zip\nrm ../dicomserver150e.zip\n\n\n\n\n컴파일\n\n\n\nbash\n\nchmod 777 maklinux\n./maklinux\n\n\n\nchoose option 3 or 5 SqLite or SqlLite precompiled\nsay ‘y’ to ‘Regenerate the database’ Deletes previous database contents\nsay ‘y’ to ‘Install as service’ Shows status hit ‘q’ to return\n\n비록 아래의 메세지가 나오더라도 정상임\nFailed to stop conquest.service: Unit conquest.service not loaded.\n\n\n\n\n브라우저로 접속\n\nhttp://localhost/app/newweb/ 또는 http://localhost/app/ohif 주소로 접속",
     "crumbs": [
       "Tools",
       "Conquest"

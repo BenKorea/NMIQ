@@ -270,7 +270,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#lua-script" id="toc-lua-script" class="nav-link" data-scroll-target="#lua-script">Lua script</a></li>
   <li><a href="#저장파일의-이름을-지정하는-방식" id="toc-저장파일의-이름을-지정하는-방식" class="nav-link" data-scroll-target="#저장파일의-이름을-지정하는-방식">저장파일의 이름을 지정하는 방식</a></li>
   </ul></li>
-  <li><a href="#wsl2-ununtu에서의-설치" id="toc-wsl2-ununtu에서의-설치" class="nav-link" data-scroll-target="#wsl2-ununtu에서의-설치">WSL2 Ununtu에서의 설치</a></li>
+  <li><a href="#wsl2-ununtu에서의-설치" id="toc-wsl2-ununtu에서의-설치" class="nav-link" data-scroll-target="#wsl2-ununtu에서의-설치">WSL2 Ununtu에서의 설치</a>
+  <ul>
+  <li><a href="#준비" id="toc-준비" class="nav-link" data-scroll-target="#준비">준비</a></li>
+  <li><a href="#설치파일-다운로드" id="toc-설치파일-다운로드" class="nav-link" data-scroll-target="#설치파일-다운로드">설치파일 다운로드</a></li>
+  <li><a href="#컴파일" id="toc-컴파일" class="nav-link" data-scroll-target="#컴파일">컴파일</a></li>
+  <li><a href="#브라우저로-접속" id="toc-브라우저로-접속" class="nav-link" data-scroll-target="#브라우저로-접속">브라우저로 접속</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -351,6 +357,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="wsl2-ununtu에서의-설치" class="level2">
 <h2 class="anchored" data-anchor-id="wsl2-ununtu에서의-설치">WSL2 Ununtu에서의 설치</h2>
+<section id="준비" class="level3">
+<h3 class="anchored" data-anchor-id="준비">준비</h3>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -367,8 +375,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sudo luarocks install luafilesystem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sudo a2enmod cgi</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sudo a2enmod rewrite</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>sudo sed <span class="sc">-</span>i <span class="st">'s/AllowOverride None/AllowOverride All/g'</span> <span class="sc">/</span>etc<span class="sc">/</span>apache2<span class="sc">/</span>apache2.conf</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>sudo sed <span class="sc">-</span>i <span class="st">'s/memory_limit = 128M/memory_limit = 512M/g'</span> <span class="sc">/</span>etc<span class="sc">/</span>php<span class="sc">/</span><span class="er">*/</span>apache2<span class="sc">/</span>php.ini</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>sudo sed <span class="sc">-</span>i <span class="st">'s/upload_max_filesize = 2M/upload_max_filesize = 250M/g'</span> <span class="sc">/</span>etc<span class="sc">/</span>php<span class="sc">/</span><span class="er">*/</span>apache2<span class="sc">/</span>php.ini</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>sudo sed <span class="sc">-</span>i <span class="st">'s/post_max_size = 8M/post_max_size = 250M/g'</span> <span class="sc">/</span>etc<span class="sc">/</span>php<span class="sc">/</span><span class="er">*/</span>apache2<span class="sc">/</span>php.ini</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>sudo systemctl restart apache2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="설치파일-다운로드" class="level3">
+<h3 class="anchored" data-anchor-id="설치파일-다운로드">설치파일 다운로드</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>wget http<span class="sc">:</span><span class="er">//</span>natura<span class="sc">-</span>ingenium.nl<span class="sc">/</span>dicomserver<span class="sc">/</span>dicomserver150e.zip</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mkdir conquest</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>cd conquest</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>unzip ..<span class="sc">/</span>dicomserver150e.zip</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>rm ..<span class="sc">/</span>dicomserver150e.zip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="컴파일" class="level3">
+<h3 class="anchored" data-anchor-id="컴파일">컴파일</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>chmod <span class="dv">777</span> maklinux</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>.<span class="sc">/</span>maklinux</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li>choose option 3 or 5 SqLite or SqlLite precompiled</li>
+<li>say ‘y’ to ‘Regenerate the database’ Deletes previous database contents</li>
+<li>say ‘y’ to ‘Install as service’ Shows status hit ‘q’ to return
+<ul>
+<li>비록 아래의 메세지가 나오더라도 정상임</li>
+<li>Failed to stop conquest.service: Unit conquest.service not loaded.</li>
+</ul></li>
+</ul>
+</section>
+<section id="브라우저로-접속" class="level3">
+<h3 class="anchored" data-anchor-id="브라우저로-접속">브라우저로 접속</h3>
+<ul>
+<li>http://localhost/app/newweb/ 또는 http://localhost/app/ohif 주소로 접속</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -35,6 +35,8 @@ categories: [dicom server]
 
 ## WSL2 Ununtu에서의 설치
 
+### 준비
+
 ```{r conquest_install, eval=FALSE, filename="bash"}
 sudo apt install build-essential g++ make apache2 php libapache2-mod-php php-sqlite3 unzip p7zip-full lua5.1 liblua5.1-0-dev lua-socket luarocks liblua5.1-0
 ```
@@ -42,3 +44,40 @@ sudo apt install build-essential g++ make apache2 php libapache2-mod-php php-sql
 ```{r luafilesystem_install, eval=FALSE, filename="bash"}
 sudo luarocks install luafilesystem
 ```
+
+```{r web_interface, eval=FALSE, filename="bash"}
+sudo a2enmod cgi
+sudo a2enmod rewrite
+sudo sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
+sudo sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php/*/apache2/php.ini
+sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 250M/g' /etc/php/*/apache2/php.ini
+sudo sed -i 's/post_max_size = 8M/post_max_size = 250M/g' /etc/php/*/apache2/php.ini
+sudo systemctl restart apache2
+```
+
+### 설치파일 다운로드
+
+```{r 150ezip_download, eval=FALSE, filename="bash"}
+wget http://natura-ingenium.nl/dicomserver/dicomserver150e.zip
+mkdir conquest
+cd conquest
+unzip ../dicomserver150e.zip
+rm ../dicomserver150e.zip
+```
+
+### 컴파일
+
+```{r compiole_install, eval=FALSE, filename="bash"}
+chmod 777 maklinux
+./maklinux
+```
+
+-   choose option 3 or 5 SqLite or SqlLite precompiled
+-   say 'y' to 'Regenerate the database' Deletes previous database contents
+-   say 'y' to 'Install as service' Shows status hit 'q' to return
+    -   비록 아래의 메세지가 나오더라도 정상임
+    -   Failed to stop conquest.service: Unit conquest.service not loaded.
+
+### 브라우저로 접속
+
+-   http://localhost/app/newweb/ 또는 http://localhost/app/ohif 주소로 접속
