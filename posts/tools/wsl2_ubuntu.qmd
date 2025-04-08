@@ -1,6 +1,6 @@
 ---
-title: "Ubuntu on WSL2"
-description: "Ubuntu on WSL2 제거 및 설치방법"
+title: "WSL2/Ubuntu"
+description: "WSL2 및 Ubuntu 설치"
 author: "BenKorea"
 date: "2024-11-16"
 date-modified: last-modified

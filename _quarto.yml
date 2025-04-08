@@ -42,7 +42,8 @@ website:
         - posts/tools/tools.qmd
         - posts/tools/wsl2_ubuntu.qmd   
         - posts/tools/docker.qmd
-        - posts/tools/dcm4chee.qmd         
+        - posts/tools/dcm4chee.qmd  
+        - posts/tools/dcm4che.qmd
         - posts/tools/Conquest.qmd
         - posts/tools/Orthanc.qmd
         - posts/tools/PostgreSQL.qmd  

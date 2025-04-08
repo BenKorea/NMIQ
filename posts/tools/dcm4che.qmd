@@ -9,7 +9,7 @@ categories: [DCM4che]
 
 ## WSL2 Ubuntu 환경에서의 설치
 
-https://github.com/dcm4che/dcm4che/blob/master/README.md
+<https://github.com/dcm4che/dcm4che/blob/master/README.md>
 
 ### cpu 아키텍쳐 알아내기
 
