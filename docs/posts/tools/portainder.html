@@ -137,7 +137,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles/tooltip.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -163,7 +163,7 @@ window.Quarto = {
 <span class="menu-text">개발기록</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../posts/tools/tools.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts/tools/tools.html"> 
 <span class="menu-text">Tools</span></a>
   </li>  
   <li class="nav-item">
@@ -191,99 +191,10 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/tools/docker.html">Docker</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/tools.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tools</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/wsl2_ubuntu.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ubuntu on WSL2</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/docker.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Docker</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/dcm4chee.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">DCM4chee</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/Conquest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conquest</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/Orthanc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Orthanc</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/PostgreSQL.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">PostgreSQL</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/Slicer.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Slicer</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/dicoogle.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dicoogle</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/DoseUtility.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">DoseUtility</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/OpenREM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OpenREM</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/tools/dcmtk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">DCMTK</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -295,17 +206,29 @@ window.Quarto = {
   <li><a href="#방화벽-제한-사항" id="toc-방화벽-제한-사항" class="nav-link" data-scroll-target="#방화벽-제한-사항">방화벽 제한 사항</a></li>
   <li><a href="#운영체제-요구-사항" id="toc-운영체제-요구-사항" class="nav-link" data-scroll-target="#운영체제-요구-사항">운영체제 요구 사항</a></li>
   </ul></li>
-  <li><a href="#wsl2ubuntu에서의-설치" id="toc-wsl2ubuntu에서의-설치" class="nav-link" data-scroll-target="#wsl2ubuntu에서의-설치">WSL2/Ubuntu에서의 설치</a>
-  <ul>
   <li><a href="#이전-버전-제거" id="toc-이전-버전-제거" class="nav-link" data-scroll-target="#이전-버전-제거">이전 버전 제거</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#제거해야-하는-패키지-목록" id="toc-제거해야-하는-패키지-목록" class="nav-link" data-scroll-target="#제거해야-하는-패키지-목록">제거해야 하는 패키지 목록:</a></li>
   </ul></li>
   <li><a href="#설치" id="toc-설치" class="nav-link" data-scroll-target="#설치">설치</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#set-up-dockers-apt-repository." id="toc-set-up-dockers-apt-repository." class="nav-link" data-scroll-target="#set-up-dockers-apt-repository.">Set up Docker’s apt repository.</a></li>
   <li><a href="#install-the-docker-packages." id="toc-install-the-docker-packages." class="nav-link" data-scroll-target="#install-the-docker-packages.">Install the Docker packages.</a></li>
   <li><a href="#verifying-by-hello-world" id="toc-verifying-by-hello-world" class="nav-link" data-scroll-target="#verifying-by-hello-world">Verifying by hello-world</a></li>
+  </ul></li>
+  <li><a href="#portainer-설치" id="toc-portainer-설치" class="nav-link" data-scroll-target="#portainer-설치">Portainer 설치</a>
+  <ul>
+  <li><a href="#portainer-개념" id="toc-portainer-개념" class="nav-link" data-scroll-target="#portainer-개념">Portainer 개념</a>
+  <ul class="collapse">
+  <li><a href="#주요-기능" id="toc-주요-기능" class="nav-link" data-scroll-target="#주요-기능">🔹 주요 기능</a></li>
+  </ul></li>
+  <li><a href="#portainer-설치-방법" id="toc-portainer-설치-방법" class="nav-link" data-scroll-target="#portainer-설치-방법">Portainer 설치 방법</a>
+  <ul class="collapse">
+  <li><a href="#볼륨-생성" id="toc-볼륨-생성" class="nav-link" data-scroll-target="#볼륨-생성">볼륨 생성</a></li>
+  <li><a href="#portainer-컨테이너-실행" id="toc-portainer-컨테이너-실행" class="nav-link" data-scroll-target="#portainer-컨테이너-실행">Portainer 컨테이너 실행**</a></li>
+  <li><a href="#실행중인-container-확인" id="toc-실행중인-container-확인" class="nav-link" data-scroll-target="#실행중인-container-확인">실행중인 container 확인</a></li>
+  <li><a href="#portainer-제거" id="toc-portainer-제거" class="nav-link" data-scroll-target="#portainer-제거">Portainer 제거</a></li>
+  <li><a href="#로그인-id-password" id="toc-로그인-id-password" class="nav-link" data-scroll-target="#로그인-id-password">로그인 id &amp; password</a></li>
   </ul></li>
   <li><a href="#docker-compose" id="toc-docker-compose" class="nav-link" data-scroll-target="#docker-compose">docker-compose</a>
   <ul class="collapse">
@@ -392,15 +315,14 @@ window.Quarto = {
 <p><strong>📌 참고:</strong><br>
 Ubuntu 기반 배포판(예: Linux Mint)은 공식적으로 지원되지 않습니다.</p>
 </blockquote>
+<hr>
 </section>
 </section>
-<section id="wsl2ubuntu에서의-설치" class="level2">
-<h2 class="anchored" data-anchor-id="wsl2ubuntu에서의-설치">WSL2/Ubuntu에서의 설치</h2>
-<section id="이전-버전-제거" class="level3">
-<h3 class="anchored" data-anchor-id="이전-버전-제거">이전 버전 제거</h3>
+<section id="이전-버전-제거" class="level2">
+<h2 class="anchored" data-anchor-id="이전-버전-제거">이전 버전 제거</h2>
 <p>Docker Engine을 설치하기 전에 충돌을 방지하기 위해 기존의 비공식 Docker 패키지를 제거해야 합니다.</p>
-<section id="제거해야-하는-패키지-목록" class="level4">
-<h4 class="anchored" data-anchor-id="제거해야-하는-패키지-목록">제거해야 하는 패키지 목록:</h4>
+<section id="제거해야-하는-패키지-목록" class="level3">
+<h3 class="anchored" data-anchor-id="제거해야-하는-패키지-목록">제거해야 하는 패키지 목록:</h3>
 <ul>
 <li><code>docker.io</code></li>
 <li><code>docker-compose</code></li>
@@ -422,11 +344,11 @@ Ubuntu 기반 배포판(예: Linux Mint)은 공식적으로 지원되지 않습�
 <p>완벽제거를 위해서는 다음의 문서를 참고하세요. <a href="https://docs.docker.com/engine/install/ubuntu/#uninstall-old-versions">Docker Engine 설치하기 전에 기존 Docker 제거하기</a></p>
 </section>
 </section>
-<section id="설치" class="level3">
-<h3 class="anchored" data-anchor-id="설치">설치</h3>
+<section id="설치" class="level2">
+<h2 class="anchored" data-anchor-id="설치">설치</h2>
 <p>여러가지 설치방법이 있으나 여기서는 apt를 이용한 방법으로 진행</p>
-<section id="set-up-dockers-apt-repository." class="level4">
-<h4 class="anchored" data-anchor-id="set-up-dockers-apt-repository.">Set up Docker’s apt repository.</h4>
+<section id="set-up-dockers-apt-repository." class="level3">
+<h3 class="anchored" data-anchor-id="set-up-dockers-apt-repository.">Set up Docker’s apt repository.</h3>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -486,8 +408,8 @@ Ubuntu 기반 배포판(예: Linux Mint)은 공식적으로 지원되지 않습�
 </ul></li>
 </ul>
 </section>
-<section id="install-the-docker-packages." class="level4">
-<h4 class="anchored" data-anchor-id="install-the-docker-packages.">Install the Docker packages.</h4>
+<section id="install-the-docker-packages." class="level3">
+<h3 class="anchored" data-anchor-id="install-the-docker-packages.">Install the Docker packages.</h3>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -497,8 +419,8 @@ Ubuntu 기반 배포판(예: Linux Mint)은 공식적으로 지원되지 않습�
 </div>
 </div>
 </section>
-<section id="verifying-by-hello-world" class="level4">
-<h4 class="anchored" data-anchor-id="verifying-by-hello-world">Verifying by hello-world</h4>
+<section id="verifying-by-hello-world" class="level3">
+<h3 class="anchored" data-anchor-id="verifying-by-hello-world">Verifying by hello-world</h3>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -507,40 +429,88 @@ Ubuntu 기반 배포판(예: Linux Mint)은 공식적으로 지원되지 않습�
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sudo docker run hello<span class="sc">-</span>world</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>Docker 설치 파일 구조 (Ubuntu 기준)</p>
-<pre><code>/
-├── usr/
-│   ├── bin/
-│   │   ├── docker               ← Docker CLI 실행 파일
-│   │   ├── docker-compose       ← Docker Compose (별도 설치 시)
-│   │   ├── containerd           ← 컨테이너 런타임
-│   │   └── runc                 ← 컨테이너 실행기
-│   └── share/
-│       └── docker-engine/       ← (있을 경우) 문서, 기본 설정 등
-│
-├── etc/
-│   └── docker/
-│       └── daemon.json          ← Docker 데몬 설정 파일
-│
-├── var/
-│   ├── lib/
-│   │   └── docker/              ← 이미지, 컨테이너, 볼륨 등 저장소
-│   └── run/
-│       └── docker.sock          ← Docker 데몬 통신용 소켓 파일
-│
-├── lib/
-│   └── systemd/
-│       └── system/
-│           └── docker.service   ← systemd 서비스 유닛 파일
-│
-├── etc/
-│   └── systemd/
-│       └── system/
-│           └── docker.service.d/ ← 사용자 정의 systemd 설정 디렉터리
-│
-└── home/
-    └── 사용자명/
-        └── .docker/             ← 사용자 설정, 인증 토큰 등</code></pre>
+</section>
+</section>
+<section id="portainer-설치" class="level2">
+<h2 class="anchored" data-anchor-id="portainer-설치">Portainer 설치</h2>
+<section id="portainer-개념" class="level3">
+<h3 class="anchored" data-anchor-id="portainer-개념">Portainer 개념</h3>
+<p><strong>Portainer</strong>는 Docker 및 Kubernetes 컨테이너 관리를 위한 <strong>웹 기반 UI</strong> 도구입니다.<br>
+CLI(Command Line Interface) 없이도 <strong>컨테이너, 이미지, 네트워크, 볼륨 등을 손쉽게 관리</strong>할 수 있습니다.</p>
+<section id="주요-기능" class="level4">
+<h4 class="anchored" data-anchor-id="주요-기능">🔹 주요 기능</h4>
+<ul>
+<li><strong>컨테이너 관리</strong>: 실행, 중지, 삭제, 로그 확인</li>
+<li><strong>이미지 관리</strong>: 이미지 다운로드, 삭제, 태그 지정</li>
+<li><strong>네트워크 및 볼륨 관리</strong>: 컨테이너 간 네트워크 설정 및 데이터 볼륨 관리</li>
+<li><strong>사용자 및 액세스 제어</strong>: 여러 사용자와 권한 설정 가능</li>
+<li><strong>Swarm 및 Kubernetes 지원</strong>: Docker Swarm과 Kubernetes 클러스터 관리 가능</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="portainer-설치-방법" class="level3">
+<h3 class="anchored" data-anchor-id="portainer-설치-방법">Portainer 설치 방법</h3>
+<p>Portainer는 Docker 컨테이너로 실행되므로, Docker가 설치되어 있어야 합니다.</p>
+<section id="볼륨-생성" class="level4">
+<h4 class="anchored" data-anchor-id="볼륨-생성">볼륨 생성</h4>
+<p>Portainer의 설정 및 데이터는 <strong>볼륨(volume)</strong>에 저장됩니다.</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>docker volume create portainer_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="portainer-컨테이너-실행" class="level4">
+<h4 class="anchored" data-anchor-id="portainer-컨테이너-실행">Portainer 컨테이너 실행**</h4>
+<p>이는 원격으로 이미지다운로드를 포함한다.</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>docker run <span class="sc">-</span>d <span class="sc">-</span>p <span class="dv">8000</span><span class="sc">:</span><span class="dv">8000</span> <span class="sc">-</span>p <span class="dv">9000</span><span class="sc">:</span><span class="dv">9000</span> <span class="sc">--</span>name<span class="ot">=</span>portainer <span class="sc">--</span>restart<span class="ot">=</span>always <span class="sc">-</span>v <span class="sc">/</span>var<span class="sc">/</span>run<span class="sc">/</span>docker.sock<span class="sc">:</span><span class="er">/</span>var<span class="sc">/</span>run<span class="sc">/</span>docker.sock <span class="sc">-</span>v portainer_data<span class="sc">:</span><span class="er">/</span>data portainer<span class="sc">/</span>portainer<span class="sc">-</span>ce</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li><code>-d</code>: 백그라운드에서 컨테이너 실행</li>
+<li><code>-p 8000:8000 -p 9000:9000</code>: 호스트 포트와 컨테이너 포트 매핑</li>
+<li><code>--name=portainer</code>: 컨테이너 이름 지정</li>
+<li><code>--restart=always</code>: 컨테이너가 종료되면 자동으로 재시작</li>
+<li><code>-v /var/run/docker.sock:/var/run/docker.sock</code>: 호스트의 Docker 소켓을 컨테이너 내부로 연결</li>
+<li><code>-v portainer_data:/data</code>: Portainer 설정 및 데이터를 저장할 볼륨 연결</li>
+<li><code>portainer/portainer-ce</code>: Portainer 컨테이너 이미지</li>
+</ul>
+</section>
+<section id="실행중인-container-확인" class="level4">
+<h4 class="anchored" data-anchor-id="실행중인-container-확인">실행중인 container 확인</h4>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>docker ps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="portainer-제거" class="level4">
+<h4 class="anchored" data-anchor-id="portainer-제거">Portainer 제거</h4>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>docker stop portainer</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>docker rm <span class="sc">-</span>f portainer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="로그인-id-password" class="level4">
+<h4 class="anchored" data-anchor-id="로그인-id-password">로그인 id &amp; password</h4>
+<p>ben benjamin060318</p>
 </section>
 </section>
 <section id="docker-compose" class="level3">
@@ -556,7 +526,7 @@ Ubuntu 기반 배포판(예: Linux Mint)은 공식적으로 지원되지 않습�
 <div class="code-with-filename-file">
 <pre><strong>Bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sudo apt<span class="sc">-</span>get install docker<span class="sc">-</span>compose</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sudo apt<span class="sc">-</span>get install docker<span class="sc">-</span>compose</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="cell">
@@ -564,7 +534,7 @@ Ubuntu 기반 배포판(예: Linux Mint)은 공식적으로 지원되지 않습�
 <div class="code-with-filename-file">
 <pre><strong>Bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>docker<span class="sc">-</span>compose <span class="sc">--</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>docker<span class="sc">-</span>compose <span class="sc">--</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -579,23 +549,23 @@ Ubuntu 기반 배포판(예: Linux Mint)은 공식적으로 지원되지 않습�
 <div class="code-with-filename-file">
 <pre><strong>docker-compose.yml</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>version<span class="sc">:</span> <span class="st">'3'</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>services<span class="sc">:</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  portainer<span class="sc">:</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> portainer<span class="sc">/</span>portainer<span class="sc">-</span>ce<span class="sc">:</span>latest</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    container_name<span class="sc">:</span> portainer</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    restart<span class="sc">:</span> always</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"8000:8000"</span>  <span class="co"># Portainer Agent 통신용</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9000:9000"</span>  <span class="co"># Portainer 웹 UI 접속용 (http://localhost:9000)</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9443:9443"</span>  <span class="co"># HTTPS 접속용</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>run<span class="sc">/</span>docker.sock<span class="sc">:</span><span class="er">/</span>var<span class="sc">/</span>run<span class="sc">/</span>docker.sock</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> portainer_data<span class="sc">:</span><span class="er">/</span>data</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>volumes<span class="sc">:</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  portainer_data<span class="sc">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>version<span class="sc">:</span> <span class="st">'3'</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>services<span class="sc">:</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  portainer<span class="sc">:</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> portainer<span class="sc">/</span>portainer<span class="sc">-</span>ce<span class="sc">:</span>latest</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    container_name<span class="sc">:</span> portainer</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    restart<span class="sc">:</span> always</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"8000:8000"</span>  <span class="co"># Portainer Agent 통신용</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9000:9000"</span>  <span class="co"># Portainer 웹 UI 접속용 (http://localhost:9000)</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9443:9443"</span>  <span class="co"># HTTPS 접속용</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>run<span class="sc">/</span>docker.sock<span class="sc">:</span><span class="er">/</span>var<span class="sc">/</span>run<span class="sc">/</span>docker.sock</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> portainer_data<span class="sc">:</span><span class="er">/</span>data</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>volumes<span class="sc">:</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  portainer_data<span class="sc">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -606,7 +576,7 @@ Ubuntu 기반 배포판(예: Linux Mint)은 공식적으로 지원되지 않습�
 <div class="code-with-filename-file">
 <pre><strong>Bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>docker compose up <span class="sc">-</span>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>docker compose up <span class="sc">-</span>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 

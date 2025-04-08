@@ -7,7 +7,15 @@ date-modified: last-modified
 categories: [DCM4chee]
 ---
 
-## Docker-compose 설치
+## WSL2 Ubuntu에서의 설치
+
+### 매뉴얼
+
+<https://github.com/dcm4che/dcm4chee-arc-light/wiki/Run-minimum-set-of-archive-services-on-a-single-host>
+
+### Docker-compose 설치
+
+-   docker compose랑 달라서 `-`이 있는 형태를 설치해야 합니다.
 
 ```{r docker-compose_install, eval=FALSE, filename="bash"}
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -15,7 +23,17 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
-매뉴얼 https://github.com/dcm4che/dcm4chee-arc-light/wiki/Run-minimum-set-of-archive-services-on-a-single-host
+### dcm4chee 폴더만들기
+
+```{r dcm4chee_folder, eval=FALSE, filename="bash"}
+mkdir dcm4chee
+ch dcm4chee
+```
+
+### docker-compose.yml 작성하기
+
+-   아래의 내용을 복사하여 `dcm4chee` 폴더에 `docker-compose.yml`로 저장합니다.
+-   매뉴얼에는 version이 있지만 불필요한 메세지만 생성되므로 삭제하였습니다.
 
 ```{r docker-compose2, eval=FALSE, filename='docker-compose.yml'}
 services:
@@ -79,12 +97,18 @@ services:
       - /var/local/dcm4chee-arc/storage:/storage
 ```
 
+### compose로 설치하기
+
+-   매뉴얼에서는 docker group에 user를 등록하여 문제가 없으나, 저자는 그러지 않았기 때문에 sudo를 하지 않으면 권한문제로 오류가 발생하므로 매뉴얼과 달리 아래와 같이 `sudo`로 설치해야 합니다.
+
 ```{r docker-compose3, eval=FALSE, filename='bash'}
 sudo docker-compose -p dcm4chee up -d
 ```
 
--   sudo를 하지 않으면 권한문제로 오류가 발생함
+### 웹인터페이스
 
-```{r ui, eval=FALSE, filename='https'}
-http://localhost:8080/dcm4chee-arc/ui2 or https://localhost:8443/dcm4chee-arc/ui2:
-```
+<http://localhost:8080/dcm4chee-arc/ui2>
+
+or
+
+<https://localhost:8443/dcm4chee-arc/ui2>
