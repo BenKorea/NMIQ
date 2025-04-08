@@ -40,8 +40,8 @@ website:
     - title: "Tools"
       contents:
         - posts/tools/tools.qmd
-        - posts/tools/ubuntu_on_wsl2.qmd   
-        - posts/tools/docker.qmd 
+        - posts/tools/wsl2_ubuntu.qmd   
+        - posts/tools/docker.qmd
         - posts/tools/dcm4chee.qmd         
         - posts/tools/Conquest.qmd
         - posts/tools/Orthanc.qmd
