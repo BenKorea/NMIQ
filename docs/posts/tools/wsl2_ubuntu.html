@@ -290,6 +290,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#default-unix-user-accout" id="toc-default-unix-user-accout" class="nav-link" data-scroll-target="#default-unix-user-accout">default Unix user accout</a></li>
   <li><a href="#우분투-디렉토리-구조" id="toc-우분투-디렉토리-구조" class="nav-link" data-scroll-target="#우분투-디렉토리-구조">우분투 디렉토리 구조</a></li>
   </ul></li>
+  <li><a href="#설정" id="toc-설정" class="nav-link" data-scroll-target="#설정">설정</a>
+  <ul>
+  <li><a href="#etcwsl.conf" id="toc-etcwsl.conf" class="nav-link" data-scroll-target="#etcwsl.conf">/etc/wsl.conf</a></li>
+  </ul></li>
   <li><a href="#이전설치방식" id="toc-이전설치방식" class="nav-link" data-scroll-target="#이전설치방식">이전설치방식</a>
   <ul>
   <li><a href="#wsl-옵션-활성화" id="toc-wsl-옵션-활성화" class="nav-link" data-scroll-target="#wsl-옵션-활성화">wsl 옵션 활성화</a></li>
@@ -338,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 8, 2025</p>
+      <p class="date-modified">April 10, 2025</p>
     </div>
   </div>
     
@@ -352,8 +356,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="필요성" class="level2">
 <h2 class="anchored" data-anchor-id="필요성">필요성</h2>
 <ul>
-<li>운영체제 중 개발에 유리하고 속도가 윈도우보다는 빠른 우분투 on WSL2를 선택함.</li>
-<li>NMIQ유지보수를 간편하게 할려면 도커로 배포 필요 도커는 리눅스환경이 필요하여, 일단은 윈도우10에서 WSL2을 활성화 필요</li>
+<li>개발환경으로써 리눅스가 가장 유리하겠으나, 현단계에서는 WSL2를 대안으로 선택함</li>
+<li>특히, NMIQ의 설치는 도커배포를 계획하고 있어 윈도우10에서 WSL2을 활성화 필요</li>
 </ul>
 </section>
 <section id="wsl2상의-우분투-완전-제거" class="level2">
@@ -555,6 +559,22 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 </div>
 </section>
 </section>
+<section id="설정" class="level2">
+<h2 class="anchored" data-anchor-id="설정">설정</h2>
+<section id="etcwsl.conf" class="level3">
+<h3 class="anchored" data-anchor-id="etcwsl.conf">/etc/wsl.conf</h3>
+<p>systemd의 설정을 true로 변경하여 systemd를 사용할 수 있도록 설정합니다.</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>/etc/wsl.conf</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>[boot]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>systemd<span class="ot">=</span>true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+</section>
 <section id="이전설치방식" class="level2">
 <h2 class="anchored" data-anchor-id="이전설치방식">이전설치방식</h2>
 <section id="wsl-옵션-활성화" class="level3">
@@ -567,7 +587,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>PowerShell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dism.exe <span class="sc">/</span>online <span class="sc">/</span>enable<span class="sc">-</span>feature <span class="sc">/</span>featurename<span class="sc">:</span>Microsoft<span class="sc">-</span>Windows<span class="sc">-</span>Subsystem<span class="sc">-</span>Linux <span class="sc">/</span>norestart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dism.exe <span class="sc">/</span>online <span class="sc">/</span>enable<span class="sc">-</span>feature <span class="sc">/</span>featurename<span class="sc">:</span>Microsoft<span class="sc">-</span>Windows<span class="sc">-</span>Subsystem<span class="sc">-</span>Linux <span class="sc">/</span>norestart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -578,7 +598,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>PowerShell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dism.exe <span class="sc">/</span>online <span class="sc">/</span>enable<span class="sc">-</span>feature <span class="sc">/</span>featurename<span class="sc">:</span>VirtualMachinePlatform <span class="sc">/</span>norestart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dism.exe <span class="sc">/</span>online <span class="sc">/</span>enable<span class="sc">-</span>feature <span class="sc">/</span>featurename<span class="sc">:</span>VirtualMachinePlatform <span class="sc">/</span>norestart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -590,7 +610,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>PowerShell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="sc">--</span>upgrade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="sc">--</span>upgrade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>아래의 명령을 전후로 사용하면 Kenel의 버전을 비교하여 알 수 있다.</p>
@@ -599,7 +619,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>PowerShell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="sc">--</span>status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="sc">--</span>status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 

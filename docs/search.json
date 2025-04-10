@@ -330,7 +330,7 @@
     "href": "posts/tools/dcm4che.html",
     "title": "DCM4che",
     "section": "",
-    "text": "https://github.com/dcm4che/dcm4che/blob/master/README.md\n\n\n\n\n\nbash\n\nuname -m\n\n\n\nkimbi-laptop은 x86_64이므로 linux-x86-64 패키지로 진행\n\n\n\n\n\nSDKMAN(Software Development Kit MANager)은 유닉스 환경에서 여러 소프트웨어 개발 키트를 손쉽게 관리할 수 있는 CLI 도구이다.\n여기에서는 프로젝트별로 Java 버전을 관리(matching)하기 위해 설치하였다.\n\n\n\n\ncurl(Client URL)은 명령줄에서 HTTP, HTTPS, FTP, SCP 등의 프로토콜을 사용하여 데이터를 전송하는 도구인데, Git bash가 설치될 때 같이 설치되므로 git bash에서 아래와 같이 설치하였다.\n\n\n\n\nbash\n\ncurl -s \"https://get.sdkman.io\" | bash\n\n\n\n\n\nbash\n\nsource \"$HOME/.sdkman/bin/sdkman-init.sh\"\n\n\n\n설치 후 초기화 스크립트를 실행하여 SDKMAN을 사용할 수 있도록 설정합니다.\n\n\n\n\nbash\n\nsdk version\n\n\n\n\n\n\n\n\n\nbash\n\nsdk list java\n\n\n\n\n\nbash\n\nsdk install java 17.0.14-tem\n\n\n\n설치 후 bash 재 실행 후 버전을 확인\n\n\n\n\nbash\n\njava -version\n\n\n\n\n\n\n\n\n\n\nbash\n\nsdk list maven\n\n\n\n\n\nbash\n\nsdk install maven\n\n\n\n설치 후 bash 재 실행 후 버전을 확인\n\n\n\n\nbash\n\nmvn -version\n\n\n\n\n\n\n\n\n\n\n\nbash\n\ngit clone https://github.com/dcm4che/dcm4che.git\n\n\n\n\n\n\n\n\nbash\n\ncd dcm4che\n./mvnw install\n\n\n\n\n\nhttps://github.com/dcm4che/dcm4chee-arc-light/wiki",
+    "text": "https://github.com/dcm4che/dcm4che/blob/master/README.md\n\n\n\n\n\nbash\n\nuname -m\n\n\n\nkimbi-laptop은 x86_64이므로 linux-x86-64 패키지로 진행\n\n\n\n\n\nSDKMAN(Software Development Kit MANager)은 유닉스 환경에서 여러 소프트웨어 개발 키트를 손쉽게 관리할 수 있는 CLI 도구이다.\n여기에서는 프로젝트별로 Java 버전을 관리(matching)하기 위해 설치하였다.\n\n\n\n\ncurl(Client URL)은 명령줄에서 HTTP, HTTPS, FTP, SCP 등의 프로토콜을 사용하여 데이터를 전송하는 도구인데, Git bash가 설치될 때 같이 설치되므로 git bash에서 아래와 같이 설치하였다.\n\n\n\n\nbash\n\ncurl -s \"https://get.sdkman.io\" | bash\n\n\n\nSDKMAN의 초기화 스크립트를 현재 셸에서 실행하여, SDKMAN 관련 설정과 기능들을 활성화시키는 역할을 합니다.\n\n\n\n\nbash\n\nsource \"$HOME/.sdkman/bin/sdkman-init.sh\"\n\n\n\n\n\nbash\n\nsdk version\n\n\n\n\n\n\n\n\n\nbash\n\nsdk list java\n\n\n\n\n\nbash\n\nsdk install java 17.0.14-tem\n\n\n\n설치 후 bash 재 실행 후 버전을 확인\n\n\n\n\nbash\n\njava --version\n\n\n\n\n\n\n\n\n\n\nbash\n\nsdk list maven\n\n\n\n\n\nbash\n\nsdk install maven\n\n\n\n설치 후 bash 재 실행 후 버전을 확인\n\n\n\n\nbash\n\nmvn -version\n\n\n\n\n\n\n\n\n\n\n\nbash\n\ngit clone https://github.com/dcm4che/dcm4che.git\n\n\n\n\n\n\n인터넷연결에 제한적인 정책이 있는 경우 오류가 발생하여 pulic wifi로 진행하였습니다.\n\n\n\n\nbash\n\ncd dcm4che\n./mvnw install\n\n\n\n\n\n\n생각보다 문서가 없습니다.\n\nhttps://github.com/dcm4che/dcm4che",
     "crumbs": [
       "Tools",
       "DCM4che"
@@ -376,7 +376,7 @@
     "href": "posts/tools/dcm4che.html#wsl2-ubuntu-환경에서의-설치",
     "title": "DCM4che",
     "section": "",
-    "text": "https://github.com/dcm4che/dcm4che/blob/master/README.md\n\n\n\n\n\nbash\n\nuname -m\n\n\n\nkimbi-laptop은 x86_64이므로 linux-x86-64 패키지로 진행\n\n\n\n\n\nSDKMAN(Software Development Kit MANager)은 유닉스 환경에서 여러 소프트웨어 개발 키트를 손쉽게 관리할 수 있는 CLI 도구이다.\n여기에서는 프로젝트별로 Java 버전을 관리(matching)하기 위해 설치하였다.\n\n\n\n\ncurl(Client URL)은 명령줄에서 HTTP, HTTPS, FTP, SCP 등의 프로토콜을 사용하여 데이터를 전송하는 도구인데, Git bash가 설치될 때 같이 설치되므로 git bash에서 아래와 같이 설치하였다.\n\n\n\n\nbash\n\ncurl -s \"https://get.sdkman.io\" | bash\n\n\n\n\n\nbash\n\nsource \"$HOME/.sdkman/bin/sdkman-init.sh\"\n\n\n\n설치 후 초기화 스크립트를 실행하여 SDKMAN을 사용할 수 있도록 설정합니다.\n\n\n\n\nbash\n\nsdk version\n\n\n\n\n\n\n\n\n\nbash\n\nsdk list java\n\n\n\n\n\nbash\n\nsdk install java 17.0.14-tem\n\n\n\n설치 후 bash 재 실행 후 버전을 확인\n\n\n\n\nbash\n\njava -version\n\n\n\n\n\n\n\n\n\n\nbash\n\nsdk list maven\n\n\n\n\n\nbash\n\nsdk install maven\n\n\n\n설치 후 bash 재 실행 후 버전을 확인\n\n\n\n\nbash\n\nmvn -version\n\n\n\n\n\n\n\n\n\n\n\nbash\n\ngit clone https://github.com/dcm4che/dcm4che.git\n\n\n\n\n\n\n\n\nbash\n\ncd dcm4che\n./mvnw install\n\n\n\n\n\nhttps://github.com/dcm4che/dcm4chee-arc-light/wiki",
+    "text": "https://github.com/dcm4che/dcm4che/blob/master/README.md\n\n\n\n\n\nbash\n\nuname -m\n\n\n\nkimbi-laptop은 x86_64이므로 linux-x86-64 패키지로 진행\n\n\n\n\n\nSDKMAN(Software Development Kit MANager)은 유닉스 환경에서 여러 소프트웨어 개발 키트를 손쉽게 관리할 수 있는 CLI 도구이다.\n여기에서는 프로젝트별로 Java 버전을 관리(matching)하기 위해 설치하였다.\n\n\n\n\ncurl(Client URL)은 명령줄에서 HTTP, HTTPS, FTP, SCP 등의 프로토콜을 사용하여 데이터를 전송하는 도구인데, Git bash가 설치될 때 같이 설치되므로 git bash에서 아래와 같이 설치하였다.\n\n\n\n\nbash\n\ncurl -s \"https://get.sdkman.io\" | bash\n\n\n\nSDKMAN의 초기화 스크립트를 현재 셸에서 실행하여, SDKMAN 관련 설정과 기능들을 활성화시키는 역할을 합니다.\n\n\n\n\nbash\n\nsource \"$HOME/.sdkman/bin/sdkman-init.sh\"\n\n\n\n\n\nbash\n\nsdk version\n\n\n\n\n\n\n\n\n\nbash\n\nsdk list java\n\n\n\n\n\nbash\n\nsdk install java 17.0.14-tem\n\n\n\n설치 후 bash 재 실행 후 버전을 확인\n\n\n\n\nbash\n\njava --version\n\n\n\n\n\n\n\n\n\n\nbash\n\nsdk list maven\n\n\n\n\n\nbash\n\nsdk install maven\n\n\n\n설치 후 bash 재 실행 후 버전을 확인\n\n\n\n\nbash\n\nmvn -version\n\n\n\n\n\n\n\n\n\n\n\nbash\n\ngit clone https://github.com/dcm4che/dcm4che.git\n\n\n\n\n\n\n인터넷연결에 제한적인 정책이 있는 경우 오류가 발생하여 pulic wifi로 진행하였습니다.\n\n\n\n\nbash\n\ncd dcm4che\n./mvnw install\n\n\n\n\n\n\n생각보다 문서가 없습니다.\n\nhttps://github.com/dcm4che/dcm4che",
     "crumbs": [
       "Tools",
       "DCM4che"
@@ -420,7 +420,7 @@
     "href": "posts/tools/wsl2_ubuntu.html",
     "title": "WSL2/Ubuntu",
     "section": "",
-    "text": "운영체제 중 개발에 유리하고 속도가 윈도우보다는 빠른 우분투 on WSL2를 선택함.\nNMIQ유지보수를 간편하게 할려면 도커로 배포 필요 도커는 리눅스환경이 필요하여, 일단은 윈도우10에서 WSL2을 활성화 필요",
+    "text": "개발환경으로써 리눅스가 가장 유리하겠으나, 현단계에서는 WSL2를 대안으로 선택함\n특히, NMIQ의 설치는 도커배포를 계획하고 있어 윈도우10에서 WSL2을 활성화 필요",
     "crumbs": [
       "Tools",
       "WSL2/Ubuntu"
@@ -431,7 +431,7 @@
     "href": "posts/tools/wsl2_ubuntu.html#필요성",
     "title": "WSL2/Ubuntu",
     "section": "",
-    "text": "운영체제 중 개발에 유리하고 속도가 윈도우보다는 빠른 우분투 on WSL2를 선택함.\nNMIQ유지보수를 간편하게 할려면 도커로 배포 필요 도커는 리눅스환경이 필요하여, 일단은 윈도우10에서 WSL2을 활성화 필요",
+    "text": "개발환경으로써 리눅스가 가장 유리하겠으나, 현단계에서는 WSL2를 대안으로 선택함\n특히, NMIQ의 설치는 도커배포를 계획하고 있어 윈도우10에서 WSL2을 활성화 필요",
     "crumbs": [
       "Tools",
       "WSL2/Ubuntu"
@@ -536,6 +536,17 @@
     "crumbs": [
       "Tools",
       "DCM4chee"
+    ]
+  },
+  {
+    "objectID": "posts/tools/wsl2_ubuntu.html#설정",
+    "href": "posts/tools/wsl2_ubuntu.html#설정",
+    "title": "WSL2/Ubuntu",
+    "section": "설정",
+    "text": "설정\n\n/etc/wsl.conf\nsystemd의 설정을 true로 변경하여 systemd를 사용할 수 있도록 설정합니다.\n\n\n\n/etc/wsl.conf\n\n[boot]\nsystemd=true",
+    "crumbs": [
+      "Tools",
+      "WSL2/Ubuntu"
     ]
   }
 ]
