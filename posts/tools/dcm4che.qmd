@@ -32,11 +32,11 @@ uname -m
 curl -s "https://get.sdkman.io" | bash
 ```
 
+-   SDKMAN의 초기화 스크립트를 현재 셸에서 실행하여, SDKMAN 관련 설정과 기능들을 활성화시키는 역할을 합니다.
+
 ```{r sdkman_path, eval=FALSE, filename="bash"}
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 ```
-
--   설치 후 초기화 스크립트를 실행하여 SDKMAN을 사용할 수 있도록 설정합니다.
 
 ```{r sdkman_validation, eval=FALSE, filename="bash"}
 sdk version
@@ -55,7 +55,7 @@ sdk install java 17.0.14-tem
 -   설치 후 bash 재 실행 후 버전을 확인
 
 ```{r java_version, eval=FALSE, filename="bash"}
-java -version
+java --version
 ```
 
 ### Apache Maven
@@ -86,11 +86,15 @@ git clone https://github.com/dcm4che/dcm4che.git
 
 #### build up
 
+-   인터넷연결에 제한적인 정책이 있는 경우 오류가 발생하여 pulic wifi로 진행하였습니다.
+
 ```{r dcm4che_build, eval=FALSE, filename="bash"}
 cd dcm4che
 ./mvnw install
 ```
 
-#### manusal
+#### documents
 
-https://github.com/dcm4che/dcm4chee-arc-light/wiki
+-   생각보다 문서가 없습니다.
+
+<https://github.com/dcm4che/dcm4che>

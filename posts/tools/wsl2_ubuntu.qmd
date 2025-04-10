@@ -9,8 +9,8 @@ categories: [WSL2, Ubuntu, setup]
 
 ## 필요성
 
--   운영체제 중 개발에 유리하고 속도가 윈도우보다는 빠른 우분투 on WSL2를 선택함.
--   NMIQ유지보수를 간편하게 할려면 도커로 배포 필요 도커는 리눅스환경이 필요하여, 일단은 윈도우10에서 WSL2을 활성화 필요
+-   개발환경으로써 리눅스가 가장 유리하겠으나, 현단계에서는 WSL2를 대안으로 선택함
+-   특히, NMIQ의 설치는 도커배포를 계획하고 있어 윈도우10에서 WSL2을 활성화 필요
 
 ## WSL2상의 우분투 완전 제거
 
@@ -159,6 +159,17 @@ wsl --install -d Ubuntu
 
 Ubuntu의 디렉토리 구조
 :::
+
+## 설정
+
+### /etc/wsl.conf
+
+systemd의 설정을 true로 변경하여 systemd를 사용할 수 있도록 설정합니다.
+
+```{r wsl_conf, eval=FALSE, filename="/etc/wsl.conf"}
+[boot]
+systemd=true
+```
 
 ## 이전설치방식
 
