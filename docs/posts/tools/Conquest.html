@@ -282,6 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#설치파일-다운로드" id="toc-설치파일-다운로드" class="nav-link" data-scroll-target="#설치파일-다운로드">설치파일 다운로드</a></li>
   <li><a href="#컴파일" id="toc-컴파일" class="nav-link" data-scroll-target="#컴파일">컴파일</a></li>
   <li><a href="#브라우저로-접속" id="toc-브라우저로-접속" class="nav-link" data-scroll-target="#브라우저로-접속">브라우저로 접속</a></li>
+  <li><a href="#systemd-설정" id="toc-systemd-설정" class="nav-link" data-scroll-target="#systemd-설정">systemd 설정</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -323,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 7, 2025</p>
+      <p class="date-modified">April 14, 2025</p>
     </div>
   </div>
     
@@ -437,6 +438,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>http://localhost/app/newweb/ 또는 http://localhost/app/ohif 주소로 접속</li>
 </ul>
+</section>
+<section id="systemd-설정" class="level3">
+<h3 class="anchored" data-anchor-id="systemd-설정">systemd 설정</h3>
+<ul>
+<li>daemon으로 설정되어 있으므로 systemctl로 관리할 수 있다.</li>
+<li>만약에 설정파일을 변경한 후 재시작을 할려면 아래와 같이 한다.</li>
+</ul>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl restart conquest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li>정상작동이 되지 않는다고 생각되면 dgate가 아래의 명령으로 실행되고 있는지 확인해 본다.</li>
+</ul>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>systemctl status conquest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 
 
 </section>

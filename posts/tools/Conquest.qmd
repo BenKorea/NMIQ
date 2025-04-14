@@ -81,3 +81,18 @@ chmod 777 maklinux
 ### 브라우저로 접속
 
 -   http://localhost/app/newweb/ 또는 http://localhost/app/ohif 주소로 접속
+
+### systemd 설정
+
+-   daemon으로 설정되어 있으므로 systemctl로 관리할 수 있다.
+-   만약에 설정파일을 변경한 후 재시작을 할려면 아래와 같이 한다.
+
+```{r conquest_restart, eval=FALSE, filename="bash"}
+sudo systemctl restart conquest
+```
+
+-   정상작동이 되지 않는다고 생각되면 dgate가 아래의 명령으로 실행되고 있는지 확인해 본다.
+
+```{r conquest_status, eval=FALSE, filename="bash"}
+systemctl status conquest
+```

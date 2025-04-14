@@ -7,8 +7,9 @@ date-modified: last-modified
 categories: [dicom server, Orthanc]
 ---
 
-벨기에에서 개발한 오픈소스이다.
-Restful APT를 지원하기 때문에 DICOM query, retrieve, send, move 등을 쉽게 구현할 수 있으리라는기대감으로 설치하여 향후의 시스템을 모사하여 개발을 진행하고 있다.
+벨기에에서 개발한 오픈소스이다. Restful APT를 지원하기 때문에 DICOM query, retrieve, send, move 등을 쉽게 구현할 수 있으리라는기대감으로 설치하여 향후의 시스템을 모사하여 개발을 진행하고 있다.
+
+## Window 운영체제에서의 설치
 
 ### 완전제거방법
 
@@ -28,22 +29,23 @@ Restful APT를 지원하기 때문에 DICOM query, retrieve, send, move 등을 �
 
 5.  제어판에서 "프로그램 제거"를 선택하고 "Orthanc"를 제거합니다.
 
-
 ### 설치파일
 
-공식사이트 https://orthanc.uclouvain.be/downloads/windows-64/installers/index.html 
-2025년 2월 27일 release된 25.2.0 버전이 최신이다.
+공식사이트 https://orthanc.uclouvain.be/downloads/windows-64/installers/index.html 2025년 2월 27일 release된 25.2.0 버전이 최신이다.
 
 ### 설치폴더
+
 기본설치폴더는 C:\\Program Files\\Orthanc Server이며 data는 C:\\Orthanc에 기본 설치된다. 이를 변경하면 Plugins에서 설치경로 인식의 문제 등으로 실행에 문제가 발생하는 것 같으므로 기본설치폴더에 설치하는 것이 좋겠다.
 
 ### 설정파일
-main 설정파일은 C:\\Program Files\\Orthanc Server\\Configuration\\orthanc.json이다. 
+
+main 설정파일은 C:\\Program Files\\Orthanc Server\\Configuration\\orthanc.json이다.
 
 ### DICOMModality 설정
+
 매뉴얼(https://orthanc.uclouvain.be/book/integrations/modality.html#configure-modality)의 예시는 아래와 같았다.
 
-```r
+``` r
 // The list of the known DICOM modalities
 "DicomModalities" : {
   "echo1" : [ "ECHO1", "123.124.125.10", 104 ]
@@ -51,7 +53,8 @@ main 설정파일은 C:\\Program Files\\Orthanc Server\\Configuration\\orthanc.j
 ```
 
 위를 참고하여 개발시스템의 DicomModality를 아래와 같이 설정하였다.
-```r
+
+``` r
   "NMDOSE" : [ "NMDOSE", "127.0.0.1", 5678 ],
   "NMIQ" : [ "NMIQ", "127.0.0.1", 5679 ],
   "NMFULLDATA" : [ "NMFULLDATA", "127.0.0.1", 5680 ],
@@ -60,19 +63,21 @@ main 설정파일은 C:\\Program Files\\Orthanc Server\\Configuration\\orthanc.j
   "SLICER" : [ "SLICER", "127.0.0.1", 11112 ]
 ```
 
-configuration을 설정하는 동안에 Orthanc를 완전히 중지하였다가 수정 후 service를 재개하여야 수정사항이 반영됨을 주의해야 한다.
-그리고 쓰기권한이 제한된 경우에는 이를 해결해야 한다.
+configuration을 설정하는 동안에 Orthanc를 완전히 중지하였다가 수정 후 service를 재개하여야 수정사항이 반영됨을 주의해야 한다. 그리고 쓰기권한이 제한된 경우에는 이를 해결해야 한다.
 
 ### Port
-- 4242
+
+-   4242
 
 ### HPPT port
-- 8042
+
+-   8042
 
 ### 설정
-- PostgreSQL로 DICOM metadata를 저장하기 위해서 postgresql.json을 아래와 같이 설정하였다.
 
-```json
+-   PostgreSQL로 DICOM metadata를 저장하기 위해서 postgresql.json을 아래와 같이 설정하였다.
+
+``` json
 {
   "PostgreSQL" : {
     "EnableIndex" : true,
@@ -95,15 +100,81 @@ configuration을 설정하는 동안에 Orthanc를 완전히 중지하였다가 
 }
 ```
 
+## WSL2/Ubuntu 환경에서의 설치
+
+### 패키지 목록 업데이트
+
+```{r sudo-apt-update, eval=FALSE, filename="bash"}
+sudo apt update
+```
+
+### Orthanc 설치
+
+```{r sudo-apt-install, eval=FALSE, filename="bash"}
+sudo apt install orthanc
+```
+
+### RemoteAccessAllowed 설정변경
+
+-   저자가 이해하기로는 내부에서가 아니라 외부에서 접속할 때 true로 설정해야 하는 것이지만 WSL2에서는 이 옵션을 true로 변경해야 가능한 것 같음
+
+```{r remote-access-allowed, eval=FALSE, filename="orthanc.json"}
+sudo nano /etc/orthanc/orthanc.json
+"RemoteAccessAllowed" : true,
+```
+
+### Orthanc 재시작
+
+```{r restart-orthanc, eval=FALSE, filename="bash"}
+sudo systemctl restart orthanc
+```
+
+### Orthanc Explorer2 plugin 설치
+
+-   설치명령이 잘 작동하지 않아서 웹페이지에서 so 파일을 직접 다운로드 하였다.
+
+```{r orthanc-explorer2-download, eval=FALSE, filename="browse"}
+https://github.com/orthanc-server/orthanc-explorer-2/releases
+```
+
+-   libOrthancExplorer2-ubuntu.so 파일을 다운로드하여 /usr/share/orthanc/plugins 폴더에 저장하였다.
+-   orthanc.json에서 아래와 같이 설정하였다.
+
+```{r orthanc-explorer22, eval=FALSE, filename="orthanc.json"}
+"Plugins" : {
+  "OrthancExplorer2" : {
+    "Enabled" : true,
+    "Path" : "/usr/share/orthanc/plugins/libOrthancExplorer2-ubuntu.so"
+  }
+}
+```
+
+-   Orthanc을 재시작하였다.
+
+```{r restart-orthanc2, eval=FALSE, filename="bash"}
+sudo systemctl restart orthanc
+```
+
+```{r orthanc-explorer2, eval=FALSE, filename="bash"}
+sudo apt install orthanc-explorer2
+```
+
+### Winddow와 통신설정
+
+-   윈도우는 host
+
+## 스크립트
+
 ### Retrieve 자동화
-Orthanc에 내장된 Lua engine으로 특정기간동안의 Modality=="PT"인 경우를 retrieve하도록 다음의 단계를 진행하였다.
-- orthanc.json에서 Lua script를 아래와 같이 활성화하였다.
-```orthanc.json
+
+Orthanc에 내장된 Lua engine으로 특정기간동안의 Modality=="PT"인 경우를 retrieve하도록 다음의 단계를 진행하였다. - orthanc.json에서 Lua script를 아래와 같이 활성화하였다.
+
+``` orthanc.json
 "LuaScripts" : [C:\\Orthanc\\lua\\retrieve_nm_studies.lua"],
 ```
 
 그러나 query 요청에 실패해 일단 보류
 
-```curl
+``` curl
 curl -X POST http://localhost:8042/tools/execute-script --data-binary "OnTimer()"
 ```

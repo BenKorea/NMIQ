@@ -23,6 +23,20 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
+### 사용자 및 그룹사용자 지정
+
+-   slapd-dcm4chee, postgres-dcm4chee, dcm4chee-arc 매뉴얼 uid, gid가 999를 넘거나 이미 존재하고 있어, 옵션에 해당하는 이부분을 굳이 변경하여 문제를 일으킬 가능성을 고려하여 설정하지 않고 skip 하였습니다.
+
+-   sudo -i 명령으로 프롬프트가 #로 바뀔 수 있음을 주의해야 합니다.
+
+```{r dcm4chee_user, eval=FALSE, filename="bash"}
+$ sudo -i
+groupadd -r slapd-dcm4chee --gid=1021 && useradd -r -g slapd-dcm4chee --uid=1021 slapd-dcm4chee
+groupadd -r postgres-dcm4chee --gid=999 && useradd -r -g postgres-dcm4chee --uid=999 postgres-dcm4chee
+groupadd -r dcm4chee-arc --gid=1023 && useradd -r -g dcm4chee-arc --uid=1023 dcm4chee-arc
+exit
+```
+
 ### dcm4chee 폴더만들기
 
 ```{r dcm4chee_folder, eval=FALSE, filename="bash"}
@@ -35,7 +49,7 @@ ch dcm4chee
 -   아래의 내용을 복사하여 `dcm4chee` 폴더에 `docker-compose.yml`로 저장합니다.
 -   매뉴얼에는 version이 있지만 불필요한 메세지만 생성되므로 삭제하였습니다.
 
-```{r docker-compose2, eval=FALSE, filename='docker-compose.yml'}
+```{r docker-compose-yml, eval=FALSE, filename='docker-compose.yml'}
 services:
   ldap:
     image: dcm4che/slapd-dcm4chee:2.6.7-33.1
@@ -112,3 +126,17 @@ sudo docker-compose -p dcm4chee up -d
 or
 
 <https://localhost:8443/dcm4chee-arc/ui2>
+
+## 제거
+
+### 1차 제거
+
+```{r docker-compose-remove, eval=FALSE, filename='bash'}
+sudo docker-compose -p dcm4chee down --rmi all --volumes --remove-orphans
+```
+
+### 리소스 제거
+
+```{r docker-compose-remove2, eval=FALSE, filename='bash'}
+sudo docker system prune -a --volumes
+```

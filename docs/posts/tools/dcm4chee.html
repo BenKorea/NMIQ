@@ -271,10 +271,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#매뉴얼" id="toc-매뉴얼" class="nav-link" data-scroll-target="#매뉴얼">매뉴얼</a></li>
   <li><a href="#docker-compose-설치" id="toc-docker-compose-설치" class="nav-link" data-scroll-target="#docker-compose-설치">Docker-compose 설치</a></li>
+  <li><a href="#사용자-및-그룹사용자-지정" id="toc-사용자-및-그룹사용자-지정" class="nav-link" data-scroll-target="#사용자-및-그룹사용자-지정">사용자 및 그룹사용자 지정</a></li>
   <li><a href="#dcm4chee-폴더만들기" id="toc-dcm4chee-폴더만들기" class="nav-link" data-scroll-target="#dcm4chee-폴더만들기">dcm4chee 폴더만들기</a></li>
   <li><a href="#docker-compose.yml-작성하기" id="toc-docker-compose.yml-작성하기" class="nav-link" data-scroll-target="#docker-compose.yml-작성하기">docker-compose.yml 작성하기</a></li>
   <li><a href="#compose로-설치하기" id="toc-compose로-설치하기" class="nav-link" data-scroll-target="#compose로-설치하기">compose로 설치하기</a></li>
   <li><a href="#웹인터페이스" id="toc-웹인터페이스" class="nav-link" data-scroll-target="#웹인터페이스">웹인터페이스</a></li>
+  </ul></li>
+  <li><a href="#제거" id="toc-제거" class="nav-link" data-scroll-target="#제거">제거</a>
+  <ul>
+  <li><a href="#차-제거" id="toc-차-제거" class="nav-link" data-scroll-target="#차-제거">1차 제거</a></li>
+  <li><a href="#리소스-제거" id="toc-리소스-제거" class="nav-link" data-scroll-target="#리소스-제거">리소스 제거</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -316,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 8, 2025</p>
+      <p class="date-modified">April 14, 2025</p>
     </div>
   </div>
     
@@ -349,6 +355,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+<section id="사용자-및-그룹사용자-지정" class="level3">
+<h3 class="anchored" data-anchor-id="사용자-및-그룹사용자-지정">사용자 및 그룹사용자 지정</h3>
+<ul>
+<li><p>slapd-dcm4chee, postgres-dcm4chee, dcm4chee-arc 매뉴얼 uid, gid가 999를 넘거나 이미 존재하고 있어, 옵션에 해당하는 이부분을 굳이 변경하여 문제를 일으킬 가능성을 고려하여 설정하지 않고 skip 하였습니다.</p></li>
+<li><p>sudo -i 명령으로 프롬프트가 #로 바뀔 수 있음을 주의해야 합니다.</p></li>
+</ul>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> sudo <span class="sc">-</span>i</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>groupadd <span class="sc">-</span>r slapd<span class="sc">-</span>dcm4chee <span class="sc">--</span>gid<span class="ot">=</span><span class="dv">1021</span> <span class="sc">&amp;&amp;</span> useradd <span class="sc">-</span>r <span class="sc">-</span>g slapd<span class="sc">-</span>dcm4chee <span class="sc">--</span>uid<span class="ot">=</span><span class="dv">1021</span> slapd<span class="sc">-</span>dcm4chee</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>groupadd <span class="sc">-</span>r postgres<span class="sc">-</span>dcm4chee <span class="sc">--</span>gid<span class="ot">=</span><span class="dv">999</span> <span class="sc">&amp;&amp;</span> useradd <span class="sc">-</span>r <span class="sc">-</span>g postgres<span class="sc">-</span>dcm4chee <span class="sc">--</span>uid<span class="ot">=</span><span class="dv">999</span> postgres<span class="sc">-</span>dcm4chee</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>groupadd <span class="sc">-</span>r dcm4chee<span class="sc">-</span>arc <span class="sc">--</span>gid<span class="ot">=</span><span class="dv">1023</span> <span class="sc">&amp;&amp;</span> useradd <span class="sc">-</span>r <span class="sc">-</span>g dcm4chee<span class="sc">-</span>arc <span class="sc">--</span>uid<span class="ot">=</span><span class="dv">1023</span> dcm4chee<span class="sc">-</span>arc</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>exit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
 <section id="dcm4chee-폴더만들기" class="level3">
 <h3 class="anchored" data-anchor-id="dcm4chee-폴더만들기">dcm4chee 폴더만들기</h3>
 <div class="cell">
@@ -356,8 +381,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mkdir dcm4chee</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ch dcm4chee</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mkdir dcm4chee</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ch dcm4chee</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -372,65 +397,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>docker-compose.yml</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>services<span class="sc">:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  ldap<span class="sc">:</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> dcm4che<span class="sc">/</span>slapd<span class="sc">-</span>dcm4chee<span class="sc">:</span><span class="dv">2</span>.<span class="fl">6.7-33.1</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    logging<span class="sc">:</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      driver<span class="sc">:</span> json<span class="sc">-</span>file</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      options<span class="sc">:</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        max<span class="sc">-</span>size<span class="sc">:</span> <span class="st">"10m"</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"389:389"</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    environment<span class="sc">:</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      STORAGE_DIR<span class="sc">:</span> <span class="er">/</span>storage<span class="sc">/</span>fs1</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>ldap<span class="sc">:</span><span class="er">/</span>var<span class="sc">/</span>lib<span class="sc">/</span>openldap<span class="sc">/</span>openldap<span class="sc">-</span>data</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>slapd.d<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>openldap<span class="sc">/</span>slapd.d</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  db<span class="sc">:</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> dcm4che<span class="sc">/</span>postgres<span class="sc">-</span>dcm4chee<span class="sc">:</span><span class="fl">17.1</span><span class="dv">-33</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    logging<span class="sc">:</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      driver<span class="sc">:</span> json<span class="sc">-</span>file</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      options<span class="sc">:</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        max<span class="sc">-</span>size<span class="sc">:</span> <span class="st">"10m"</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>     <span class="sc">-</span> <span class="st">"5432:5432"</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    environment<span class="sc">:</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      POSTGRES_DB<span class="sc">:</span> pacsdb</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>      POSTGRES_USER<span class="sc">:</span> pacs</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      POSTGRES_PASSWORD<span class="sc">:</span> pacs</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span>ro</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span>ro</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>db<span class="sc">:</span><span class="er">/</span>var<span class="sc">/</span>lib<span class="sc">/</span>postgresql<span class="sc">/</span>data</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  arc<span class="sc">:</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> dcm4che<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">-</span>psql<span class="sc">:</span><span class="dv">5</span>.<span class="fl">33.1</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    logging<span class="sc">:</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>      driver<span class="sc">:</span> json<span class="sc">-</span>file</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>      options<span class="sc">:</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        max<span class="sc">-</span>size<span class="sc">:</span> <span class="st">"10m"</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"8080:8080"</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"8443:8443"</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9990:9990"</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9993:9993"</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"11112:11112"</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"2762:2762"</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"2575:2575"</span></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"12575:12575"</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    environment<span class="sc">:</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>      POSTGRES_DB<span class="sc">:</span> pacsdb</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>      POSTGRES_USER<span class="sc">:</span> pacs</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>      POSTGRES_PASSWORD<span class="sc">:</span> pacs</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>      WILDFLY_CHOWN<span class="sc">:</span> <span class="er">/</span>storage</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>      WILDFLY_WAIT_FOR<span class="sc">:</span> ldap<span class="sc">:</span><span class="dv">389</span> db<span class="sc">:</span><span class="dv">5432</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    depends_on<span class="sc">:</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ldap</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> db</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span>ro</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span>ro</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>wildfly<span class="sc">:</span><span class="er">/</span>opt<span class="sc">/</span>wildfly<span class="sc">/</span>standalone</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>storage<span class="sc">:</span><span class="er">/</span>storage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>services<span class="sc">:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  ldap<span class="sc">:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> dcm4che<span class="sc">/</span>slapd<span class="sc">-</span>dcm4chee<span class="sc">:</span><span class="dv">2</span>.<span class="fl">6.7-33.1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    logging<span class="sc">:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      driver<span class="sc">:</span> json<span class="sc">-</span>file</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      options<span class="sc">:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        max<span class="sc">-</span>size<span class="sc">:</span> <span class="st">"10m"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"389:389"</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    environment<span class="sc">:</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      STORAGE_DIR<span class="sc">:</span> <span class="er">/</span>storage<span class="sc">/</span>fs1</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>ldap<span class="sc">:</span><span class="er">/</span>var<span class="sc">/</span>lib<span class="sc">/</span>openldap<span class="sc">/</span>openldap<span class="sc">-</span>data</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>slapd.d<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>openldap<span class="sc">/</span>slapd.d</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  db<span class="sc">:</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> dcm4che<span class="sc">/</span>postgres<span class="sc">-</span>dcm4chee<span class="sc">:</span><span class="fl">17.1</span><span class="dv">-33</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    logging<span class="sc">:</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>      driver<span class="sc">:</span> json<span class="sc">-</span>file</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>      options<span class="sc">:</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        max<span class="sc">-</span>size<span class="sc">:</span> <span class="st">"10m"</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>     <span class="sc">-</span> <span class="st">"5432:5432"</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    environment<span class="sc">:</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>      POSTGRES_DB<span class="sc">:</span> pacsdb</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>      POSTGRES_USER<span class="sc">:</span> pacs</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>      POSTGRES_PASSWORD<span class="sc">:</span> pacs</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span>ro</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span>ro</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>db<span class="sc">:</span><span class="er">/</span>var<span class="sc">/</span>lib<span class="sc">/</span>postgresql<span class="sc">/</span>data</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  arc<span class="sc">:</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    image<span class="sc">:</span> dcm4che<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">-</span>psql<span class="sc">:</span><span class="dv">5</span>.<span class="fl">33.1</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    logging<span class="sc">:</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>      driver<span class="sc">:</span> json<span class="sc">-</span>file</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>      options<span class="sc">:</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        max<span class="sc">-</span>size<span class="sc">:</span> <span class="st">"10m"</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    ports<span class="sc">:</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"8080:8080"</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"8443:8443"</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9990:9990"</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"9993:9993"</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"11112:11112"</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"2762:2762"</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"2575:2575"</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="st">"12575:12575"</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    environment<span class="sc">:</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>      POSTGRES_DB<span class="sc">:</span> pacsdb</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>      POSTGRES_USER<span class="sc">:</span> pacs</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>      POSTGRES_PASSWORD<span class="sc">:</span> pacs</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>      WILDFLY_CHOWN<span class="sc">:</span> <span class="er">/</span>storage</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>      WILDFLY_WAIT_FOR<span class="sc">:</span> ldap<span class="sc">:</span><span class="dv">389</span> db<span class="sc">:</span><span class="dv">5432</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    depends_on<span class="sc">:</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> ldap</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> db</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    volumes<span class="sc">:</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>localtime<span class="sc">:</span>ro</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span><span class="er">/</span>etc<span class="sc">/</span>timezone<span class="sc">:</span>ro</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>wildfly<span class="sc">:</span><span class="er">/</span>opt<span class="sc">/</span>wildfly<span class="sc">/</span>standalone</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> <span class="er">/</span>var<span class="sc">/</span>local<span class="sc">/</span>dcm4chee<span class="sc">-</span>arc<span class="sc">/</span>storage<span class="sc">:</span><span class="er">/</span>storage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -444,7 +469,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sudo docker<span class="sc">-</span>compose <span class="sc">-</span>p dcm4chee up <span class="sc">-</span>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sudo docker<span class="sc">-</span>compose <span class="sc">-</span>p dcm4chee up <span class="sc">-</span>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -453,6 +478,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="http://localhost:8080/dcm4chee-arc/ui2" class="uri">http://localhost:8080/dcm4chee-arc/ui2</a></p>
 <p>or</p>
 <p><a href="https://localhost:8443/dcm4chee-arc/ui2" class="uri">https://localhost:8443/dcm4chee-arc/ui2</a></p>
+</section>
+</section>
+<section id="제거" class="level2">
+<h2 class="anchored" data-anchor-id="제거">제거</h2>
+<section id="차-제거" class="level3">
+<h3 class="anchored" data-anchor-id="차-제거">1차 제거</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sudo docker<span class="sc">-</span>compose <span class="sc">-</span>p dcm4chee down <span class="sc">--</span>rmi all <span class="sc">--</span>volumes <span class="sc">--</span>remove<span class="sc">-</span>orphans</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="리소스-제거" class="level3">
+<h3 class="anchored" data-anchor-id="리소스-제거">리소스 제거</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sudo docker system prune <span class="sc">-</span>a <span class="sc">--</span>volumes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 
 
 </section>
