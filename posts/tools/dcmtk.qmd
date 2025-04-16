@@ -31,7 +31,7 @@ choco install dcmtk
 dcmdump --version
 ```
 
-```{r port_check, eval=FALSE, filename="cmd"}
+```{r port_check, eval=FALSE, filename="관리자: Windows PowerShell"}
 Test-NetConnection -ComputerName 172.21.120.237 -Port 4242
 ```
 

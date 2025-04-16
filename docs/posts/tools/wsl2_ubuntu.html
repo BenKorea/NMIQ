@@ -293,20 +293,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#우분투설치" id="toc-우분투설치" class="nav-link" data-scroll-target="#우분투설치">우분투설치</a>
   <ul>
+  <li><a href="#원하는-배포판-설치" id="toc-원하는-배포판-설치" class="nav-link" data-scroll-target="#원하는-배포판-설치">원하는 배포판 설치</a></li>
   <li><a href="#default-unix-user-accout" id="toc-default-unix-user-accout" class="nav-link" data-scroll-target="#default-unix-user-accout">default Unix user accout</a></li>
   <li><a href="#우분투-디렉토리-구조" id="toc-우분투-디렉토리-구조" class="nav-link" data-scroll-target="#우분투-디렉토리-구조">우분투 디렉토리 구조</a></li>
   </ul></li>
   <li><a href="#설정" id="toc-설정" class="nav-link" data-scroll-target="#설정">설정</a>
   <ul>
-  <li><a href="#etcwsl.conf" id="toc-etcwsl.conf" class="nav-link" data-scroll-target="#etcwsl.conf">/etc/wsl.conf</a></li>
-  </ul></li>
-  <li><a href="#네트워크" id="toc-네트워크" class="nav-link" data-scroll-target="#네트워크">네트워크</a>
-  <ul>
+  <li><a href="#systemd-설정" id="toc-systemd-설정" class="nav-link" data-scroll-target="#systemd-설정">systemd 설정</a></li>
+  <li><a href="#window-to-wsl2-네트워크" id="toc-window-to-wsl2-네트워크" class="nav-link" data-scroll-target="#window-to-wsl2-네트워크">Window to WSL2 네트워크</a>
+  <ul class="collapse">
   <li><a href="#윈도우에서-wsl2-가상-ip-확인하기" id="toc-윈도우에서-wsl2-가상-ip-확인하기" class="nav-link" data-scroll-target="#윈도우에서-wsl2-가상-ip-확인하기">윈도우에서 wsl2 가상 IP 확인하기</a></li>
   <li><a href="#wsl2-가상-ip-검증" id="toc-wsl2-가상-ip-검증" class="nav-link" data-scroll-target="#wsl2-가상-ip-검증">wsl2 가상 ip 검증</a></li>
   <li><a href="#포트-검증" id="toc-포트-검증" class="nav-link" data-scroll-target="#포트-검증">포트 검증</a></li>
-  <li><a href="#윈도우의-ip-확인" id="toc-윈도우의-ip-확인" class="nav-link" data-scroll-target="#윈도우의-ip-확인">윈도우의 IP 확인</a>
+  </ul></li>
+  <li><a href="#wsl2-to-window-네트워크" id="toc-wsl2-to-window-네트워크" class="nav-link" data-scroll-target="#wsl2-to-window-네트워크">WSL2 to Window 네트워크</a>
   <ul class="collapse">
+  <li><a href="#윈도우의-ip-확인" id="toc-윈도우의-ip-확인" class="nav-link" data-scroll-target="#윈도우의-ip-확인">윈도우의 IP 확인</a></li>
   <li><a href="#포트확인" id="toc-포트확인" class="nav-link" data-scroll-target="#포트확인">포트확인</a></li>
   </ul></li>
   </ul></li>
@@ -513,6 +515,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>관리자권한 Command Prompt에서 다음의 명령을 입력하여 최신 배포판을 설치할 수 있습니다.</li>
 <li>그런데 방화벽이나 회상방침에 따라 인터넷 연결이 제한적인 경우에는 문제가 발생하여 Public WiFi로 전환하면 성공하게 됩니다.</li>
 </ul>
+<section id="원하는-배포판-설치" class="level3">
+<h3 class="anchored" data-anchor-id="원하는-배포판-설치">원하는 배포판 설치</h3>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -521,6 +525,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="sc">--</span>install <span class="sc">-</span>d Ubuntu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+</section>
 <section id="default-unix-user-accout" class="level3">
 <h3 class="anchored" data-anchor-id="default-unix-user-accout">default Unix user accout</h3>
 <ul>
@@ -571,9 +576,12 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 </section>
 <section id="설정" class="level2">
 <h2 class="anchored" data-anchor-id="설정">설정</h2>
-<section id="etcwsl.conf" class="level3">
-<h3 class="anchored" data-anchor-id="etcwsl.conf">/etc/wsl.conf</h3>
-<p>systemd의 설정을 true로 변경하여 systemd를 사용할 수 있도록 설정합니다.</p>
+<section id="systemd-설정" class="level3">
+<h3 class="anchored" data-anchor-id="systemd-설정">systemd 설정</h3>
+<ul>
+<li>/etc/wsl.conf</li>
+<li>systemd의 설정을 true로 변경하여 systemd를 사용할 수 있도록 설정합니다.</li>
+</ul>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -584,11 +592,10 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 </div>
 </div>
 </section>
-</section>
-<section id="네트워크" class="level2">
-<h2 class="anchored" data-anchor-id="네트워크">네트워크</h2>
-<section id="윈도우에서-wsl2-가상-ip-확인하기" class="level3">
-<h3 class="anchored" data-anchor-id="윈도우에서-wsl2-가상-ip-확인하기">윈도우에서 wsl2 가상 IP 확인하기</h3>
+<section id="window-to-wsl2-네트워크" class="level3">
+<h3 class="anchored" data-anchor-id="window-to-wsl2-네트워크">Window to WSL2 네트워크</h3>
+<section id="윈도우에서-wsl2-가상-ip-확인하기" class="level4">
+<h4 class="anchored" data-anchor-id="윈도우에서-wsl2-가상-ip-확인하기">윈도우에서 wsl2 가상 IP 확인하기</h4>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -622,8 +629,8 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <li>참고로 도커와 사용자정의 도커와 루프도 같이 출력됨.</li>
 </ul>
 </section>
-<section id="wsl2-가상-ip-검증" class="level3">
-<h3 class="anchored" data-anchor-id="wsl2-가상-ip-검증">wsl2 가상 ip 검증</h3>
+<section id="wsl2-가상-ip-검증" class="level4">
+<h4 class="anchored" data-anchor-id="wsl2-가상-ip-검증">wsl2 가상 ip 검증</h4>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -636,22 +643,25 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <li>방화벽등의 원인으로 막힐 수도 있음</li>
 </ul>
 </section>
-<section id="포트-검증" class="level3">
-<h3 class="anchored" data-anchor-id="포트-검증">포트 검증</h3>
+<section id="포트-검증" class="level4">
+<h4 class="anchored" data-anchor-id="포트-검증">포트 검증</h4>
 <ul>
 <li>dicom server에서 열어도 포트가 4242라면</li>
 </ul>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>cmd</strong></pre>
+<pre><strong>관리자: Windows PowerShell</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Test<span class="sc">-</span>NetConnection <span class="sc">-</span>ComputerName <span class="dv">172</span>.<span class="dv">21</span>.<span class="fl">120.237</span> <span class="sc">-</span>Port <span class="dv">4242</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
-<section id="윈도우의-ip-확인" class="level3">
-<h3 class="anchored" data-anchor-id="윈도우의-ip-확인">윈도우의 IP 확인</h3>
+</section>
+<section id="wsl2-to-window-네트워크" class="level3">
+<h3 class="anchored" data-anchor-id="wsl2-to-window-네트워크">WSL2 to Window 네트워크</h3>
+<section id="윈도우의-ip-확인" class="level4">
+<h4 class="anchored" data-anchor-id="윈도우의-ip-확인">윈도우의 IP 확인</h4>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -661,8 +671,13 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 </div>
 </div>
 <ul>
+<li>어탭터의 설정과 어떤 어댑터를 선택하는지에 따라 달라지는 것 같음.</li>
+<li>노트북과 PC 공통적으로 아래의 아이피를 선택할 수 있으나 이는 윈도우용 가상 아이피임.</li>
 <li><code>172.17.130.79</code></li>
+<li>노트북에서 성공했을 때는 무선랜의 아이피를 선택했었음.</li>
+<li>그러나 PC에서는 유선랜의 아이피를 선택했을 때 일단 실패 했음</li>
 </ul>
+</section>
 <section id="포트확인" class="level4">
 <h4 class="anchored" data-anchor-id="포트확인">포트확인</h4>
 <div class="cell">

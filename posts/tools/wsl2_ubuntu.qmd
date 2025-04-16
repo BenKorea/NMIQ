@@ -114,6 +114,8 @@ WSL 버전과 커널버전까지 표시되므로 확인할 수 있습니다.
 -   관리자권한 Command Prompt에서 다음의 명령을 입력하여 최신 배포판을 설치할 수 있습니다.
 -   그런데 방화벽이나 회상방침에 따라 인터넷 연결이 제한적인 경우에는 문제가 발생하여 Public WiFi로 전환하면 성공하게 됩니다.
 
+### 원하는 배포판 설치
+
 ```{r ubuntu_install, eval=FALSE, filename="관리자: 명령 프롬프트"}
 wsl --install -d Ubuntu
 ```
@@ -162,18 +164,19 @@ Ubuntu의 디렉토리 구조
 
 ## 설정
 
-### /etc/wsl.conf
+### systemd 설정
 
-systemd의 설정을 true로 변경하여 systemd를 사용할 수 있도록 설정합니다.
+-   /etc/wsl.conf
+-   systemd의 설정을 true로 변경하여 systemd를 사용할 수 있도록 설정합니다.
 
 ```{r wsl_conf, eval=FALSE, filename="/etc/wsl.conf"}
 [boot]
 systemd=true
 ```
 
-## 네트워크
+### Window to WSL2 네트워크
 
-### 윈도우에서 wsl2 가상 IP 확인하기
+#### 윈도우에서 wsl2 가상 IP 확인하기
 
 ```{r wsl_ip, eval=FALSE, filename="cmd or ps"}
 wsl hostname -i
@@ -193,7 +196,7 @@ ifconfig
 -   eth0의 inet이 원하는 결과이며 윈도우에서 wsl2에 설치된 서버에 접근할 때 사용딥니다. 하지만 부팅 시마다 달라집니다.
 -   참고로 도커와 사용자정의 도커와 루프도 같이 출력됨.
 
-### wsl2 가상 ip 검증
+#### wsl2 가상 ip 검증
 
 ```{r ping, eval=FALSE, filename="cmd"}
 ping 172.21.120.237
@@ -201,21 +204,27 @@ ping 172.21.120.237
 
 -   방화벽등의 원인으로 막힐 수도 있음
 
-### 포트 검증
+#### 포트 검증
 
 -   dicom server에서 열어도 포트가 4242라면
 
-```{r port_check, eval=FALSE, filename="cmd"}
+```{r port_check, eval=FALSE, filename="관리자: Windows PowerShell"}
 Test-NetConnection -ComputerName 172.21.120.237 -Port 4242
 ```
 
-### 윈도우의 IP 확인
+### WSL2 to Window 네트워크
+
+#### 윈도우의 IP 확인
 
 ```{r win_ip, eval=FALSE, filename="cmd"}
 ipconfig
 ```
 
+-   어탭터의 설정과 어떤 어댑터를 선택하는지에 따라 달라지는 것 같음.
+-   노트북과 PC 공통적으로 아래의 아이피를 선택할 수 있으나 이는 윈도우용 가상 아이피임.
 -   `172.17.130.79`
+-   노트북에서 성공했을 때는 무선랜의 아이피를 선택했었음.
+-   그러나 PC에서는 유선랜의 아이피를 선택했을 때 일단 실패 했음
 
 #### 포트확인
 
