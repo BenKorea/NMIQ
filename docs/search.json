@@ -609,7 +609,7 @@
     "href": "posts/tools/wsl2_ubuntu.html#네트워크",
     "title": "WSL2/Ubuntu",
     "section": "네트워크",
-    "text": "네트워크\n\n윈도우에서 wsl2 가상 IP 확인하기\n\n\n\ncmd or ps\n\nwsl hostname -i\n\n\n\n127.0.1.1\n그러나 이 결과는 원하는 결과가 아닌 127.0.0.1과 유사하다.\n\n\n\n\nbash\n\nsudo apt-get install net-tools\n\n\n\n\n\nbash\n\nifconfig\n\n\n\neth0의 inet이 원하는 결과이며 윈도우에서 wsl2에 설치된 서버에 접근할 때 사용딥니다. 하지만 부팅 시마다 달라집니다.\n참고로 도커와 사용자정의 도커와 루프도 같이 출력됨.\n\n\n\nwsl2 가상 ip 검증\n\n\n\ncmd\n\nping 172.21.120.237\n\n\n\n방화벽등의 원인으로 막힐 수도 있음\n\n\n\n포트 검증\n\ndicom server에서 열어도 포트가 4242라면\n\n\n\n\ncmd\n\nTest-NetConnection -ComputerName 172.21.120.237 -Port 4242",
+    "text": "네트워크\n\n윈도우에서 wsl2 가상 IP 확인하기\n\n\n\ncmd or ps\n\nwsl hostname -i\n\n\n\n127.0.1.1\n그러나 이 결과는 원하는 결과가 아닌 127.0.0.1과 유사하다.\n\n\n\n\nbash\n\nsudo apt-get install net-tools\n\n\n\n\n\nbash\n\nifconfig\n\n\n\neth0의 inet이 원하는 결과이며 윈도우에서 wsl2에 설치된 서버에 접근할 때 사용딥니다. 하지만 부팅 시마다 달라집니다.\n참고로 도커와 사용자정의 도커와 루프도 같이 출력됨.\n\n\n\nwsl2 가상 ip 검증\n\n\n\ncmd\n\nping 172.21.120.237\n\n\n\n방화벽등의 원인으로 막힐 수도 있음\n\n\n\n포트 검증\n\ndicom server에서 열어도 포트가 4242라면\n\n\n\n\ncmd\n\nTest-NetConnection -ComputerName 172.21.120.237 -Port 4242\n\n\n\n\n윈도우의 IP 확인\n\n\n\ncmd\n\nipconfig\n\n\n\n172.17.130.79\n\n\n포트확인\n\n\n\nbash\n\nnc -vz 172.17.130.79 5678",
     "crumbs": [
       "Tools",
       "WSL2/Ubuntu"
