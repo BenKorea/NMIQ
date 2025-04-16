@@ -1,20 +1,26 @@
 ---
-title: "WSL2/Ubuntu"
-description: "WSL2 및 Ubuntu 설치"
+title: "Chocolatey"
+description: "설치"
 author: "BenKorea"
-date: "2024-11-16"
+date: "2025-04-15"
 date-modified: last-modified
-categories: [WSL2, Ubuntu, setup]
+categories: [Windown, Chocolatey, setup]
 ---
 
 ## 필요성
 
--   개발환경으로써 리눅스가 가장 유리하겠으나, 현단계에서는 WSL2를 대안으로 선택함
--   특히, NMIQ의 설치는 도커배포를 계획하고 있어 윈도우10에서 WSL2을 활성화 필요
+-   DCMTK 때문에 설치
 
-## WSL2상의 우분투 완전 제거
+### PS 관리자 권한으로 열기
 
-### 우분투버전 확인
+-   `Win+X+A`로 관리자권한 PowerShell을 엽니다.
+-   아래의 명령어를 입력하여 Chocolatey를 설치합니다.
+
+```{r chocolatey_install, eval=FALSE, filename="관리자:Windows PowerShell"}
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
+
+이전 버전 설치 시 상황이 기억나지 않으므로 기존 설치폴더를 제거하고 설치하여 성공함
 
 -   Command Prompt를 관리자권한으로 가장 빠르게 여는 방법은 `Win+X`입니다.
 

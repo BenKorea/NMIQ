@@ -253,6 +253,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/tools/chocolatey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chocolatey</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/tools/dcmtk.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">DCMTK</span></a>
   </div>
@@ -293,6 +299,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#설정" id="toc-설정" class="nav-link" data-scroll-target="#설정">설정</a>
   <ul>
   <li><a href="#etcwsl.conf" id="toc-etcwsl.conf" class="nav-link" data-scroll-target="#etcwsl.conf">/etc/wsl.conf</a></li>
+  </ul></li>
+  <li><a href="#네트워크" id="toc-네트워크" class="nav-link" data-scroll-target="#네트워크">네트워크</a>
+  <ul>
+  <li><a href="#윈도우에서-wsl2-가상-ip-확인하기" id="toc-윈도우에서-wsl2-가상-ip-확인하기" class="nav-link" data-scroll-target="#윈도우에서-wsl2-가상-ip-확인하기">윈도우에서 wsl2 가상 IP 확인하기</a></li>
+  <li><a href="#wsl2-가상-ip-검증" id="toc-wsl2-가상-ip-검증" class="nav-link" data-scroll-target="#wsl2-가상-ip-검증">wsl2 가상 ip 검증</a></li>
+  <li><a href="#포트-검증" id="toc-포트-검증" class="nav-link" data-scroll-target="#포트-검증">포트 검증</a></li>
   </ul></li>
   <li><a href="#이전설치방식" id="toc-이전설치방식" class="nav-link" data-scroll-target="#이전설치방식">이전설치방식</a>
   <ul>
@@ -342,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 10, 2025</p>
+      <p class="date-modified">April 15, 2025</p>
     </div>
   </div>
     
@@ -575,6 +587,72 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 </div>
 </section>
 </section>
+<section id="네트워크" class="level2">
+<h2 class="anchored" data-anchor-id="네트워크">네트워크</h2>
+<section id="윈도우에서-wsl2-가상-ip-확인하기" class="level3">
+<h3 class="anchored" data-anchor-id="윈도우에서-wsl2-가상-ip-확인하기">윈도우에서 wsl2 가상 IP 확인하기</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>cmd or ps</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>wsl hostname <span class="sc">-</span>i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li><code>127.0.1.1</code></li>
+<li>그러나 이 결과는 원하는 결과가 아닌 <code>127.0.0.1</code>과 유사하다.</li>
+</ul>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sudo apt<span class="sc">-</span>get install net<span class="sc">-</span>tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ifconfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li>eth0의 inet이 원하는 결과이며 윈도우에서 wsl2에 설치된 서버에 접근할 때 사용딥니다. 하지만 부팅 시마다 달라집니다.</li>
+<li>참고로 도커와 사용자정의 도커와 루프도 같이 출력됨.</li>
+</ul>
+</section>
+<section id="wsl2-가상-ip-검증" class="level3">
+<h3 class="anchored" data-anchor-id="wsl2-가상-ip-검증">wsl2 가상 ip 검증</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>cmd</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">172</span>.<span class="dv">21</span>.<span class="fl">120.237</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li>방화벽등의 원인으로 막힐 수도 있음</li>
+</ul>
+</section>
+<section id="포트-검증" class="level3">
+<h3 class="anchored" data-anchor-id="포트-검증">포트 검증</h3>
+<ul>
+<li>dicom server에서 열어도 포트가 4242라면</li>
+</ul>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>cmd</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Test<span class="sc">-</span>NetConnection <span class="sc">-</span>ComputerName <span class="dv">172</span>.<span class="dv">21</span>.<span class="fl">120.237</span> <span class="sc">-</span>Port <span class="dv">4242</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+</section>
 <section id="이전설치방식" class="level2">
 <h2 class="anchored" data-anchor-id="이전설치방식">이전설치방식</h2>
 <section id="wsl-옵션-활성화" class="level3">
@@ -587,7 +665,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>PowerShell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dism.exe <span class="sc">/</span>online <span class="sc">/</span>enable<span class="sc">-</span>feature <span class="sc">/</span>featurename<span class="sc">:</span>Microsoft<span class="sc">-</span>Windows<span class="sc">-</span>Subsystem<span class="sc">-</span>Linux <span class="sc">/</span>norestart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dism.exe <span class="sc">/</span>online <span class="sc">/</span>enable<span class="sc">-</span>feature <span class="sc">/</span>featurename<span class="sc">:</span>Microsoft<span class="sc">-</span>Windows<span class="sc">-</span>Subsystem<span class="sc">-</span>Linux <span class="sc">/</span>norestart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -598,7 +676,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>PowerShell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dism.exe <span class="sc">/</span>online <span class="sc">/</span>enable<span class="sc">-</span>feature <span class="sc">/</span>featurename<span class="sc">:</span>VirtualMachinePlatform <span class="sc">/</span>norestart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dism.exe <span class="sc">/</span>online <span class="sc">/</span>enable<span class="sc">-</span>feature <span class="sc">/</span>featurename<span class="sc">:</span>VirtualMachinePlatform <span class="sc">/</span>norestart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -610,7 +688,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>PowerShell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="sc">--</span>upgrade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="sc">--</span>upgrade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>아래의 명령을 전후로 사용하면 Kenel의 버전을 비교하여 알 수 있다.</p>
@@ -619,7 +697,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>PowerShell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="sc">--</span>status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="sc">--</span>status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 

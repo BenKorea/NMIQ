@@ -51,6 +51,7 @@ website:
         - posts/tools/dicoogle.qmd
         - posts/tools/DoseUtility.qmd
         - posts/tools/OpenREM.qmd
+        - posts/tools/chocolatey.qmd  
         - posts/tools/dcmtk.qmd         
     - title: "DICOM"
       contents:

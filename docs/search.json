@@ -136,7 +136,7 @@
     "href": "posts/tools/dcmtk.html",
     "title": "DCMTK",
     "section": "",
-    "text": "독일의 Office 회사에서 개발한 오픈소스로 C++로 작성되어 속도가 빠르지만 사용법이 어려움\n프로젝트에서는 DCM4che가 쿼리가 원하는 만큼 가능하여 2순위로 둠",
+    "text": "DCMTK는 윈도우에서 설치할 수 있는 방법이 여러가지가 있지만 Chocolatey를 설치하여 진행하였다.\nChocolatey는 윈도우에서 패키지 관리자를 제공하는 오픈소스 프로젝트로, DCMTK를 포함한 다양한 소프트웨어를 쉽게 설치하고 관리할 수 있습니다.\n\n\n\n\nChocolatey를 설치하기 위해서는 관리자 권한으로 PowerShell을 실행해야 합니다.\nPowerShell을 관리자 권한으로 실행하는 방법은 시작 메뉴에서 “PowerShell”을 검색한 후, 마우스 오른쪽 버튼을 클릭하고 “관리자 권한으로 실행”을 선택합니다.\nPowerShell이 열리면 아래의 명령어를 입력하여 Chocolatey를 설치합니다.\n\n\n\n\n관리자: Window PowerShell\n\nchoco install dcmtk\n\n\n\n설치 메세지가 복잡하여 A로 모두 동의하고 설치를 진행하였다.\n설치가 완료되면 아래의 명령어를 입력하여 DCMTK가 정상적으로 설치되었는지 확인합니다.\n\n\n\n\n관리자: Window PowerShell\n\ndcmdump --version\n\n\n\n\n\ncmd\n\nTest-NetConnection -ComputerName 172.21.120.237 -Port 4242\n\n\n\n\n\ncmd\n\nechoscu -v -aec ORTHANC -aet DCMTK 172.21.120.237 4242",
     "crumbs": [
       "Tools",
       "DCMTK"
@@ -591,6 +591,105 @@
     "crumbs": [
       "Tools",
       "Orthanc"
+    ]
+  },
+  {
+    "objectID": "posts/tools/dcmtk.html#window-환경에서의-설치",
+    "href": "posts/tools/dcmtk.html#window-환경에서의-설치",
+    "title": "DCMTK",
+    "section": "",
+    "text": "DCMTK는 윈도우에서 설치할 수 있는 방법이 여러가지가 있지만 Chocolatey를 설치하여 진행하였다.\nChocolatey는 윈도우에서 패키지 관리자를 제공하는 오픈소스 프로젝트로, DCMTK를 포함한 다양한 소프트웨어를 쉽게 설치하고 관리할 수 있습니다.\n\n\n\n\nChocolatey를 설치하기 위해서는 관리자 권한으로 PowerShell을 실행해야 합니다.\nPowerShell을 관리자 권한으로 실행하는 방법은 시작 메뉴에서 “PowerShell”을 검색한 후, 마우스 오른쪽 버튼을 클릭하고 “관리자 권한으로 실행”을 선택합니다.\nPowerShell이 열리면 아래의 명령어를 입력하여 Chocolatey를 설치합니다.\n\n\n\n\n관리자: Window PowerShell\n\nchoco install dcmtk\n\n\n\n설치 메세지가 복잡하여 A로 모두 동의하고 설치를 진행하였다.\n설치가 완료되면 아래의 명령어를 입력하여 DCMTK가 정상적으로 설치되었는지 확인합니다.\n\n\n\n\n관리자: Window PowerShell\n\ndcmdump --version\n\n\n\n\n\ncmd\n\nTest-NetConnection -ComputerName 172.21.120.237 -Port 4242\n\n\n\n\n\ncmd\n\nechoscu -v -aec ORTHANC -aet DCMTK 172.21.120.237 4242",
+    "crumbs": [
+      "Tools",
+      "DCMTK"
+    ]
+  },
+  {
+    "objectID": "posts/tools/wsl2_ubuntu.html#네트워크",
+    "href": "posts/tools/wsl2_ubuntu.html#네트워크",
+    "title": "WSL2/Ubuntu",
+    "section": "네트워크",
+    "text": "네트워크\n\n윈도우에서 wsl2 가상 IP 확인하기\n\n\n\ncmd or ps\n\nwsl hostname -i\n\n\n\n127.0.1.1\n그러나 이 결과는 원하는 결과가 아닌 127.0.0.1과 유사하다.\n\n\n\n\nbash\n\nsudo apt-get install net-tools\n\n\n\n\n\nbash\n\nifconfig\n\n\n\neth0의 inet이 원하는 결과이며 윈도우에서 wsl2에 설치된 서버에 접근할 때 사용딥니다. 하지만 부팅 시마다 달라집니다.\n참고로 도커와 사용자정의 도커와 루프도 같이 출력됨.\n\n\n\nwsl2 가상 ip 검증\n\n\n\ncmd\n\nping 172.21.120.237\n\n\n\n방화벽등의 원인으로 막힐 수도 있음\n\n\n\n포트 검증\n\ndicom server에서 열어도 포트가 4242라면\n\n\n\n\ncmd\n\nTest-NetConnection -ComputerName 172.21.120.237 -Port 4242",
+    "crumbs": [
+      "Tools",
+      "WSL2/Ubuntu"
+    ]
+  },
+  {
+    "objectID": "posts/tools/chocolatey.html",
+    "href": "posts/tools/chocolatey.html",
+    "title": "Chocolatey",
+    "section": "",
+    "text": "DCMTK 때문에 설치\n\n\n\n\nWin+X+A로 관리자권한 PowerShell을 엽니다.\n아래의 명령어를 입력하여 Chocolatey를 설치합니다.\n\n\n\n\n관리자:Windows PowerShell\n\nSet-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))\n\n\n이전 버전 설치 시 상황이 기억나지 않으므로 기존 설치폴더를 제거하고 설치하여 성공함\n\nCommand Prompt를 관리자권한으로 가장 빠르게 여는 방법은 Win+X입니다.\n아래의 명령으로 설치된 Linux 배포판을 확인합니다.\n\n\n\n\n관리자권한 Command Prompt\n\n wsl --list --verbose\n\n\n또는\n\n\n\n관리자권한 Command Prompt\n\n wsl -l -v\n\n\n\n\n\n아래와 같이 Linux 배포판의 등록을 취소하고 제거합니다.\n\n\n\n관리자권한 Command Prompt\n\nwsl --unregister Ubuntu-24.04\n\n\n\n이때 완료라는 메세지가 출력됩니다.\n이렇게 하면 우분투가 사용하는 가상 디스크(ext4.vhdx)파일도 자동으로 삭제되어 편리하며 혹시 오류가 있어 삭제되지 않을 수 있으므로 확인하는 것이 바람직합니다.\n\nC:\\Users\\&lt;사용자이름&gt;\\AppData\\Local\\Packages\\ 에서 Canonical* 폴더 삭제\nC:\\Program Files\\WindowsApps 내 Canonical* 폴더 삭제 (권한 필요)\n\n후자는 권한이 필요하여, C:\\Program Files\\WindowsApps 폴더의 소유자를 변경하는 것보다 아래와 같이 Command Prompt를 관리자권한으로 열어서 del 명령으로 삭제하는 것이 훨씬 간편하다.\n\n시작메뉴를 누르고 검색에 cmd를 입력하고, 마우스 오른쪽 버튼을 눌러 관리자권한으로 실행한다.\n\n\n\n\n\nCommand Prompt\n\ndel /f /q \"C:\\경로\\파일이름\"\n\n\n\n\n\n\n시작메뉴를 누르고 설정을 클릭하고, 앱을 클릭하여 Ubuntu를 검색하여 제거합니다.\n\n\n\n\n\n\n\n\n\n\nPowerShell\n\ndism.exe /online /disable-feature /featurename:VirtualMachinePlatform /norestart\n\n\n\n\n\n\n\n\nPowerShell\n\ndism.exe /online /disable-feature /featurename:Microsoft-Windows-Subsystem-Linux /norestart",
+    "crumbs": [
+      "Tools",
+      "Chocolatey"
+    ]
+  },
+  {
+    "objectID": "posts/tools/chocolatey.html#필요성",
+    "href": "posts/tools/chocolatey.html#필요성",
+    "title": "Chocolatey",
+    "section": "",
+    "text": "DCMTK 때문에 설치\n\n\n\n\nWin+X+A로 관리자권한 PowerShell을 엽니다.\n아래의 명령어를 입력하여 Chocolatey를 설치합니다.\n\n\n\n\n관리자:Windows PowerShell\n\nSet-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))\n\n\n이전 버전 설치 시 상황이 기억나지 않으므로 기존 설치폴더를 제거하고 설치하여 성공함\n\nCommand Prompt를 관리자권한으로 가장 빠르게 여는 방법은 Win+X입니다.\n아래의 명령으로 설치된 Linux 배포판을 확인합니다.\n\n\n\n\n관리자권한 Command Prompt\n\n wsl --list --verbose\n\n\n또는\n\n\n\n관리자권한 Command Prompt\n\n wsl -l -v\n\n\n\n\n\n아래와 같이 Linux 배포판의 등록을 취소하고 제거합니다.\n\n\n\n관리자권한 Command Prompt\n\nwsl --unregister Ubuntu-24.04\n\n\n\n이때 완료라는 메세지가 출력됩니다.\n이렇게 하면 우분투가 사용하는 가상 디스크(ext4.vhdx)파일도 자동으로 삭제되어 편리하며 혹시 오류가 있어 삭제되지 않을 수 있으므로 확인하는 것이 바람직합니다.\n\nC:\\Users\\&lt;사용자이름&gt;\\AppData\\Local\\Packages\\ 에서 Canonical* 폴더 삭제\nC:\\Program Files\\WindowsApps 내 Canonical* 폴더 삭제 (권한 필요)\n\n후자는 권한이 필요하여, C:\\Program Files\\WindowsApps 폴더의 소유자를 변경하는 것보다 아래와 같이 Command Prompt를 관리자권한으로 열어서 del 명령으로 삭제하는 것이 훨씬 간편하다.\n\n시작메뉴를 누르고 검색에 cmd를 입력하고, 마우스 오른쪽 버튼을 눌러 관리자권한으로 실행한다.\n\n\n\n\n\nCommand Prompt\n\ndel /f /q \"C:\\경로\\파일이름\"\n\n\n\n\n\n\n시작메뉴를 누르고 설정을 클릭하고, 앱을 클릭하여 Ubuntu를 검색하여 제거합니다.\n\n\n\n\n\n\n\n\n\n\nPowerShell\n\ndism.exe /online /disable-feature /featurename:VirtualMachinePlatform /norestart\n\n\n\n\n\n\n\n\nPowerShell\n\ndism.exe /online /disable-feature /featurename:Microsoft-Windows-Subsystem-Linux /norestart",
+    "crumbs": [
+      "Tools",
+      "Chocolatey"
+    ]
+  },
+  {
+    "objectID": "posts/tools/chocolatey.html#wsl2-설치",
+    "href": "posts/tools/chocolatey.html#wsl2-설치",
+    "title": "Chocolatey",
+    "section": "WSL2 설치",
+    "text": "WSL2 설치\n\nWindow edition 및 버전확인\n윈도우 10 HOME 버전의 경우 ARM64 시스템의 경우 빌드 19041부터 WSL 2를 지원한다.\n\n\n\n\nWSL 설치명령\n이전과는 다르게 아래의 자동화된 명령한 줄로 설치가 됩니다.\n\n\n\nPowerShell\n\nwsl --install\n\n\n이는 wsl 옵션과 가상머신플랫폼을 활성화시키고 최신 리눅스커널까지 upgrade해 줍니다.\n\n\n재부팅\n변경사항을 적용하기 위해서는 시스템을 다시 시작하라는 메세지가 나옵니다.\n\n\n중간점검\n\nWin+X+A로 관리자권한 Command Prompt를 열어서\n\n리눅스커널이 정상작동하는지 아래의 명령어로 확인합니다.\n\n\n\n\n\n관리자: 명령 프롬프트\n\nwsl --version\n\n\nWSL 버전과 커널버전까지 표시되므로 확인할 수 있습니다.",
+    "crumbs": [
+      "Tools",
+      "Chocolatey"
+    ]
+  },
+  {
+    "objectID": "posts/tools/chocolatey.html#우분투설치",
+    "href": "posts/tools/chocolatey.html#우분투설치",
+    "title": "Chocolatey",
+    "section": "우분투설치",
+    "text": "우분투설치\n\n관리자권한 Command Prompt에서 다음의 명령을 입력하여 최신 배포판을 설치할 수 있습니다.\n그런데 방화벽이나 회상방침에 따라 인터넷 연결이 제한적인 경우에는 문제가 발생하여 Public WiFi로 전환하면 성공하게 됩니다.\n\n\n\n\n관리자: 명령 프롬프트\n\nwsl --install -d Ubuntu\n\n\n\ndefault Unix user accout\n\n소문자가 바람직하다.\npasswd를 입력하라는 메세지가 나오면, 비밀번호를 입력한다.\n\n\n\n우분투 디렉토리 구조\n\n\n\n/\n├── bin → /usr/bin         # 주요 실행 파일 (ls, cp 등)이 위치한 디렉토리. 기본 명령어 포함.\n├── boot                   # 부팅 관련 파일이 저장됨 (커널, grub 등).\n├── dev                    # 장치 파일(device files)이 위치 (예: /dev/sda, /dev/null 등).\n├── etc                    # 시스템 설정 파일(configuration files)이 저장된 곳.\n├── home                   # 일반 사용자들의 홈 디렉토리 (예: /home/username).\n├── lib → /usr/lib         # 공유 라이브러리(.so 파일)들이 저장된 디렉토리.\n├── lib64 → /usr/lib64     # 64비트 라이브러리들이 저장됨.\n├── media                  # USB, CD-ROM 등의 자동 마운트 지점.\n├── mnt                    # 외부 장치를 수동으로 마운트할 때 사용하는 디렉토리.\n├── opt                    # 서드파티 애플리케이션들이 설치되는 디렉토리 (예: /opt/google).\n├── proc                   # 실행 중인 프로세스 및 커널 정보가 담긴 가상 파일 시스템.\n├── root                   # root(관리자) 사용자의 홈 디렉토리.\n├── run                    # 부팅 후 생성되는 임시 런타임 데이터가 저장됨.\n├── sbin → /usr/sbin       # 시스템 관리 명령어들이 위치 (예: reboot, iptables 등).\n├── srv                    # 웹, FTP 등 서비스를 위한 데이터 저장용 디렉토리.\n├── sys                    # 시스템 하드웨어 및 장치 정보에 접근하는 가상 파일 시스템.\n├── tmp                    # 임시 파일 저장소. 재부팅 시 대부분 삭제됨.\n├── usr                    # 사용자 명령어 및 라이브러리 저장소.\n│   ├── bin                # 대부분의 사용자 명령어들이 위치.\n│   ├── lib                # 라이브러리 파일들.\n│   ├── lib64              # 64비트 전용 라이브러리.\n│   ├── sbin               # 시스템 명령어.\n│   └── share              # 공유 데이터 (man page, 아이콘 등).\n└── var                    # 로그, 캐시, 메일 등 자주 변경되는 파일 저장소.\n    ├── log                # 시스템 로그 파일 저장소.\n    ├── cache              # 애플리케이션 캐시.\n    └── tmp                # 임시 파일 저장소 (보다 긴 기간 유지될 수 있음).\n\n\nFigure 1: Ubuntu의 디렉토리 구조",
+    "crumbs": [
+      "Tools",
+      "Chocolatey"
+    ]
+  },
+  {
+    "objectID": "posts/tools/chocolatey.html#설정",
+    "href": "posts/tools/chocolatey.html#설정",
+    "title": "Chocolatey",
+    "section": "설정",
+    "text": "설정\n\n/etc/wsl.conf\nsystemd의 설정을 true로 변경하여 systemd를 사용할 수 있도록 설정합니다.\n\n\n\n/etc/wsl.conf\n\n[boot]\nsystemd=true",
+    "crumbs": [
+      "Tools",
+      "Chocolatey"
+    ]
+  },
+  {
+    "objectID": "posts/tools/chocolatey.html#네트워크",
+    "href": "posts/tools/chocolatey.html#네트워크",
+    "title": "Chocolatey",
+    "section": "네트워크",
+    "text": "네트워크\n\n윈도우에서 wsl2 가상 IP 확인하기\n\n\n\ncmd or ps\n\nwsl hostname -i\n\n\n\n127.0.1.1\n그러나 이 결과는 원하는 결과가 아닌 127.0.0.1과 유사하다.\n\n\n\n\nbash\n\nsudo apt-get install net-tools\n\n\n\n\n\nbash\n\nifconfig\n\n\n\neth0의 inet이 원하는 결과이며 윈도우에서 wsl2에 설치된 서버에 접근할 때 사용딥니다. 하지만 부팅 시마다 달라집니다.\n참고로 도커와 사용자정의 도커와 루프도 같이 출력됨.\n\n\n\nwsl2 가상 ip 검증\n\n\n\ncmd\n\nping 172.21.120.237\n\n\n\n방화벽등의 원인으로 막힐 수도 있음\n\n\n\n포트 검증\n\ndicom server에서 열어도 포트가 4242라면\n\n\n\n\ncmd\n\nTest-NetConnection -ComputerName 172.21.120.237 -Port 4242",
+    "crumbs": [
+      "Tools",
+      "Chocolatey"
+    ]
+  },
+  {
+    "objectID": "posts/tools/chocolatey.html#이전설치방식",
+    "href": "posts/tools/chocolatey.html#이전설치방식",
+    "title": "Chocolatey",
+    "section": "이전설치방식",
+    "text": "이전설치방식\n\nwsl 옵션 활성화\n\nPowershell 관리자권한으로 열어서 아래 명령어를 실행한다.\n\n\n\n\nPowerShell\n\ndism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /norestart\n\n\n\n\nVirtualMachinePlatform 옵션 활성화\n\n\n\nPowerShell\n\ndism.exe /online /enable-feature /featurename:VirtualMachinePlatform /norestart\n\n\n\n\nLinux 커널 업데이트\n윈도우에 포함된 기본 버전을 업데이트하는 방법도 있다.\n\n\n\nPowerShell\n\nwsl --upgrade\n\n\n아래의 명령을 전후로 사용하면 Kenel의 버전을 비교하여 알 수 있다.\n\n\n\nPowerShell\n\nwsl --status",
+    "crumbs": [
+      "Tools",
+      "Chocolatey"
     ]
   }
 ]
