@@ -38,3 +38,11 @@ Test-NetConnection -ComputerName 172.21.120.237 -Port 4242
 ```{r C-ECHO-test, eval=FALSE, filename="cmd"}
 echoscu -v -aec ORTHANC -aet DCMTK 172.21.120.237 4242
 ```
+
+```{r C-STORE-test, eval=FALSE, filename="cmd"}
+storescu -v -aec ORTHANC -aet DCMTK 172.21.120.237 4242 example.dcm
+```
+
+```{r C-FIND-test, eval=FALSE, filename="cmd"}
+findscu -v -aec ORTHANC -aet DCMTK 172.21.120.237 4242   -k QueryRetrieveLevel=STUDY -k PatientName="*"
+```
