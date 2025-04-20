@@ -159,22 +159,25 @@ sudo systemctl restart orthanc
 sudo apt install orthanc-explorer2
 ```
 
-### Winddow와 통신설정
 
--   윈도우는 host
-
-## 스크립트
-
-### Retrieve 자동화
-
-Orthanc에 내장된 Lua engine으로 특정기간동안의 Modality=="PT"인 경우를 retrieve하도록 다음의 단계를 진행하였다. - orthanc.json에서 Lua script를 아래와 같이 활성화하였다.
-
-``` orthanc.json
-"LuaScripts" : [C:\\Orthanc\\lua\\retrieve_nm_studies.lua"],
+### Orthanc systemd 서비스 비활성화
+```{r disable-orthanc, eval=FALSE, filename="bash"}
+sudo systemctl disable orthanc
 ```
 
-그러나 query 요청에 실패해 일단 보류
-
-``` curl
-curl -X POST http://localhost:8042/tools/execute-script --data-binary "OnTimer()"
+### Orthanc 수동 시작
+```{r start-orthanc, eval=FALSE, filename="bash"}
+sudo systemctl start orthanc
 ```
+
+## orthanc-docker
+-   orthanc-docker 폴더이름으로 orthanc 이미지로만 docker-compose를 실행하였다.
+- docker-compose.yml 파일에 docker network를 지정하지 않았기 때문에 orthanc-docker container와 함께 orthanc-docker_default 이름의 network가 만들어졌다.
+- DCM4CHEE은 compose로 했을 때의 값을 일단 그대로 해 보았다.
+```
+            "dcm4chee" : [ "DCM4CHEE", "arc", 11112 ]
+```
+- 그러나 같은 네트워크에 속해있지 않기 때문에 orthanc-docker에서 DCM4CHEE에 접근할 수 없을 것이다.
+
+
+
