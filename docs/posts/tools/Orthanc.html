@@ -291,12 +291,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#remoteaccessallowed-설정변경" id="toc-remoteaccessallowed-설정변경" class="nav-link" data-scroll-target="#remoteaccessallowed-설정변경">RemoteAccessAllowed 설정변경</a></li>
   <li><a href="#orthanc-재시작" id="toc-orthanc-재시작" class="nav-link" data-scroll-target="#orthanc-재시작">Orthanc 재시작</a></li>
   <li><a href="#orthanc-explorer2-plugin-설치" id="toc-orthanc-explorer2-plugin-설치" class="nav-link" data-scroll-target="#orthanc-explorer2-plugin-설치">Orthanc Explorer2 plugin 설치</a></li>
-  <li><a href="#winddow와-통신설정" id="toc-winddow와-통신설정" class="nav-link" data-scroll-target="#winddow와-통신설정">Winddow와 통신설정</a></li>
+  <li><a href="#orthanc-systemd-서비스-비활성화" id="toc-orthanc-systemd-서비스-비활성화" class="nav-link" data-scroll-target="#orthanc-systemd-서비스-비활성화">Orthanc systemd 서비스 비활성화</a></li>
+  <li><a href="#orthanc-수동-시작" id="toc-orthanc-수동-시작" class="nav-link" data-scroll-target="#orthanc-수동-시작">Orthanc 수동 시작</a></li>
   </ul></li>
-  <li><a href="#스크립트" id="toc-스크립트" class="nav-link" data-scroll-target="#스크립트">스크립트</a>
-  <ul>
-  <li><a href="#retrieve-자동화" id="toc-retrieve-자동화" class="nav-link" data-scroll-target="#retrieve-자동화">Retrieve 자동화</a></li>
-  </ul></li>
+  <li><a href="#orthanc-docker" id="toc-orthanc-docker" class="nav-link" data-scroll-target="#orthanc-docker">orthanc-docker</a></li>
   </ul>
 </nav>
     </div>
@@ -338,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 14, 2025</p>
+      <p class="date-modified">April 21, 2025</p>
     </div>
   </div>
     
@@ -534,24 +532,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="winddow와-통신설정" class="level3">
-<h3 class="anchored" data-anchor-id="winddow와-통신설정">Winddow와 통신설정</h3>
+<section id="orthanc-systemd-서비스-비활성화" class="level3">
+<h3 class="anchored" data-anchor-id="orthanc-systemd-서비스-비활성화">Orthanc systemd 서비스 비활성화</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl disable orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="orthanc-수동-시작" class="level3">
+<h3 class="anchored" data-anchor-id="orthanc-수동-시작">Orthanc 수동 시작</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bash</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl start orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="orthanc-docker" class="level2">
+<h2 class="anchored" data-anchor-id="orthanc-docker">orthanc-docker</h2>
 <ul>
-<li>윈도우는 host</li>
+<li>orthanc-docker 폴더이름으로 orthanc 이미지로만 docker-compose를 실행하였다.</li>
+<li>docker-compose.yml 파일에 docker network를 지정하지 않았기 때문에 orthanc-docker container와 함께 orthanc-docker_default 이름의 network가 만들어졌다.</li>
+<li>DCM4CHEE은 compose로 했을 때의 값을 일단 그대로 해 보았다.</li>
 </ul>
-</section>
-</section>
-<section id="스크립트" class="level2">
-<h2 class="anchored" data-anchor-id="스크립트">스크립트</h2>
-<section id="retrieve-자동화" class="level3">
-<h3 class="anchored" data-anchor-id="retrieve-자동화">Retrieve 자동화</h3>
-<p>Orthanc에 내장된 Lua engine으로 특정기간동안의 Modality==“PT”인 경우를 retrieve하도록 다음의 단계를 진행하였다. - orthanc.json에서 Lua script를 아래와 같이 활성화하였다.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode orthanc.json code-with-copy"><code class="sourceCode json"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="er">"LuaScripts"</span> <span class="er">:</span> <span class="ot">[</span><span class="er">C:\\Orthanc\\lua\\retrieve_nm_studies.lua</span><span class="st">"],</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>그러나 query 요청에 실패해 일단 보류</p>
-<pre class="curl"><code>curl -X POST http://localhost:8042/tools/execute-script --data-binary "OnTimer()"</code></pre>
+<pre><code>            "dcm4chee" : [ "DCM4CHEE", "arc", 11112 ]</code></pre>
+<ul>
+<li>그러나 같은 네트워크에 속해있지 않기 때문에 orthanc-docker에서 DCM4CHEE에 접근할 수 없을 것이다.</li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

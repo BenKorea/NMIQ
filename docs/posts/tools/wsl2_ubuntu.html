@@ -273,8 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#필요성" id="toc-필요성" class="nav-link active" data-scroll-target="#필요성">필요성</a></li>
-  <li><a href="#wsl2상의-우분투-완전-제거" id="toc-wsl2상의-우분투-완전-제거" class="nav-link" data-scroll-target="#wsl2상의-우분투-완전-제거">WSL2상의 우분투 완전 제거</a>
+  <li><a href="#wsl2상의-우분투-완전-제거" id="toc-wsl2상의-우분투-완전-제거" class="nav-link active" data-scroll-target="#wsl2상의-우분투-완전-제거">WSL2상의 우분투 완전 제거</a>
   <ul>
   <li><a href="#우분투버전-확인" id="toc-우분투버전-확인" class="nav-link" data-scroll-target="#우분투버전-확인">우분투버전 확인</a></li>
   <li><a href="#우분투-등록-취소-및-제거" id="toc-우분투-등록-취소-및-제거" class="nav-link" data-scroll-target="#우분투-등록-취소-및-제거">우분투 등록 취소 및 제거</a></li>
@@ -300,6 +299,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#설정" id="toc-설정" class="nav-link" data-scroll-target="#설정">설정</a>
   <ul>
   <li><a href="#systemd-설정" id="toc-systemd-설정" class="nav-link" data-scroll-target="#systemd-설정">systemd 설정</a></li>
+  <li><a href="#네트워크" id="toc-네트워크" class="nav-link" data-scroll-target="#네트워크">네트워크</a>
+  <ul class="collapse">
+  <li><a href="#nat" id="toc-nat" class="nav-link" data-scroll-target="#nat">NAT</a></li>
+  <li><a href="#localhost-루프백-인터페이스" id="toc-localhost-루프백-인터페이스" class="nav-link" data-scroll-target="#localhost-루프백-인터페이스">localhost (루프백 인터페이스)</a></li>
+  <li><a href="#host-ip" id="toc-host-ip" class="nav-link" data-scroll-target="#host-ip">host IP</a></li>
+  </ul></li>
   <li><a href="#window-to-wsl2-네트워크" id="toc-window-to-wsl2-네트워크" class="nav-link" data-scroll-target="#window-to-wsl2-네트워크">Window to WSL2 네트워크</a>
   <ul class="collapse">
   <li><a href="#윈도우에서-wsl2-가상-ip-확인하기" id="toc-윈도우에서-wsl2-가상-ip-확인하기" class="nav-link" data-scroll-target="#윈도우에서-wsl2-가상-ip-확인하기">윈도우에서 wsl2 가상 IP 확인하기</a></li>
@@ -354,7 +359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 16, 2025</p>
+      <p class="date-modified">April 21, 2025</p>
     </div>
   </div>
     
@@ -365,20 +370,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="필요성" class="level2">
-<h2 class="anchored" data-anchor-id="필요성">필요성</h2>
-<ul>
-<li>개발환경으로써 리눅스가 가장 유리하겠으나, 현단계에서는 WSL2를 대안으로 선택함</li>
-<li>특히, NMIQ의 설치는 도커배포를 계획하고 있어 윈도우10에서 WSL2을 활성화 필요</li>
-</ul>
-</section>
 <section id="wsl2상의-우분투-완전-제거" class="level2">
 <h2 class="anchored" data-anchor-id="wsl2상의-우분투-완전-제거">WSL2상의 우분투 완전 제거</h2>
 <section id="우분투버전-확인" class="level3">
 <h3 class="anchored" data-anchor-id="우분투버전-확인">우분투버전 확인</h3>
 <ul>
-<li><p>Command Prompt를 관리자권한으로 가장 빠르게 여는 방법은 <code>Win+X</code>입니다.</p></li>
-<li><p>아래의 명령으로 설치된 Linux 배포판을 확인합니다.</p></li>
+<li>Command Prompt를 관리자권한으로 가장 빠르게 여는 방법은 <code>Win+X</code>입니다.</li>
+<li>아래의 명령으로 설치된 Linux 배포판을 확인합니다.</li>
 </ul>
 <div class="cell">
 <div class="code-with-filename">
@@ -400,7 +398,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="우분투-등록-취소-및-제거" class="level3">
 <h3 class="anchored" data-anchor-id="우분투-등록-취소-및-제거">우분투 등록 취소 및 제거</h3>
-<p>아래와 같이 Linux 배포판의 등록을 취소하고 제거합니다.</p>
+<ul>
+<li>아래와 같이 Linux 배포판의 등록을 취소하고 제거합니다.</li>
+</ul>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -410,13 +410,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <ul>
-<li><p>이때 완료라는 메세지가 출력됩니다.</p></li>
-<li><p>이렇게 하면 우분투가 사용하는 가상 디스크(ext4.vhdx)파일도 자동으로 삭제되어 편리하며 혹시 오류가 있어 삭제되지 않을 수 있으므로 확인하는 것이 바람직합니다.</p>
+<li>이때 완료라는 메세지가 출력됩니다.</li>
+<li>이렇게 하면 우분투가 사용하는 가상 디스크(ext4.vhdx)파일도 자동으로 삭제되어 편리하며 혹시 오류가 있어 삭제되지 않을 수 있으므로 확인하는 것이 바람직합니다.
 <ul>
-<li><p><code>C:\Users\&lt;사용자이름&gt;\AppData\Local\Packages\</code> 에서 <code>Canonical* 폴더</code> 삭제</p></li>
-<li><p><code>C:\Program Files\WindowsApps</code> 내 <code>Canonical* 폴더</code> 삭제 (권한 필요)</p></li>
+<li><code>C:\Users\&lt;사용자이름&gt;\AppData\Local\Packages\</code> 에서 <code>Canonical* 폴더</code> 삭제</li>
+<li><code>C:\Program Files\WindowsApps</code> 내 <code>Canonical* 폴더</code> 삭제 (권한 필요)</li>
 </ul></li>
-<li><p>후자는 권한이 필요하여, <code>C:\Program Files\WindowsApps</code> 폴더의 소유자를 변경하는 것보다 아래와 같이 Command Prompt를 관리자권한으로 열어서 del 명령으로 삭제하는 것이 훨씬 간편하다.</p>
+<li>후자는 권한이 필요하여, <code>C:\Program Files\WindowsApps</code> 폴더의 소유자를 변경하는 것보다 아래와 같이 Command Prompt를 관리자권한으로 열어서 del 명령으로 삭제하는 것이 훨씬 간편하다.
 <ul>
 <li>시작메뉴를 누르고 검색에 cmd를 입력하고, 마우스 오른쪽 버튼을 눌러 관리자권한으로 실행한다.</li>
 </ul></li>
@@ -469,13 +469,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="wsl2-설치">WSL2 설치</h2>
 <section id="window-edition-및-버전확인" class="level3">
 <h3 class="anchored" data-anchor-id="window-edition-및-버전확인">Window edition 및 버전확인</h3>
-<p>윈도우 10 HOME 버전의 경우 ARM64 시스템의 경우 빌드 19041부터 WSL 2를 지원한다.</p>
-<p><img src="images/노트북_Window_버전.png" class="img-fluid"></p>
-<p><img src="images/desktop-window-version.JPG" class="img-fluid"></p>
+<ul>
+<li>윈도우 10 HOME 버전의 경우 ARM64 시스템의 경우 빌드 19041부터 WSL 2를 지원한다.</li>
+<li><img src="images/노트북_Window_버전.png" class="img-fluid"></li>
+<li><img src="images/desktop-window-version.JPG" class="img-fluid"></li>
+</ul>
 </section>
 <section id="wsl-설치명령" class="level3">
 <h3 class="anchored" data-anchor-id="wsl-설치명령">WSL 설치명령</h3>
-<p>이전과는 다르게 아래의 자동화된 명령한 줄로 설치가 됩니다.</p>
+<ul>
+<li>이전과는 다르게 아래의 자동화된 명령한 줄로 설치가 됩니다.</li>
+</ul>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -484,11 +488,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="sc">--</span>install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>이는 wsl 옵션과 가상머신플랫폼을 활성화시키고 최신 리눅스커널까지 upgrade해 줍니다.</p>
+<ul>
+<li>이는 wsl 옵션과 가상머신플랫폼을 활성화시키고 최신 리눅스커널까지 upgrade해 줍니다.</li>
+</ul>
 </section>
 <section id="재부팅-2" class="level3">
 <h3 class="anchored" data-anchor-id="재부팅-2">재부팅</h3>
-<p>변경사항을 적용하기 위해서는 시스템을 다시 시작하라는 메세지가 나옵니다.</p>
+<ul>
+<li>변경사항을 적용하기 위해서는 시스템을 다시 시작하라는 메세지가 나옵니다.</li>
+</ul>
 </section>
 <section id="중간점검" class="level3">
 <h3 class="anchored" data-anchor-id="중간점검">중간점검</h3>
@@ -506,7 +514,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="sc">--</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>WSL 버전과 커널버전까지 표시되므로 확인할 수 있습니다.</p>
+<ul>
+<li>WSL 버전과 커널버전까지 표시되므로 확인할 수 있습니다.</li>
+</ul>
 </section>
 </section>
 <section id="우분투설치" class="level2">
@@ -592,6 +602,57 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 </div>
 </div>
 </section>
+<section id="네트워크" class="level3">
+<h3 class="anchored" data-anchor-id="네트워크">네트워크</h3>
+<section id="nat" class="level4">
+<h4 class="anchored" data-anchor-id="nat">NAT</h4>
+<ul>
+<li>WSL2는 가상의 사설 IP를 부여받고, NAT(Network Address Translation)를 통해 호스트 Windows를 거쳐 외부망으로 라우팅됩니다.</li>
+</ul>
+<pre><code>[WSL2 Ubuntu]
+    |
+    | eth0: 172.28.x.x
+    |
+  (NAT)
+    |
+[Windows Host]
+    |
+    | Ethernet / Wi-Fi (예: 172.17.130.79)
+    |
+[병원망 / 인터넷]</code></pre>
+<ul>
+<li>이는 병원망의 NMPACS를 WSL2 dicom server에 dicom modality로 등록할 때 원도우에서 했던것처럼 등록하면 된다는 것을 시사합니다.</li>
+</ul>
+<pre><code>NMPACS 172.17.111.214:104</code></pre>
+<ul>
+<li>그리고 NMPACS에 WSL2 설치된 ORTHANC 서버를 dicom modality로 등록할 때도 마치 호스트윈도우에 설치된 것처럼 등롣해야 함을 시사합니다.</li>
+</ul>
+<pre><code>ORTHANC 172.17.130.79:4242</code></pre>
+<ul>
+<li><p>왜냐하면, WSL2는 NAT 내부에 있기 때문에 외부에서 직접 접근이 불가능하며, Windows가 받은 요청을 포트 포워딩을 통해 WSL2로 전달해야 하기 때문입니다.</p></li>
+<li><p>포트 포워딩에 관한 문제중의 하나는 wsl2의 IP가 부팅시마다 바뀌기 때문에 이에 대한 대책이 필요합니다. 자동화 스크립트를 구성할 수 있습니다,</p></li>
+</ul>
+</section>
+<section id="localhost-루프백-인터페이스" class="level4">
+<h4 class="anchored" data-anchor-id="localhost-루프백-인터페이스">localhost (루프백 인터페이스)</h4>
+<ul>
+<li>Windows에서는 루프백 인터페이스를 통해 동일 머신 내의 프로세스 간 통신이 가능합니다. 즉, 대상 호스트를 localhost 또는 127.0.0.1로 지정하면 물리 네트워크 장치를 거치지 않고 자체적으로 통신합니다.</li>
+<li>Microsoft 공식 문서<a href="https://learn.microsoft.com/en-us/windows/wsl/networking" class="uri">https://learn.microsoft.com/en-us/windows/wsl/networking</a>에 따르면, 호스트 Windows에서 WSL2 내부에 실행 중인 서버에도 동일하게 localhost를 사용하여 접근할 수 있습니다.</li>
+</ul>
+</section>
+<section id="host-ip" class="level4">
+<h4 class="anchored" data-anchor-id="host-ip">host IP</h4>
+<pre><code>ip route show | grep -i default | awk '{ print $3 }'</code></pre>
+<ul>
+<li><p>위 명령을 통해 WSL2의 기본 라우트 게이트웨이(호스트 Windows의 IP)를 확인할 수 있으며, 이 IP와 포트를 조합해 WSL2에서 Windows 쪽 서버에 접근할 수 있습니다.</p></li>
+<li><p>그러나 부팅시마다 달라질 수 있습니다.</p></li>
+<li><p>WSL2는 가상 네트워크 어댑터를 사용하여 호스트 Windows와 통신합니다. 이 어댑터는 WSL2가 부팅될 때마다 동적으로 IP 주소를 할당받습니다.</p></li>
+<li><p>이 IP 주소는 WSL2 내부에서만 유효하며, 외부 네트워크에서는 접근할 수 없습니다. 따라서 WSL2 내부에서 실행 중인 서버에 접근하려면 호스트 Windows의 IP 주소를 사용해야 합니다.</p></li>
+<li><p>WSL2의 IP 주소는 <code>wsl hostname -i</code> 명령어로 확인할 수 있습니다. 그러나 이 IP 주소는 부팅 시마다 변경되므로, 고정 IP 주소를 사용하려면 Windows의 IP 주소를 사용해야 합니다.</p></li>
+<li><p>Windows의 IP 주소는 <code>ipconfig</code> 명령어로 확인할 수 있습니다. 이 IP 주소는 WSL2와 호스트 Windows 간의 통신에 사용됩니다.</p></li>
+</ul>
+</section>
+</section>
 <section id="window-to-wsl2-네트워크" class="level3">
 <h3 class="anchored" data-anchor-id="window-to-wsl2-네트워크">Window to WSL2 네트워크</h3>
 <section id="윈도우에서-wsl2-가상-ip-확인하기" class="level4">
@@ -601,7 +662,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>cmd or ps</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>wsl hostname <span class="sc">-</span>i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>wsl hostname <span class="sc">-</span>i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <ul>
@@ -613,7 +674,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sudo apt<span class="sc">-</span>get install net<span class="sc">-</span>tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sudo apt<span class="sc">-</span>get install net<span class="sc">-</span>tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="cell">
@@ -621,7 +682,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ifconfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ifconfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <ul>
@@ -636,7 +697,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>cmd</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">172</span>.<span class="dv">21</span>.<span class="fl">120.237</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ping <span class="dv">172</span>.<span class="dv">21</span>.<span class="fl">120.237</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <ul>
@@ -653,7 +714,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>관리자: Windows PowerShell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Test<span class="sc">-</span>NetConnection <span class="sc">-</span>ComputerName <span class="dv">172</span>.<span class="dv">21</span>.<span class="fl">120.237</span> <span class="sc">-</span>Port <span class="dv">4242</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Test<span class="sc">-</span>NetConnection <span class="sc">-</span>ComputerName <span class="dv">172</span>.<span class="dv">21</span>.<span class="fl">120.237</span> <span class="sc">-</span>Port <span class="dv">4242</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -667,7 +728,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>cmd</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ipconfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ipconfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <ul>
@@ -685,7 +746,7 @@ Figure&nbsp;1: Ubuntu의 디렉토리 구조
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>nc <span class="sc">-</span>vz <span class="dv">172</span>.<span class="dv">17</span>.<span class="fl">130.79</span> <span class="dv">5678</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>nc <span class="sc">-</span>vz <span class="dv">172</span>.<span class="dv">17</span>.<span class="fl">130.79</span> <span class="dv">5678</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 
