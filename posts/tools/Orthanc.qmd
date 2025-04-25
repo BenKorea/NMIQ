@@ -7,98 +7,38 @@ date-modified: last-modified
 categories: [dicom server, Orthanc]
 ---
 
-벨기에에서 개발한 오픈소스이다. Restful APT를 지원하기 때문에 DICOM query, retrieve, send, move 등을 쉽게 구현할 수 있으리라는기대감으로 설치하여 향후의 시스템을 모사하여 개발을 진행하고 있다.
-
 ## Window 운영체제에서의 설치
 
-### 완전제거방법
+### orthanc.json 설정
 
-구동이 제대로 되지 않을 때가 많아서 완전제거방법을 조사하니 아래와 같았다.
+"Name" : "Orthanc_win",
 
-1.  서비스 관리자에서 "Orthanc" 서비스를 찾아 중지합니다.
+"HttpPort" : 8042,
 
-2.  C:\\Program Files\\Orthanc 폴더를 삭제합니다.
+"DicomAet" : "ORTHANC",
 
-3.  C:\\Users\\\<username\>\\AppData\\Local\\Orthanc 폴더를 삭제합니다.
+"DicomPort" : 4242,
 
-4.  Orthanc 설정 레지스트리 삭제 (Windows만 해당):
+"RemoteAccessAllowed" : false,
 
-    1.  regedit를 실행합니다.
-
-    2.  HKEY_LOCAL_MACHINE\\SOFTWARE\\Orthanc 키를 삭제합니다.
-
-5.  제어판에서 "프로그램 제거"를 선택하고 "Orthanc"를 제거합니다.
-
-### 설치파일
-
-공식사이트 https://orthanc.uclouvain.be/downloads/windows-64/installers/index.html 2025년 2월 27일 release된 25.2.0 버전이 최신이다.
-
-### 설치폴더
-
-기본설치폴더는 C:\\Program Files\\Orthanc Server이며 data는 C:\\Orthanc에 기본 설치된다. 이를 변경하면 Plugins에서 설치경로 인식의 문제 등으로 실행에 문제가 발생하는 것 같으므로 기본설치폴더에 설치하는 것이 좋겠다.
-
-### 설정파일
-
-main 설정파일은 C:\\Program Files\\Orthanc Server\\Configuration\\orthanc.json이다.
-
-### DICOMModality 설정
-
-매뉴얼(https://orthanc.uclouvain.be/book/integrations/modality.html#configure-modality)의 예시는 아래와 같았다.
-
-``` r
-// The list of the known DICOM modalities
 "DicomModalities" : {
-  "echo1" : [ "ECHO1", "123.124.125.10", 104 ]
-},
+
+```         
+   "NMPACS" : [ "NMPACS", "172.17.111.214", 104 ],
+   "RA600_3" : [ "RA600_3", "172.17.111.218", 104 ],
+   "CONQUESTRA6003" : [ "CONQUESTRA600", "172.17.111.218", 5678 ],
+   "NMDOSE_WIN" : [ "NMDOSE_WIN", "172.17.130.79", 5678 ],
+   "NMIQ" : [ "NMIQ", "172.17.130.79", 5679 ],
+   "NMFULLDATA" : [ "NMFULLDATA", "172.17.130.79", 5680 ],
+   "NMTEMPSERVER" : [ "NMTEMPSERVER", "172.17.130.79", 5681 ],
+   "ZETTAPACS" : [ "ZETTAPACS", "172.17.130.79", 5682 ],
+   "O-wsl4343" : [ "ORTHANC_WSL", "127.0.0.1", 4343 ],
+   "SLICER" : [ "SLICER", "172.17.130.79", 11112 ]
 ```
 
-위를 참고하여 개발시스템의 DicomModality를 아래와 같이 설정하였다.
+### 방화벽설정
 
-``` r
-  "NMDOSE" : [ "NMDOSE", "127.0.0.1", 5678 ],
-  "NMIQ" : [ "NMIQ", "127.0.0.1", 5679 ],
-  "NMFULLDATA" : [ "NMFULLDATA", "127.0.0.1", 5680 ],
-  "NMTEMPSERVER" : [ "NMTEMPSERVER", "127.0.0.1", 5681 ],
-  "ZETTAPACS" : [ "ZETTAPACS", "127.0.0.1", 5682 ],
-  "SLICER" : [ "SLICER", "127.0.0.1", 11112 ]
-```
-
-configuration을 설정하는 동안에 Orthanc를 완전히 중지하였다가 수정 후 service를 재개하여야 수정사항이 반영됨을 주의해야 한다. 그리고 쓰기권한이 제한된 경우에는 이를 해결해야 한다.
-
-### Port
-
--   4242
-
-### HPPT port
-
--   8042
-
-### 설정
-
--   PostgreSQL로 DICOM metadata를 저장하기 위해서 postgresql.json을 아래와 같이 설정하였다.
-
-``` json
-{
-  "PostgreSQL" : {
-    "EnableIndex" : true,
-    "EnableStorage" : false,               // You likely don't need to enable this option
-    "Host" : "localhost",
-    "Port" : 5432,
-    "Database" : "orthanc",
-    "Username" : "nmuser",
-    "Password" : "iloveben",
-    "Lock" : true,
-    "EnableSsl" : false,                   // New in release 3.0
-    "MaximumConnectionRetries" : 10,       // New in release 3.0
-    "ConnectionRetryInterval" : 5,         // New in release 3.0
-    "IndexConnectionsCount" : 50,          // New in release 4.0 - new default value in 7.0
-    "TransactionMode": "ReadCommitted",    // New in release 6.0 - new default value in 7.0
-    "EnableVerboseLogs": false,            // New in release 6.0
-    "HousekeepingInterval": 1,             // New in release 7.0
-    "AllowInconsistentChildCounts": false  // New in release 7.2
-  }
-}
-```
+인바운드 4343 허용
 
 ## WSL2/Ubuntu 환경에서의 설치
 
@@ -114,13 +54,28 @@ sudo apt update
 sudo apt install orthanc
 ```
 
-### RemoteAccessAllowed 설정변경
-
--   저자가 이해하기로는 내부에서가 아니라 외부에서 접속할 때 true로 설정해야 하는 것이지만 WSL2에서는 이 옵션을 true로 변경해야 가능한 것 같음
+### orthanc.json 설정
 
 ```{r remote-access-allowed, eval=FALSE, filename="orthanc.json"}
 sudo nano /etc/orthanc/orthanc.json
-"RemoteAccessAllowed" : true,
+```
+
+"Name" : "Orthanc_wsl2",
+
+"HttpPort" : 8043,
+
+"DicomAet" : "ORTHANC_WSL2"
+
+"DicomPort" : 4243,
+
+"RemoteAccessAllowed" : false,
+
+"DicomModalities" : {
+
+```         
+    "Orthanc-win" : [ "ORTHANC", "172.21.112.1", 4242 ],
+    "NMTEMPSERVER" : [ "NMTEMPSERVER", "172.21.112.1", 5681 ],
+    "NMPACS" : [ "NMPACS", "172.17.111.214", 104 ]
 ```
 
 ### Orthanc 재시작
@@ -159,25 +114,63 @@ sudo systemctl restart orthanc
 sudo apt install orthanc-explorer2
 ```
 
-
 ### Orthanc systemd 서비스 비활성화
+
 ```{r disable-orthanc, eval=FALSE, filename="bash"}
 sudo systemctl disable orthanc
 ```
 
 ### Orthanc 수동 시작
+
 ```{r start-orthanc, eval=FALSE, filename="bash"}
 sudo systemctl start orthanc
 ```
 
-## orthanc-docker
--   orthanc-docker 폴더이름으로 orthanc 이미지로만 docker-compose를 실행하였다.
-- docker-compose.yml 파일에 docker network를 지정하지 않았기 때문에 orthanc-docker container와 함께 orthanc-docker_default 이름의 network가 만들어졌다.
-- DCM4CHEE은 compose로 했을 때의 값을 일단 그대로 해 보았다.
+### 윈도우 포트포워딩 점검
+
+```{r portproxy_show, eval=FALSE, filename="powershell"}
+netsh interface portproxy show v4tov4
 ```
+
+### 윈도우 포트포워딩 리셋
+
+```{r portproxy_reset, eval=FALSE, filename="powershell"}
+netsh interface portproxy reset
+```
+
+### WSL2_IP 알아내기
+
+```{r wsl2_ip, eval=FALSE, filename="bash"}
+sudo ip addr show eth0 | grep inet
+```
+
+172.21.120.237
+
+### 포워딩
+
+```{r portproxy_sho, eval=FALSE, filename="powershell"}
+netsh interface portproxy add v4tov4 `
+  listenaddress=0.0.0.0 listenport=4242 `
+  connectaddress=172.21.120.237 connectport=4243 `
+  protocol=tcp
+```
+
+### 방화벽
+
+### 점검
+
+```{r portproxy_check, eval=FALSE, filename="powershell"}
+nc -vz <NMPACS_IP> 104
+```
+
+## orthanc-docker
+
+-   orthanc-docker 폴더이름으로 orthanc 이미지로만 docker-compose를 실행하였다.
+-   docker-compose.yml 파일에 docker network를 지정하지 않았기 때문에 orthanc-docker container와 함께 orthanc-docker_default 이름의 network가 만들어졌다.
+-   DCM4CHEE은 compose로 했을 때의 값을 일단 그대로 해 보았다.
+
+```         
             "dcm4chee" : [ "DCM4CHEE", "arc", 11112 ]
 ```
-- 그러나 같은 네트워크에 속해있지 않기 때문에 orthanc-docker에서 DCM4CHEE에 접근할 수 없을 것이다.
 
-
-
+-   그러나 같은 네트워크에 속해있지 않기 때문에 orthanc-docker에서 DCM4CHEE에 접근할 수 없을 것이다.
