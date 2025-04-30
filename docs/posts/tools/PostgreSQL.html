@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-46b5437e78f6e9148093fe0dd53110ae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -273,12 +273,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#필요성" id="toc-필요성" class="nav-link active" data-scroll-target="#필요성">필요성</a></li>
-  <li><a href="#설치파일" id="toc-설치파일" class="nav-link" data-scroll-target="#설치파일">설치파일</a></li>
-  <li><a href="#설치방법" id="toc-설치방법" class="nav-link" data-scroll-target="#설치방법">설치방법</a></li>
-  <li><a href="#orthanc의-dicom-저장소로-설정하기" id="toc-orthanc의-dicom-저장소로-설정하기" class="nav-link" data-scroll-target="#orthanc의-dicom-저장소로-설정하기">Orthanc의 dicom 저장소로 설정하기</a>
+  <li><a href="#windows-os" id="toc-windows-os" class="nav-link active" data-scroll-target="#windows-os">Windows OS</a>
   <ul>
-  <li><a href="#database-만들기" id="toc-database-만들기" class="nav-link" data-scroll-target="#database-만들기">database 만들기</a></li>
+  <li><a href="#완전제거" id="toc-완전제거" class="nav-link" data-scroll-target="#완전제거">완전제거</a></li>
+  <li><a href="#설치설정-검증" id="toc-설치설정-검증" class="nav-link" data-scroll-target="#설치설정-검증">설치/설정 검증</a></li>
+  <li><a href="#orthanc를-위한-userdatabase-만들기" id="toc-orthanc를-위한-userdatabase-만들기" class="nav-link" data-scroll-target="#orthanc를-위한-userdatabase-만들기">Orthanc를 위한 user/database 만들기</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -323,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 14, 2025</p>
+      <p class="date-modified">April 30, 2025</p>
     </div>
   </div>
     
@@ -337,38 +336,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Berkeley Software Distribution (BSD) license</li>
 </ul>
-<section id="필요성" class="level3">
-<h3 class="anchored" data-anchor-id="필요성">필요성</h3>
-<p>Orthanc dicom 저장시 연결하면 속도가 향상되므로 필요</p>
-</section>
-<section id="설치파일" class="level3">
-<h3 class="anchored" data-anchor-id="설치파일">설치파일</h3>
-<p>https://www.enterprisedb.com/downloads/postgres-postgresql-downloads</p>
-</section>
-<section id="설치방법" class="level3">
-<h3 class="anchored" data-anchor-id="설치방법">설치방법</h3>
+<section id="windows-os" class="level2">
+<h2 class="anchored" data-anchor-id="windows-os">Windows OS</h2>
+<section id="완전제거" class="level3">
+<h3 class="anchored" data-anchor-id="완전제거">완전제거</h3>
 <ul>
-<li>프로그램 자체는 default folder에 설치한다.</li>
-<li>그러나 data는 여러가지 목적에 의해서
+<li>services.msc에서 서비스 중지</li>
+<li>제어판에서 제거</li>
+<li>데이터폴더 삭제</li>
+</ul>
+</section>
+<section id="설치설정-검증" class="level3">
+<h3 class="anchored" data-anchor-id="설치설정-검증">설치/설정 검증</h3>
 <ul>
-<li>PC에서는 E:\17,</li>
+<li><p><a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads" class="uri">https://www.enterprisedb.com/downloads/postgres-postgresql-downloads</a></p></li>
+<li><p>설치경로는 default</p></li>
+<li><p>데이터폴더는 E:\17</p>
+<ul>
 <li>노트북에서는 C:\17설치하였다.</li>
 </ul></li>
-<li>passworkd는 “postgres”로 진행하고 추후 변경하기로 했다.</li>
-<li>path 설정은 manual로 해야 한다.</li>
+<li><p>Password: postres</p></li>
+<li><p>Port: 5432</p></li>
+<li><p>path 설정은 manual로 해야 한다.</p></li>
+<li><p>Stack Builder는 굳이 지금단계에서는 설치할 필요 없음</p></li>
+<li><p>설치검증은</p>
+<ul>
+<li>버전확인</li>
+</ul>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>PowerShell</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>psql <span class="sc">--</span>version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li>관리자 데이터베이스에 접속하여 검증</li>
+</ul>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>PowerShell</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>psql <span class="sc">-</span>U postgres <span class="sc">-</span>h localhost <span class="sc">-</span>d postgres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></li>
+<li><p>종료는 exit</p></li>
 </ul>
 </section>
-<section id="orthanc의-dicom-저장소로-설정하기" class="level3">
-<h3 class="anchored" data-anchor-id="orthanc의-dicom-저장소로-설정하기">Orthanc의 dicom 저장소로 설정하기</h3>
-<section id="database-만들기" class="level4">
-<h4 class="anchored" data-anchor-id="database-만들기">database 만들기</h4>
-<ul>
-<li>PostgreSQL의 정상실행여부는 윈도우 서비스에서 확인할 수 있고, 다양한 command로도 확인할 수 있다.</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>psql <span class="at">-U</span> postgres</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>CREATE USER nmuser WITH PASSWORD 'iloveben';</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>CREATE DATABASE orthanc OWNER nmuser;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>GRANT ALL PRIVILEGES ON DATABASE orthanc TO nmuser;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="orthanc를-위한-userdatabase-만들기" class="level3">
+<h3 class="anchored" data-anchor-id="orthanc를-위한-userdatabase-만들기">Orthanc를 위한 user/database 만들기</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>pqsl</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>CREATE USER nmuser WITH PASSWORD <span class="st">'nmuser'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>pqsl</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>\du</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>pqsl</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>CREATE DATABASE rpacs OWNER nmuser;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>pqsl</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>\l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 
 
 </section>

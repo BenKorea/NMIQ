@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-46b5437e78f6e9148093fe0dd53110ae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -273,9 +273,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#window-운영체제에서의-설치" id="toc-window-운영체제에서의-설치" class="nav-link active" data-scroll-target="#window-운영체제에서의-설치">Window 운영체제에서의 설치</a>
+  <li><a href="#windows에서의-설치" id="toc-windows에서의-설치" class="nav-link active" data-scroll-target="#windows에서의-설치">Windows에서의 설치</a>
   <ul>
+  <li><a href="#설치파일" id="toc-설치파일" class="nav-link" data-scroll-target="#설치파일">설치파일</a></li>
   <li><a href="#orthanc.json-설정" id="toc-orthanc.json-설정" class="nav-link" data-scroll-target="#orthanc.json-설정">orthanc.json 설정</a></li>
+  <li><a href="#postgresql.json-설정" id="toc-postgresql.json-설정" class="nav-link" data-scroll-target="#postgresql.json-설정">postgresql.json 설정</a></li>
   <li><a href="#방화벽설정" id="toc-방화벽설정" class="nav-link" data-scroll-target="#방화벽설정">방화벽설정</a></li>
   </ul></li>
   <li><a href="#wsl2ubuntu-환경에서의-설치" id="toc-wsl2ubuntu-환경에서의-설치" class="nav-link" data-scroll-target="#wsl2ubuntu-환경에서의-설치">WSL2/Ubuntu 환경에서의 설치</a>
@@ -336,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 25, 2025</p>
+      <p class="date-modified">April 30, 2025</p>
     </div>
   </div>
     
@@ -347,26 +349,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="window-운영체제에서의-설치" class="level2">
-<h2 class="anchored" data-anchor-id="window-운영체제에서의-설치">Window 운영체제에서의 설치</h2>
+<section id="windows에서의-설치" class="level2">
+<h2 class="anchored" data-anchor-id="windows에서의-설치">Windows에서의 설치</h2>
+<section id="설치파일" class="level3">
+<h3 class="anchored" data-anchor-id="설치파일">설치파일</h3>
+<ul>
+<li><a href="https://orthanc.uclouvain.be/downloads/windows-64/index.html" class="uri">https://orthanc.uclouvain.be/downloads/windows-64/index.html</a></li>
+</ul>
+</section>
 <section id="orthanc.json-설정" class="level3">
 <h3 class="anchored" data-anchor-id="orthanc.json-설정">orthanc.json 설정</h3>
-<p>“Name” : “Orthanc_win”,</p>
-<p>“HttpPort” : 8042,</p>
-<p>“DicomAet” : “ORTHANC”,</p>
-<p>“DicomPort” : 4242,</p>
-<p>“RemoteAccessAllowed” : false,</p>
-<p>“DicomModalities” : {</p>
-<pre><code>   "NMPACS" : [ "NMPACS", "172.17.111.214", 104 ],
-   "RA600_3" : [ "RA600_3", "172.17.111.218", 104 ],
-   "CONQUESTRA6003" : [ "CONQUESTRA600", "172.17.111.218", 5678 ],
-   "NMDOSE_WIN" : [ "NMDOSE_WIN", "172.17.130.79", 5678 ],
-   "NMIQ" : [ "NMIQ", "172.17.130.79", 5679 ],
-   "NMFULLDATA" : [ "NMFULLDATA", "172.17.130.79", 5680 ],
-   "NMTEMPSERVER" : [ "NMTEMPSERVER", "172.17.130.79", 5681 ],
-   "ZETTAPACS" : [ "ZETTAPACS", "172.17.130.79", 5682 ],
-   "O-wsl4343" : [ "ORTHANC_WSL", "127.0.0.1", 4343 ],
-   "SLICER" : [ "SLICER", "172.17.130.79", 11112 ]</code></pre>
+<pre><code>{
+  "Name" : "NMResearchPACS",
+  "StorageDirectory" : "C:\\Orthanc\\data",
+  "IndexDirectory" : "C:\\Orthanc\\data",
+  "HttpServerEnabled" : true,
+  "HttpPort" : 8042,  
+  "DicomAet" : "ORTHANC",
+  "DicomModalities" : {
+    "NMPACS" : [ "NMPACS", "172.17.111.214", 104 ],
+    "NMDOSE" : [ "NMDOSE", "127.0.0.1", 5678 ],
+    "SLICER" : [ "SLICER", "172.17.130.79", 11112 ]
+  },</code></pre>
+<p>재설치를 대비하여 구글 드라이브에 백업해둠</p>
+</section>
+<section id="postgresql.json-설정" class="level3">
+<h3 class="anchored" data-anchor-id="postgresql.json-설정">postgresql.json 설정</h3>
+<pre><code>{
+    /**
+     * Configuration to use PostgreSQL instead of the default SQLite
+     * back-end of Orthanc. You will have to install the
+     * "orthanc-postgresql" package to take advantage of this feature.
+     **/
+    "PostgreSQL" : {
+        // Enable the use of PostgreSQL to store the Orthanc index?
+        "EnableIndex" : true,
+
+        // Enable the use of PostgreSQL to store the DICOM files?
+        "EnableStorage" : false,
+
+        // Option 1: Specify explicit authentication parameters
+        "Host" : "localhost",
+        "Port" : 5432,
+        "Database" : "nmresearchpacs",
+        "Username" : "nmresearchuser",
+        "Password" : "nmresearch",
+
+        // Option 2: Authenticate using PostgreSQL connection URI
+        // "ConnectionUri" : "postgresql://orthanc_user:my_password@localhost:5432/orthanc_db",
+
+        // Optional: Disable the locking of the PostgreSQL database
+        "Lock" : false
+    }
+}</code></pre>
 </section>
 <section id="방화벽설정" class="level3">
 <h3 class="anchored" data-anchor-id="방화벽설정">방화벽설정</h3>
@@ -382,7 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sudo apt update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sudo apt update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -393,7 +428,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sudo apt install orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sudo apt install orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -404,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>orthanc.json</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sudo nano <span class="sc">/</span>etc<span class="sc">/</span>orthanc<span class="sc">/</span>orthanc.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sudo nano <span class="sc">/</span>etc<span class="sc">/</span>orthanc<span class="sc">/</span>orthanc.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>“Name” : “Orthanc_wsl2”,</p>
@@ -424,7 +459,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl restart orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl restart orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -438,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>browse</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>orthanc<span class="sc">-</span>server<span class="sc">/</span>orthanc<span class="sc">-</span>explorer<span class="dv">-2</span><span class="sc">/</span>releases</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>orthanc<span class="sc">-</span>server<span class="sc">/</span>orthanc<span class="sc">-</span>explorer<span class="dv">-2</span><span class="sc">/</span>releases</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <ul>
@@ -450,12 +485,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>orthanc.json</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="st">"Plugins"</span> <span class="sc">:</span> {</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OrthancExplorer2"</span> <span class="sc">:</span> {</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Enabled"</span> <span class="sc">:</span> true,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Path"</span> <span class="sc">:</span> <span class="st">"/usr/share/orthanc/plugins/libOrthancExplorer2-ubuntu.so"</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="st">"Plugins"</span> <span class="sc">:</span> {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OrthancExplorer2"</span> <span class="sc">:</span> {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Enabled"</span> <span class="sc">:</span> true,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Path"</span> <span class="sc">:</span> <span class="st">"/usr/share/orthanc/plugins/libOrthancExplorer2-ubuntu.so"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <ul>
@@ -466,7 +501,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl restart orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl restart orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="cell">
@@ -474,7 +509,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sudo apt install orthanc<span class="sc">-</span>explorer2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sudo apt install orthanc<span class="sc">-</span>explorer2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -485,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl disable orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl disable orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -496,7 +531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl start orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sudo systemctl start orthanc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -507,7 +542,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>powershell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>netsh interface portproxy show v4tov4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>netsh interface portproxy show v4tov4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -518,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>powershell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>netsh interface portproxy reset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>netsh interface portproxy reset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -529,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>bash</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sudo ip addr show eth0 <span class="sc">|</span> grep inet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sudo ip addr show eth0 <span class="sc">|</span> grep inet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>172.21.120.237</p>
@@ -541,10 +576,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>powershell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>netsh interface portproxy add v4tov4 <span class="st">`</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="at">  listenaddress=0.0.0.0 listenport=4242 </span><span class="st">`</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  connectaddress<span class="ot">=</span><span class="dv">172</span>.<span class="dv">21</span>.<span class="fl">120.237</span> connectport<span class="ot">=</span><span class="dv">4243</span> <span class="st">`</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="at">  protocol=tcp</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>netsh interface portproxy add v4tov4 <span class="st">`</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="at">  listenaddress=0.0.0.0 listenport=4242 </span><span class="st">`</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  connectaddress<span class="ot">=</span><span class="dv">172</span>.<span class="dv">21</span>.<span class="fl">120.237</span> connectport<span class="ot">=</span><span class="dv">4243</span> <span class="st">`</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="at">  protocol=tcp</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -558,7 +593,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>powershell</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>nc <span class="sc">-</span>vz <span class="sc">&lt;</span>NMPACS_IP<span class="sc">&gt;</span> <span class="dv">104</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>nc <span class="sc">-</span>vz <span class="sc">&lt;</span>NMPACS_IP<span class="sc">&gt;</span> <span class="dv">104</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>

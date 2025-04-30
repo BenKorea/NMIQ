@@ -7,52 +7,64 @@ date-modified: last-modified
 categories: [tools, open source, database, PostgreSQL]
 ---
 
-- Berkeley Software Distribution (BSD) license
+-   Berkeley Software Distribution (BSD) license
 
-### 필요성
+## Windows OS
 
-Orthanc dicom 저장시 연결하면 속도가 향상되므로 필요
+### 완전제거
 
+-   services.msc에서 서비스 중지
+-   제어판에서 제거
+-   데이터폴더 삭제
 
-### 설치파일
+### 설치/설정 검증
 
-https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+-   <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>
 
+-   설치경로는 default
 
-### 설치방법
-- 프로그램 자체는 default folder에 설치한다.
-- 그러나 data는 여러가지 목적에 의해서 
-    -   PC에서는 E:\PostgreSQL\17\data, 
-    -   노트북에서는 C:\PostgreSQL\17\data에 설치하였다.
-- passworkd는 "postgres"로 진행하고 추후 변경하기로 했다.
-- path 설정은 manual로 해야 한다.
+-   데이터폴더는 E:\PostgreSQL\\17\data
 
+    -   노트북에서는 C:\PostgreSQL\\17\data에 설치하였다.
 
-### Orthanc의 dicom 저장소로 설정하기
+-   Password: postres
 
-#### database 만들기
-- PostgreSQL의 정상실행여부는 윈도우 서비스에서 확인할 수 있고, 다양한 command로도 확인할 수 있다.
+-   Port: 5432
 
-```cmd
-psql -U postgres
-CREATE USER nmuser WITH PASSWORD 'iloveben';
-CREATE DATABASE orthanc OWNER nmuser;
-GRANT ALL PRIVILEGES ON DATABASE orthanc TO nmuser;
+-   path 설정은 manual로 해야 한다.
+
+-   Stack Builder는 굳이 지금단계에서는 설치할 필요 없음
+
+-   설치검증은
+
+    -   버전확인
+
+    ```{r check-version, eval=FALSE, filename="PowerShell"}
+    psql --version
+    ```
+
+    -   관리자 데이터베이스에 접속하여 검증
+
+    ```{r check-database, eval=FALSE, filename="PowerShell"}
+    psql -U postgres -h localhost -d postgres
+    ```
+
+-   종료는 exit
+
+### Orthanc를 위한 user/database 만들기
+
+```{r create-user, eval=FALSE, filename="pqsl"}
+CREATE USER nmuser WITH PASSWORD 'nmuser';
 ```
 
+```{r create-user-check, eval=FALSE, filename="pqsl"}
+\du
+```
 
+```{r create-database, eval=FALSE, filename="pqsl"}
+CREATE DATABASE rpacs OWNER nmuser;
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```{r create-database-check, eval=FALSE, filename="pqsl"}
+\l
+```
